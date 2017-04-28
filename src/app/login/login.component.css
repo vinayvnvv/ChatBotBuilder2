@@ -1,0 +1,27 @@
+.login {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+}
+.login .body {
+	flex-grow: 1;
+	overflow-y: auto;
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	vertical-align: center;
+	display: flex;
+}
+.login .body .card-l {
+	width: 30%;
+	box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color: #4a4a4a;
+    margin: 0 auto;
+    min-width: 400px;
+}
+
+.login .body .card-l div {
+  margin: 11px 7px;
+}
