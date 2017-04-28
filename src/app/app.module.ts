@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+//global services
+import { StringsService } from './services/strings.service';
+import { RootScope } from './services/root.scope';
+
 //routes
 import { RouteModule } from './routes/app.routes';
 import { routingComponents } from './routes/app.routes';
@@ -24,7 +28,7 @@ import { routingComponents } from './routes/app.routes';
     HttpModule,
     RouteModule
   ],
-  providers: [],
+  providers: [ StringsService , RootScope ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
