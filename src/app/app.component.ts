@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { RootScope } from './services/root.scope';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+     constructor(
+            private rootScope: RootScope
+     	) {
+
+     }
 }

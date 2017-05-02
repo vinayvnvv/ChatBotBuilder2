@@ -5,4 +5,11 @@ export class RootScope {
 		email:null,
         pic:null
 	};
+	public rootLoader = {
+		show: false,
+		title: "Loading.."
+	};
+
+
+	
 }

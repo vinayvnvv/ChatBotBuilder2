@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { StringsService } from './../services/strings.service';
 import { AuthService } from './../services/auth.service';
+import { Router } from '@angular/router';
+import { ApiService } from './../services/api.services';
+import { RootScope } from './../services/root.scope';
+import { Loader } from './../services/common.services';
 
 
 
@@ -8,7 +12,7 @@ import { AuthService } from './../services/auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ AuthService ]
+  providers: [ApiService, Loader]
 })
 export class LoginComponent implements OnInit {
   Strings: StringsService;
@@ -17,7 +21,12 @@ export class LoginComponent implements OnInit {
 
   constructor( 
   		Strings: StringsService,
-  		Auth: AuthService
+  		Auth: AuthService,
+      private router: Router,
+      private Api: ApiService,
+      private rootScope: RootScope,
+      private Loader: Loader,
+      private zone: NgZone
   	 ) {
   	 this.Strings = Strings;
   	 this.Auth = Auth;
@@ -32,6 +41,7 @@ export class LoginComponent implements OnInit {
 
 
   googleSignIn() {
+    this.Loader.showRoot("Authendicating..")
   	var params = {
        'client_id' : '617965711227-ak9h08uuhefcbn6v5ccq8io3bdh401ml.apps.googleusercontent.com',
        'cookie_policy' : 'single_host_origin',
@@ -60,6 +70,20 @@ export class LoginComponent implements OnInit {
 
             this.Auth.setAuth(data);
             this.Auth.initAuth();
+            console.log("getAuth", this.Auth.getAuth());
+            
+
+            this.Api.getModules()
+                 .subscribe(
+                             res => { 
+                                         this.zone.run(() => { // <== added
+                                            this.Loader.hideRoot();
+                                         });
+                                         this.router.navigate(["dashboard"]);
+                                       },
+                             error => { console.log("errrrr") }
+                           );
+
             // Api.initBotDb().then(function(res){
             //   console.log("initDb response", res);
             //   Service.loader.hideRoot();

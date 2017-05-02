@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bulma/css/bulma.css"
+        "../node_modules/bulma/css/bulma.css",
+        "assets/styles/animation.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
