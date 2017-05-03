@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoaderComponent } from './directives/loader.directive';
+import { ToastComponent } from './directives/toast.directive';
 
 //global services
 import { StringsService } from './services/strings.service';
@@ -24,7 +25,8 @@ import { AuthGuard } from './services/auth.guard';
     LoginComponent,
     routingComponents,
     DashboardComponent,
-    LoaderComponent
+    LoaderComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

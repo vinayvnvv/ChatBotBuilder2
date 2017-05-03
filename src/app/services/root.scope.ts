@@ -9,6 +9,12 @@ export class RootScope {
 		show: false,
 		title: "Loading.."
 	};
+	public toast = {
+		text: null,
+		duration: 1500,
+		show: false,
+		type:""
+	};
 
 
 	

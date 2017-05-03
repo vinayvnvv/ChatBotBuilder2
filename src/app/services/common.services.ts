@@ -23,3 +23,31 @@ export class Loader {
           this.rootScope.rootLoader.title = "";
     	}
 }
+
+
+@Injectable()
+export class Toast {
+
+  constructor(
+    public rootScope: RootScope
+    ) {}
+
+  show(text:string, duration:number, type:string) {
+      console.log("Toast:", text)
+      if(!text) return;
+
+      this.rootScope.toast.text = text;
+      this.rootScope.toast.show = true;
+      if(duration) this.rootScope.toast.duration = duration;
+      if(type) this.rootScope.toast.type = type;
+
+      setTimeout(() => {
+          this.rootScope.toast.text = "";
+          this.rootScope.toast.show = false;
+          this.rootScope.toast.type = "";
+          this.rootScope.toast.duration = 1500;
+        }, duration);
+          
+    }
+
+}

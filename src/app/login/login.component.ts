@@ -4,7 +4,7 @@ import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
 import { ApiService } from './../services/api.services';
 import { RootScope } from './../services/root.scope';
-import { Loader } from './../services/common.services';
+import { Loader, Toast } from './../services/common.services';
 
 
 
@@ -12,7 +12,7 @@ import { Loader } from './../services/common.services';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ApiService, Loader]
+  providers: [ApiService, Loader, Toast]
 })
 export class LoginComponent implements OnInit {
   Strings: StringsService;
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
       private Api: ApiService,
       private rootScope: RootScope,
       private Loader: Loader,
-      private zone: NgZone
+      private zone: NgZone,
+      private Toast: Toast
   	 ) {
   	 this.Strings = Strings;
   	 this.Auth = Auth;
@@ -81,7 +82,13 @@ export class LoginComponent implements OnInit {
                                          });
                                          this.router.navigate(["dashboard"]);
                                        },
-                             error => { console.log("errrrr") }
+                             error => { 
+                                        this.zone.run(() => { // <== added
+                                            this.Loader.hideRoot();
+                                            this.Toast.show("Error in Auth init, Pls Try Again", 8000, "is-danger");
+
+                                         });
+                                      }
                            );
 
             // Api.initBotDb().then(function(res){

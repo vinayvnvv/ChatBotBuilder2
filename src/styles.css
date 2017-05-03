@@ -53,3 +53,13 @@
       font-size: 17px;
       margin-top: 9px;
 }
+
+
+.notification {
+  position: absolute!important;
+  width: 400px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 700;
+  display: block;
+}
