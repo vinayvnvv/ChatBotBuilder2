@@ -56,7 +56,7 @@
 
 
 .notification {
-  position: absolute!important;
+  position: fixed!important;
   width: 400px;
   bottom: 20px;
   right: 20px;

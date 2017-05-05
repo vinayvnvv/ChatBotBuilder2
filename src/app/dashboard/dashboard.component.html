@@ -1,15 +1,57 @@
 <div class="dashboard">
 
-    <header></header>
-    
-    <content></content>
+<dashboard-header></dashboard-header>
 
+<!-- sub nav -->
+<nav class="section nav">
+ <div class="container">
+		  <div class="nav-left">
+		  </div>
+
+		  <div class="nav-center">
+		  </div>
+
+		  <div class="nav-right">
+				    <div class="nav-item">
+				      <div class="field is-grouped">
+				        <p class="control">
+				          <a class="button is-primary is-outlined" >
+				            <span class="icon">
+				              <i class="fa fa-plus"></i>
+				            </span>
+				            <span>Add Flow</span>
+				          </a>
+				        </p>
+				        <p class="control">
+				          <a class="button is-primary is-outlined">
+				            <span class="icon">
+				              <i class="fa fa-plus"></i>
+				            </span>
+				            <span>Add Menu</span>
+				          </a>
+				        </p>
+				      </div>
+				   </div>
+		  </div>
+	</div>	  
+</nav>
+<!-- sub nav end --> 
+
+
+
+<router-outlet></router-outlet>
 
 </div>
 
 
-<p>
-  dashboard works!!
-</p>
-
-id: {{rootScope._auth_user.id}}
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>

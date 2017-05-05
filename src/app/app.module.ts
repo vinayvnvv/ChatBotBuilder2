@@ -18,6 +18,9 @@ import { AuthService } from './services/auth.service';
 import { RouteModule } from './routes/app.routes';
 import { routingComponents } from './routes/app.routes';
 import { AuthGuard } from './services/auth.guard';
+import { AddFlowComponent } from './dashboard/add-flow/add-flow.component';
+import { HeaderComponent } from './dashboard/header/header.component';
+import { ListComponent } from './dashboard/list/list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { AuthGuard } from './services/auth.guard';
     routingComponents,
     DashboardComponent,
     LoaderComponent,
-    ToastComponent
+    ToastComponent,
+    AddFlowComponent,
+    HeaderComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,7 @@ import { AuthGuard } from './services/auth.guard';
     HttpModule,
     RouteModule
   ],
-  providers: [ StringsService , RootScope, AuthGuard, AuthService],
+  providers: [StringsService , RootScope, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

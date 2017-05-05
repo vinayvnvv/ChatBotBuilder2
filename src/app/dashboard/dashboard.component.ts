@@ -12,6 +12,8 @@ import { Loader, Toast } from './../services/common.services';
 })
 export class DashboardComponent implements OnInit {
 
+  public d_a = "vinay";
+
   constructor(
   				private String: StringsService,
   				private rootScope: RootScope,
