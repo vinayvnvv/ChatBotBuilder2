@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "../node_modules/bulma/css/bulma.css",
-        "assets/styles/animation.css"
+        "assets/styles/animation.css",
+        "assets/libs/animate.css"
       ],
       "scripts": [
         "assets/libs/toggle-class.js",

@@ -26,3 +26,20 @@
     opacity: 0;
   }
 }
+
+
+@keyframes sliceInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sliceInUp {
+  animation-name: sliceInUp;
+}

@@ -14,10 +14,17 @@ export class ApiService {
                  private rootScope: RootScope
                ) { console.log(this.String.apis.initBotDB) }
 
-   getModules(): Observable<any> {
+   initBotDB(): Observable<any> {
     return this._http.post(this.String.apis.initBotDB + this.rootScope._auth_user.id , {})
                     .map(this.extractData);
-  }
+    }
+
+    getModules(): Observable<any> {
+    return this._http.get(this.String.apis.getModules + this.rootScope._auth_user.id )
+                    .map(this.extractData);
+    }
+
+   
 
   private extractData(res: Response) {
     let body = res.json();

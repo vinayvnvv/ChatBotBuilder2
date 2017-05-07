@@ -74,13 +74,14 @@ export class LoginComponent implements OnInit {
             console.log("getAuth", this.Auth.getAuth());
             
 
-            this.Api.getModules()
+            this.Api.initBotDB()
                  .subscribe(
                              res => { 
                                          this.zone.run(() => { // <== added
                                             this.Loader.hideRoot();
+                                            this.router.navigate(["dashboard"]);
                                          });
-                                         this.router.navigate(["dashboard"]);
+                                         
                                        },
                              error => { 
                                         this.zone.run(() => { // <== added

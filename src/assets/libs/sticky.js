@@ -9,7 +9,7 @@
 		function stickyPerform(ref) {
 			var top = document.body.scrollTop;
 			var stickies = document.querySelectorAll('[stick-from-top]');
-			console.log(stickies)
+			//console.log(stickies)
 			for(var i=0;i<stickies.length;i++) {
 				if( ((document.body.scrollTop -  stickies[i].offsetTop) > 0 ) &&
                 	stickies[i].getAttribute("sticked") != 'true'

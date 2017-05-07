@@ -8,8 +8,8 @@
 				    SELECT TYPE
 				  </p>
 				  <ul class="menu-list">
-				    <li><a class="is-active">Flows</a></li>
-				    <li><a>Menu's</a></li>
+				    <li><a class="{{isFlowTab}}" (click)="filterModules('flow')">Flows</a></li>
+				    <li><a class="{{isMenuTab}}" (click)="filterModules('menu')">Menu's</a></li>
 				  </ul>
 				  <!-- <p class="menu-label">
 				    Administration
@@ -45,11 +45,11 @@
            
 
            <div class="columns is-multiline">
-			  <div class="column is-6" *ngFor="let item of [0,1,2,3,4,5,6,7,8]">
+			  <div class="column is-6 anim sliceInUp" *ngFor="let item of filteredModulesData" >
 			    <div class="card">
 				  <header class="card-header">
-				    <p class="card-header-title">
-				      Component
+				    <p class="card-header-title is-primary">
+				      {{item.name}}
 				    </p>
 				    <a class="card-header-icon">
 				      <span class="icon">
@@ -59,10 +59,9 @@
 				  </header>
 				  <div class="card-content">
 				    <div class="content">
-				      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-				      <a>@bulmaio</a>. <a>#css</a> <a>#responsive</a>
+				      Matches:	<span class="tag for-space" *ngFor="let m of item.matches">{{m}}</span>
 				      <br>
-				      <small>11:09 PM - 1 Jan 2016</small>
+				      <small>Created: 11:09 PM - 1 Jan 2016</small>
 				    </div>
 				  </div>
 				  <footer class="card-footer">

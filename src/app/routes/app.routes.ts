@@ -14,7 +14,7 @@ const routes : Routes = [
        canActivate: [AuthGuard],
        children: [
 		      {
-		        path: 'add',
+		        path: 'add-flow',
 		        component: AddFlowComponent
 		      },
           {

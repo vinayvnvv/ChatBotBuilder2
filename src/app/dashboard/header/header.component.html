@@ -30,14 +30,17 @@
 		  <!-- This "nav-menu" is hidden on mobile -->
 		  <!-- Add the modifier "is-active" to display it on mobile -->
 		  <div class="nav-right nav-menu" toggle-class-id="menu">
-		    <a class="nav-item">
+		    <a class="nav-item" [routerLink]="['/dashboard']">
 		      Home
 		    </a>
 		    <a class="nav-item">
 		      Documentation
 		    </a>
 		    <a class="nav-item">
-		      Blog
+		      {{rootScope._auth_user.name}}
+		      <span class="icon">
+		              <i class="fa fa-angle-down"></i>
+		      </span>
 		    </a>
 
 		    <div class="nav-item">
@@ -45,19 +48,19 @@
 		        <p class="control">
 		          <a class="button" >
 		            <span class="icon">
-		              <i class="fa fa-twitter"></i>
+		              <i class="fa fa-power-off"></i>
 		            </span>
-		            <span>Tweet</span>
+		            <span>Logout</span>
 		          </a>
 		        </p>
-		        <p class="control">
+		        <!-- <p class="control">
 		          <a class="button is-primary">
 		            <span class="icon">
 		              <i class="fa fa-download"></i>
 		            </span>
 		            <span>Download</span>
 		          </a>
-		        </p>
+		        </p> -->
 		      </div>
 		    </div>
 		  </div>
