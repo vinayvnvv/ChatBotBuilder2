@@ -29,7 +29,6 @@ export class ListComponent implements OnInit {
 
 
   getModules() {
-  	this.Loader.showRoot('Getting Modules');
   	this.Api.getModules()
                  .subscribe(
                              res => { 

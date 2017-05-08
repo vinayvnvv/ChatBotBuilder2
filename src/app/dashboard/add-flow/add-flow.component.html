@@ -13,21 +13,25 @@
          	<div class="field">
          		<input type="text" name="" formControlName="name"/>
          	</div>
-         	<div class="err">Name Error</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
          </div>
 
 
          <div class="input-container no-style">
          	<div class="label">Flow Mathes</div>
          	<div class="field">
-         		<tag-input formControlName="matches" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Items'" (onAdd)="onItemAdded($event)" [editable]="true" [modelAsStrings]="true" [(ngModel)]='matches'></tag-input>
+
+         		<tag-input class='tooltip' formControlName="matches" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Items'" (onAdd)="onItemAdded($event)" [editable]="true" [modelAsStrings]="true" [(ngModel)]='matches'>  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
          	</div>
-         	<div class="err">Name Error</div>
+            
+         	<div class="err" *ngIf="formErrors.matches">{{formErrors.matches}}</div>
          </div>
 
 
-         <a class="button is-success" [class.is-disabled]="!createForm.valid">Create</a> 
-         <a class="button">Cancel</a>
+         <a class="button is-success is-loading" [class.is-disabled]="!createForm.valid" (click)="createFlow()" [class.is-loading]="isCreating">Create</a> 
+         <a class="button" [routerLink]="['/dashboard']">Cancel</a>
 
 	  </form>		
 

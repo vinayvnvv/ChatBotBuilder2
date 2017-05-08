@@ -24,6 +24,12 @@ export class ApiService {
                     .map(this.extractData);
     }
 
+    createModule(type, data): Observable<any> {
+    data.type = type;
+    return this._http.post(this.String.apis.createModules + this.rootScope._auth_user.id , data)
+                    .map(this.extractData);
+    }
+
    
 
   private extractData(res: Response) {

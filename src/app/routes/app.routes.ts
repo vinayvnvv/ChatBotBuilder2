@@ -5,10 +5,11 @@ import { LoginComponent } from './../login/login.component';
 import { AuthGuard } from './../services/auth.guard';
 import { AddFlowComponent } from './../dashboard/add-flow/add-flow.component';
 import { ListComponent } from './../dashboard/list/list.component';
+import { AddFlowItemComponent } from './../dashboard/add-flow-item/add-flow-item.component';
 
 
 const routes : Routes = [
-     { path: "", component: DashboardComponent, canActivate: [AuthGuard]},
+     { path: "", redirectTo: '/dashboard', pathMatch: 'full'},
      { path:"dashboard", 
        component: DashboardComponent, 
        canActivate: [AuthGuard],
@@ -17,6 +18,10 @@ const routes : Routes = [
 		        path: 'add-flow',
 		        component: AddFlowComponent
 		      },
+          {
+            path: 'flow-item',
+            component: AddFlowItemComponent
+          },
           {
             path:'',
             component: ListComponent

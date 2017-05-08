@@ -23,6 +23,7 @@ import { AuthGuard } from './services/auth.guard';
 import { AddFlowComponent } from './dashboard/add-flow/add-flow.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { ListComponent } from './dashboard/list/list.component';
+import { AddFlowItemComponent } from './dashboard/add-flow-item/add-flow-item.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ListComponent } from './dashboard/list/list.component';
     ToastComponent,
     AddFlowComponent,
     HeaderComponent,
-    ListComponent
+    ListComponent,
+    AddFlowItemComponent
   ],
   imports: [
     BrowserModule,
