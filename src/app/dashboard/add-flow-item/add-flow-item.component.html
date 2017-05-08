@@ -61,7 +61,8 @@
 	    	    	<div class="bar-m"></div>
 	    	    	<div class="bars"></div>
 	    	    </div>
-	    		<div class="box flow-card">
+	    		<div class="box flow-card" [class.is-loading]="i==4">
+	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
 					    <div class="media-left">
 					      <figure class="image is-16x16">

@@ -25,14 +25,25 @@
 .bar-m {
    flex-basis: 7px;
    background: #d9d9d9;
-   width: calc(50% + 14px);
-   margin-left:calc(50% - 3px);
+   width: calc(50% + 3.5px);
+   margin-left: calc(50% - 3.5px);
 }
 
 
 .flow .flow-card-content .flow-card {
 	height: auto;
 	flex-grow: 70;
+}
+
+.flow .flow-card-content .flow-card.is-loading {
+  opacity: 0.3;
+}
+
+.flow .flow-card-content .flow-card .loader-bar {
+    top: -1.25rem;
+    left: -1.25rem;
+    width: calc(100% + 1.25rem + 1.25rem);
+    z-index: 30;
 }
 
 .flow-card figure {
@@ -75,6 +86,7 @@
 	background: #f0f0f0;
 	cursor: pointer;
 	z-index: 20;
+  transition: 0.1s all;
 }
 
 .bar-add-icon i:hover {
