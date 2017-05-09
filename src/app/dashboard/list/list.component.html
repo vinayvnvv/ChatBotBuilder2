@@ -66,7 +66,7 @@
 			    <div class="card">
 				  <header class="card-header">
 				    <p class="card-header-title is-primary">
-				      {{item.name}}
+				      <a class="button is-link" [routerLink]="['flow-item', item._id]">{{item.name}}</a>
 				    </p>
 				    <a class="card-header-icon">
 				      <span class="icon">

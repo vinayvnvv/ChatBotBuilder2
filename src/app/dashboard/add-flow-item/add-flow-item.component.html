@@ -54,7 +54,7 @@
 
 
         <!-- loop cards -->
-	      <div *ngFor="let item of [0,1,2,3,4,5,6]; let i = index;">
+	      <div *ngFor="let item of flowData.modules; let i = index;">
 	    	<div class="flow-card-content">
 	    	    <div class="flow-bar">
 	    	    	<div class="bars"></div>
@@ -72,21 +72,24 @@
 					    <div class="media-content">
 					      <div class="content">
 					        <p>
-					          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+					          <strong><a class="button is-outlined">{{item.name}}</a></strong> <small>@ Dec</small> <small>31m</small>
 					          <br>
-					          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+					          <span class="l-tag is-light" *ngFor="let m of item.msg">{{m}}</span>
 					        </p>
 					      </div>
-					      <nav class="level is-mobile">
+					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+					          <a class="button is-small is-primary is-outlined">
+					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+					            <span>Edit</span>
+					          </a>  &nbsp;
+					          <a class="button is-small is-info is-outlined">
+					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
+					            <span>Copy</span>
+					          </a> &nbsp;
+					          <a class="button is-small is-danger is-outlined">
+					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
+					            <span>Delete</span>
 					          </a>
 					        </div>
 					      </nav>

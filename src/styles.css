@@ -162,3 +162,11 @@
     visibility: visible;
     opacity: 1;
 }
+
+.l-tag {
+  display: block;
+  border-left: 2px solid #d9d9d9;
+  padding: 5px;
+  font-size: 14px;
+  margin-top: 3px;
+}

@@ -24,6 +24,11 @@ export class ApiService {
                     .map(this.extractData);
     }
 
+    getFlowItem(flow_id): Observable<any> {
+    return this._http.get(this.String.apis.getFlowItem + this.rootScope._auth_user.id + "/" + flow_id )
+                    .map(this.extractData);
+    }
+
     createModule(type, data): Observable<any> {
     data.type = type;
     return this._http.post(this.String.apis.createModules + this.rootScope._auth_user.id , data)

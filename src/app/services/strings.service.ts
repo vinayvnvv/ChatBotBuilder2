@@ -22,6 +22,7 @@ export class StringsService {
 		
 		this.apis = {
 			getModules : this.origin + "api/manager/modules/",
+			getFlowItem: this.origin + "api/manager/modules/",
 			updateModules: this.origin + "api/manager/modules/update/",
 			deleteModules: this.origin + "api/manager/modules/delete/",
 			createModules: this.origin + "api/manager/modules/create/",

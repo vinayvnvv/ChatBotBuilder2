@@ -19,7 +19,7 @@ const routes : Routes = [
 		        component: AddFlowComponent
 		      },
           {
-            path: 'flow-item',
+            path: 'flow-item/:id',
             component: AddFlowItemComponent
           },
           {
