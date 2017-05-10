@@ -13,6 +13,7 @@ export class AddFlowItemComponent implements OnInit {
 
   routerParams: any;
   private flowData = {};
+  private isLoadingFlow:boolean = true;
   constructor(
        private activeRouter: ActivatedRoute,
        private Loader: Loader,
@@ -33,22 +34,20 @@ export class AddFlowItemComponent implements OnInit {
 
 
   getFlowItem() {
-  	this.Loader.showRoot("Getting Flow..")
   	this.Api.getFlowItem(this.routerParams.id)
                  .subscribe(
                              res => { 
                                          this.zone.run(() => { // <== added
-                                            this.Loader.hideRoot();
                                             console.log(res);
 	                                          this.flowData = res;
+                                            this.isLoadingFlow = false;
                                          });
                                          
                                        },
                              error => { 
                                         this.zone.run(() => { // <== added
-                                            this.Loader.hideRoot();
                                             this.Toast.show("Error in Auth init, Pls Try Again", 8000, "is-danger");
-
+                                            this.isLoadingFlow = false;
                                          });
                                       }
                            );

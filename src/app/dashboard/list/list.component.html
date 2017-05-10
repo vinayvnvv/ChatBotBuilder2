@@ -47,17 +47,7 @@
 	  </div>
 	  <div class="column">
 
-	  <div class="cs-loader" style="top:50px" *ngIf="!Modules">
-		  <div class="cs-loader-inner">
-		    <label>	●</label>
-		    <label>	●</label>
-		    <label>	●</label>
-		    <label>	●</label>
-		    <label>	●</label>
-		    <label>	●</label>
-		  </div>
-		  <div class="title">Loading Modules</div>
-	</div>
+	  <sub-loader *ngIf="!Modules" loader-title="Loading Modules.."></sub-loader>
 	    
            
 

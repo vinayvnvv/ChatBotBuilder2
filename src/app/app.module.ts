@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoaderComponent } from './directives/loader.directive';
 import { ToastComponent } from './directives/toast.directive';
+import { SubLoaderComponent } from './directives/sub-loader.directive';
 
 //global services
 import { StringsService } from './services/strings.service';
@@ -32,6 +33,7 @@ import { AddFlowItemComponent } from './dashboard/add-flow-item/add-flow-item.co
     routingComponents,
     DashboardComponent,
     LoaderComponent,
+    SubLoaderComponent,
     ToastComponent,
     AddFlowComponent,
     HeaderComponent,

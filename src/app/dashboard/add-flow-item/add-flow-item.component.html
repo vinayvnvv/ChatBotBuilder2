@@ -2,37 +2,79 @@
 	<div class="columns">
 	  <div class="column is-3 r-border">
 	    <div stick-from-top="0">
-         <h1 class="title">Selected Flow</h1>
-		 <h2 class="subtitle">Flow item details</h2>
+         <nav class="panel">
+			  <p class="panel-heading">
+			    {{flowData.name || 'Loading...'}}
+			  </p>
+			  <span class="panel-block" *ngIf="isLoadingFlow">
+			  	<div class="loader-bar"></div>
+			  </span>
+			  <span class="panel-block is-active" *ngIf="!isLoadingFlow">
+			    <span class="panel-icon">
+			      <i class="fa fa-share"></i>
+			    </span>
+			    <span class="tag" *ngFor="let mt of flowData.matches">{{mt}}</span>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Created at: {{flowData.timestamp_created.at}}</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Modified at: {{flowData.timestamp_updated.at}}</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			    <span class="panel-icon">
+			      <i class="fa fa-check-square"></i>
+			    </span>
+			    <small>Triggerd: {{flowData.statastics.triggered || '0'}} times</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Last Triggerd: {{flowData.statastics.triggeredAt || '0'}} ago</small>
+			  </span>
+	</nav>
 		</div> 
 	  </div>
 	  <div class="column">
 
+	  <sub-loader *ngIf="isLoadingFlow" loader-title="Loading Flow.."></sub-loader>
 
-	    <div class="flow">
+
+	    <div class="flow anim sliceInUp" *ngIf="!isLoadingFlow">
 
         <!-- welcome card -->
           <div class="end-card-content">
-              <div class="box flow-card">
+              <div class="box flow-card" [class.is-loading]="i==4">
+	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
 					    <div class="media-content">
 					      <div class="content">
 					        <p>
-					          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+					          <strong><a class="button is-outlined">Welcome Message</a></strong> <small>@ Dec</small> <small>31m</small>
 					          <br>
-					          Lorem ipsum dolor sit amet
+					          <span class="l-tag is-light" *ngFor="let m of flowData.welcome.msg">{{m}}</span>
 					        </p>
 					      </div>
-					      <nav class="level is-mobile">
+					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+					          <a class="button is-small is-primary is-outlined">
+					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+					            <span>Edit</span>
+					          </a>  &nbsp;
+					          <a class="button is-small is-info is-outlined">
+					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
+					            <span>Copy</span>
+					          </a> &nbsp;
+					          <a class="button is-small is-danger is-outlined">
+					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
+					            <span>Delete</span>
 					          </a>
 					        </div>
 					      </nav>
@@ -125,26 +167,30 @@
 
 
           <div class="end-card-content">
-              <div class="box flow-card">
+              <div class="box flow-card" [class.is-loading]="i==4">
+	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
 					    <div class="media-content">
 					      <div class="content">
 					        <p>
-					          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+					          <strong><a class="button is-outlined">End Flow </a></strong> <small>@ Dec</small> <small>31m</small>
 					          <br>
-					          Lorem ipsum dolor sit amet
+					          <span class="l-tag is-light" *ngFor="let m of flowData.final.msg">{{m}}</span>
 					        </p>
 					      </div>
-					      <nav class="level is-mobile">
+					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-					          </a>
-					          <a class="level-item">
-					            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+					          <a class="button is-small is-primary is-outlined">
+					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+					            <span>Edit</span>
+					          </a>  &nbsp;
+					          <a class="button is-small is-info is-outlined">
+					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
+					            <span>Copy</span>
+					          </a> &nbsp;
+					          <a class="button is-small is-danger is-outlined">
+					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
+					            <span>Delete</span>
 					          </a>
 					        </div>
 					      </nav>
