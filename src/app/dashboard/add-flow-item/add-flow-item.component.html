@@ -1,4 +1,4 @@
-<div class="section container anim sliceInUp">
+<div class="section container">
 	<div class="columns">
 	  <div class="column is-3 r-border">
 	    <div stick-from-top="0">
@@ -67,15 +67,7 @@
 					          <a class="button is-small is-primary is-outlined">
 					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
 					            <span>Edit</span>
-					          </a>  &nbsp;
-					          <a class="button is-small is-info is-outlined">
-					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
-					            <span>Copy</span>
-					          </a> &nbsp;
-					          <a class="button is-small is-danger is-outlined">
-					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
-					            <span>Delete</span>
-					          </a>
+					          </a> 
 					        </div>
 					      </nav>
 					    </div>
@@ -121,7 +113,7 @@
 					      </div>
 					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
-					          <a class="button is-small is-primary is-outlined">
+					          <a class="button is-small is-primary is-outlined" (click)="isActiveModal = true">
 					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
 					            <span>Edit</span>
 					          </a>  &nbsp;
@@ -183,15 +175,7 @@
 					          <a class="button is-small is-primary is-outlined">
 					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
 					            <span>Edit</span>
-					          </a>  &nbsp;
-					          <a class="button is-small is-info is-outlined">
-					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
-					            <span>Copy</span>
-					          </a> &nbsp;
-					          <a class="button is-small is-danger is-outlined">
-					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
-					            <span>Delete</span>
-					          </a>
+					          </a>  
 					        </div>
 					      </nav>
 					    </div>
@@ -213,3 +197,111 @@
 	  </div>
 	 </div>
 </div>	  
+
+
+
+
+<!-- modals -->
+<div class="modal is-active" *ngIf="isActiveModal">
+  <div class="modal-background"></div>
+  <div class="modal-card anim sliceInUp">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" (click)="isActiveModal = false"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form [formGroup]="createFlowItemForm" >
+         <div class="input-container">
+         	<div class="label">Name Of the Module</div>
+         	<div class="field">
+         		<input type="text" name="" formControlName="name"/>
+         	</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
+         </div>
+
+          <div class="input-container no-style">
+         	<div class="label">Module Message</div>
+         	<div class="field">
+         		<tag-input class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='msg'>  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
+         </div>
+
+         <div class="input-container no-style">
+         	<div class="label">Before Message</div>
+         	<div class="field">
+         		<tag-input class='tooltip' formControlName="beforeMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='bmsg'>  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
+         </div>
+
+
+         <div class="input-container no-style">
+         	<div class="label">After Message</div>
+         	<div class="field">
+         		<tag-input class='tooltip' formControlName="afterMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='amsg'>  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
+         </div>
+
+
+          <br/>
+          <div class="columns">
+			  <div class="column is-3">
+			    Validation Type:
+			  </div>
+			  <div class="column">
+			    <span class="select">
+			      <select>
+			        <option>Select dropdown</option>
+			        <option>With options</option>
+			      </select>
+			    </span>
+			  </div>
+		  </div>
+
+
+
+		  <br/>
+          <div class="columns">
+			  <div class="column is-3">
+			    Validation Type:
+			  </div>
+			  <div class="column">
+			    <span class="select">
+			      <select>
+			        <option>Select dropdown</option>
+			        <option>With options</option>
+			      </select>
+			    </span>
+			  </div>
+		  </div>	  
+
+
+
+
+
+     </form>
+
+
+
+
+
+         
+
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-success">Save changes</a>
+      <a class="button" (click)="isActiveModal = false">Cancel</a>
+    </footer>
+  </div>
+</div>

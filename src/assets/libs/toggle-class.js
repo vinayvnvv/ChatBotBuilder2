@@ -92,10 +92,16 @@
 
 
 
-    //init after DOM load
-	document.addEventListener('DOMContentLoaded', initToggleClass , false);
-	document.addEventListener('DOMContentLoaded', initAddClass , false);
-	document.addEventListener('DOMContentLoaded', initRemoveClass , false);
+    function initClassAction() {
+		//init after DOM load
+		document.addEventListener('DOMContentLoaded', initToggleClass , false);
+		document.addEventListener('DOMContentLoaded', initAddClass , false);
+		document.addEventListener('DOMContentLoaded', initRemoveClass , false);
+	}
+
+	initClassAction();
+
+	window["initClassAction"] = initClassAction;
 
 }) ();
 

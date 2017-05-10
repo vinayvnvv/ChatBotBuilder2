@@ -3,6 +3,9 @@ export class StringsService {
    public origin: string;
    apis: any;
    authInstance: any;
+   validationTypeArray: any;
+   suggestionTypeArray: any;
+   menuTypes: any;
    constructor() {
    	    this.port = 3000;
    		this.origin = location.protocol + "//" + location.hostname + ":" + this.port + "/";
@@ -30,6 +33,23 @@ export class StringsService {
 			getInitBot : this.origin + "api/manager/modules/init/",
 			initBotDB : this.origin + "api/manager/modules/init_db/"
 	};
+
+	    this.validationTypeArray = [
+	                             {title:"None", value:"none"},
+		                         {title:"Number", value:"number"},
+		                         {title:"Email", value:"email"}
+		                       ];
+	
+		this.suggestionTypeArray = [
+	                             {title:"None", value:"none"},
+		                         {title:"List", value:"list"},
+		                         {title:"Option", value:"option"}
+		                       ];
+
+    	this.menuTypes = [ 
+                         {title:"List", value:"list"},
+                         {title:"Option", value:"option"}
+                     ];
 
 	}
 

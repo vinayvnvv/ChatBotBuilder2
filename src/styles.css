@@ -5,6 +5,17 @@
 	width: 100%;
 }
 
+
+@media screen and (max-width: 768px) {
+    .hide-mobile {
+       display: none!important;
+    }
+}
+
+.modal.is-active {
+  z-index: 40;
+}
+
 .loading {
    display: block;
    width: 100%;

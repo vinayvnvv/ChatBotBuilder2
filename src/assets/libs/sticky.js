@@ -23,6 +23,7 @@
                    stickies[i].style.top = stickies[i].getAttribute("stick-from-top");
                    stickies[i].style.position = "fixed";
                    stickies[i].classList.add('sticked');
+                   stickies[i].classList.add('hide-mobile');
                    
                 } else if((document.body.scrollTop -  stickies[i].getAttribute("sticked-top")) < 0)  {
                    stickies[i].setAttribute("sticked", false)
@@ -31,6 +32,7 @@
                    stickies[i].style.width = "auto";
                    stickies[i].style.display = 'block';
                    stickies[i].classList.remove('sticked');
+                   stickies[i].classList.remove('hide-mobile');
                 }
 
 			}
