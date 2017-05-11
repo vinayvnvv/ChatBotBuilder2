@@ -27,13 +27,13 @@
 			    </span>
 			    <small>Modified at: {{flowData.timestamp_updated.at}}</small>
 			  </span>
-			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			  <span class="panel-block" *ngIf="!isLoadingFlow && flowData.statastics">
 			    <span class="panel-icon">
 			      <i class="fa fa-check-square"></i>
 			    </span>
 			    <small>Triggerd: {{flowData.statastics.triggered || '0'}} times</small>
 			  </span>
-			  <span class="panel-block" *ngIf="!isLoadingFlow">
+			  <span class="panel-block" *ngIf="!isLoadingFlow && flowData.statastics">
 			    <span class="panel-icon">
 			      <i class="fa fa-clock-o"></i>
 			    </span>
@@ -79,7 +79,7 @@
           <div class="flow-card-divider">
 	    	  <div class="left">
 	    		<div class="bars" style="flex-basis: 61px"></div>
-	    		<div class="bar-add-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+	    		<div class="bar-add-icon"><i (click)="openEditFlowItem(0, 'insert')" class="fa fa-plus" aria-hidden="true"></i></div>
 	    		<div class="bars"></div>
 	    	  </div>
 	    	  <div class="right"></div>
@@ -95,8 +95,8 @@
 	    	    	<div class="bar-m"></div>
 	    	    	<div class="bars"></div>
 	    	    </div>
-	    		<div class="box flow-card" [class.is-loading]="i==4">
-	    		    <div class="loader-bar" *ngIf="i==4"></div>
+	    		<div class="box flow-card" [class.is-loading]="i==editFlowItemIndex && isLoadingeditFlowItem">
+	    		    <div class="loader-bar" *ngIf="i==editFlowItemIndex && isLoadingeditFlowItem"></div>
 					  <article class="media">
 					    <div class="media-left">
 					      <figure class="image is-16x16">
@@ -113,7 +113,7 @@
 					      </div>
 					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
-					          <a class="button is-small is-primary is-outlined" (click)="isActiveModal = true">
+					          <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">
 					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
 					            <span>Edit</span>
 					          </a>  &nbsp;
@@ -138,7 +138,7 @@
 	    	<div class="flow-card-divider">
 	    	  <div class="left">
 	    		<div class="bars"></div>
-	    		<div class="bar-add-icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+	    		<div class="bar-add-icon"><i (click)="openEditFlowItem(i+1, 'insert')" class="fa fa-plus" aria-hidden="true"></i></div>
 	    		<div class="bars"></div>
 	    	  </div>
 	    	  <div class="right"></div>
@@ -159,7 +159,7 @@
 
 
           <div class="end-card-content">
-              <div class="box flow-card" [class.is-loading]="i==4">
+              <div class="box flow-card" [class.is-loading]="false">
 	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
 					    <div class="media-content">
@@ -213,42 +213,42 @@
 
       <form [formGroup]="createFlowItemForm" >
          <div class="input-container">
-         	<div class="label">Name Of the Module</div>
+         	<div class="label">Name Of the Module *</div>
          	<div class="field">
-         		<input type="text" name="" formControlName="name"/>
+         		<input type="text" formControlName="name"/>
          	</div>
          	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
          </div>
 
           <div class="input-container no-style">
-         	<div class="label">Module Message</div>
+         	<div class="label">Module Message *	</div>
          	<div class="field">
-         		<tag-input class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='msg'>  
+         		<tag-input (onFocus)="msg_sub_err = true" class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
-         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
+         	{{focused_msg}}
+         	<div class="err" *ngIf="formErrors.msg">{{formErrors.msg}}</div>
+         	<div class="err" *ngIf="!formErrors.msg && msg_sub_err && createFlowItemForm.value.msg.length==0">{{validationMessages.msg.required}}</div>
          </div>
 
          <div class="input-container no-style">
          	<div class="label">Before Message</div>
          	<div class="field">
-         		<tag-input class='tooltip' formControlName="beforeMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='bmsg'>  
+         		<tag-input class='tooltip' formControlName="beforeMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
-         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
          </div>
 
 
          <div class="input-container no-style">
          	<div class="label">After Message</div>
          	<div class="field">
-         		<tag-input class='tooltip' formControlName="afterMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]='amsg'>  
+         		<tag-input class='tooltip' formControlName="afterMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
-         	<div class="err" *ngIf="formErrors.name">{{formErrors.msg}}</div>
          </div>
 
 
@@ -258,49 +258,59 @@
 			    Validation Type:
 			  </div>
 			  <div class="column">
+               <div class="input-container">
 			    <span class="select">
-			      <select>
-			        <option>Select dropdown</option>
-			        <option>With options</option>
+			      <select formControlName="validate">
+			        <option *ngFor="let v of validationTypeArray" value="{{v.value}}">{{v.title}}</option>
 			      </select>
 			    </span>
-			  </div>
+
+			    <div *ngIf="createFlowItemForm.value.validate != 'none'">
+                      <tag-input (onFocus)="v_msg_sub_err = true" class='tooltip' formControlName="validateErrMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Validate Msgs *'" [editable]="true" [modelAsStrings]="true">  
+		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+		              </tag-input>
+		              <div class="err" *ngIf="formErrors.validateErrMsg"><br/>{{formErrors.validateErrMsg}}</div>
+		              <div class="err" *ngIf="v_msg_sub_err && createFlowItemForm.value.validateErrMsg.length==0"><br/>{{validationMessages.validateErrMsg.required}}</div>
+			    </div>
+
+
+
+              </div>
+			</div>
 		  </div>
 
 
-
-		  <br/>
           <div class="columns">
 			  <div class="column is-3">
-			    Validation Type:
+			    Suggestion Type:
 			  </div>
 			  <div class="column">
+			   <div class="input-container">
 			    <span class="select">
-			      <select>
-			        <option>Select dropdown</option>
-			        <option>With options</option>
+			      <select formControlName="shortcut">
+			        <option *ngFor="let s of suggestionTypeArray" value="{{s.value}}">{{s.title}}</option>
 			      </select>
 			    </span>
-			  </div>
+
+
+			    <div *ngIf="createFlowItemForm.value.shortcut != 'none'">
+                      <tag-input (onFocus)="s_msg_sub_err = true"  class='tooltip' formControlName="shortcutData" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Suggestion Items *'" [editable]="true" [modelAsStrings]="true">  
+		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+		              </tag-input>
+		              <div class="err" *ngIf="formErrors.shortcutData"><br/>{{formErrors.shortcutData}}</div>
+		              <div class="err" *ngIf="s_msg_sub_err && createFlowItemForm.value.shortcutData.length==0"><br/>{{validationMessages.shortcutData.required}}</div>
+			    </div>
+
+
+               </div>
+			 </div>
 		  </div>	  
-
-
-
-
-
      </form>
-
-
-
-
-
-         
-
-
-
     </section>
     <footer class="modal-card-foot">
-      <a class="button is-success">Save changes</a>
+      <span class="button is-success tooltip" [class.is-disabled]="(createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0)" (click)="updateFlowItem()">{{updateFlowType | uppercase}}
+      <span class="tooltiptext" *ngIf="((createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0))">Fill are required fields(*)</span> 
+      </span>
       <a class="button" (click)="isActiveModal = false">Cancel</a>
     </footer>
   </div>

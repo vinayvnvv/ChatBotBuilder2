@@ -35,6 +35,11 @@ export class ApiService {
                     .map(this.extractData);
     }
 
+    updateModule(id, data) {
+     return this._http.post(this.String.apis.updateModules + this.rootScope._auth_user.id + "/" + id, data)
+                    .map(this.extractData);
+  }
+
    
 
   private extractData(res: Response) {

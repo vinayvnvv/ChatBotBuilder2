@@ -51,3 +51,19 @@ export class Toast {
     }
 
 }
+
+
+
+
+
+export class Utility {
+  addModuleAt(index, data, item, type) {
+     var mode;
+     if(data == undefined) data = [];
+     if(type == 'insert') mode = 0;
+     else mode = 1;
+       console.log(data, index, item);
+       data.splice(index, mode, item);
+       return data;  
+  }
+}
