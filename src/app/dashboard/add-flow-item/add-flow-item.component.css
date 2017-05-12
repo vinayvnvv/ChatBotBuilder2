@@ -36,7 +36,8 @@
 }
 
 .flow .flow-card-content .flow-card.is-loading {
-  opacity: 0.3;
+  opacity: 0.4;
+  background: #e0e0e0;
 }
 
 .flow .flow-card-content .flow-card .loader-bar {
@@ -106,5 +107,12 @@
 .flow-card-actions {
   border-top: 1px solid #e9e9e9;
   padding-top: 9px;
+}
+
+
+
+.add-flow-indicater-container {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
 }
 

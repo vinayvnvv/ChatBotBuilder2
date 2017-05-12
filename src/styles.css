@@ -15,7 +15,9 @@
 .modal.is-active {
   z-index: 40;
 }
-
+.s-table {
+ display: table!important;
+}
 .loading {
    display: block;
    width: 100%;

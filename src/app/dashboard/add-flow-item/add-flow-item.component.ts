@@ -18,6 +18,8 @@ export class AddFlowItemComponent implements OnInit {
   private flowData: any = [];
   private isLoadingFlow:boolean = true;
   private createFlowItemForm: FormGroup;
+  private createWelcomeFlowItem: FormGroup;
+  private createFinalFlowItem: FormGroup;
   private msg = [];
   private s_e_msg = [];
   private v_e_msg = [];
@@ -29,6 +31,10 @@ export class AddFlowItemComponent implements OnInit {
   private updateFlowType: any;
   private isLoadingeditFlowItem: boolean = false;
   private updateMsg: string;
+  private isMelcomeModal: boolean = false;
+  private isWelcomeModalUpdating:boolean = false;
+  private isFinalModal: boolean = false;
+  private isFinalModalUpdating:boolean = false;
   constructor(
        private activeRouter: ActivatedRoute,
        private Loader: Loader,
@@ -97,10 +103,11 @@ export class AddFlowItemComponent implements OnInit {
      this.createFlowItemForm.valueChanges
             .subscribe(data => this.onValueChanged(data));
 
-     //this.onValueChanged(); // (re)set validation messages
+     this.onValueChanged(); // (re)set validation messages
 
 
    }
+
 
 
    onValueChanged(data?: any) {
@@ -146,7 +153,6 @@ export class AddFlowItemComponent implements OnInit {
         }
 
     };
-
     openEditFlowItem(index, type) {
       this.buildForm();
       this.msg_sub_err = false;
@@ -192,6 +198,100 @@ export class AddFlowItemComponent implements OnInit {
                                       this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
                                  }  
                                );      
+
+   }
+
+
+
+
+
+
+
+
+   buildWelcomeForm() {
+       this.createWelcomeFlowItem = new FormGroup({
+         msg: new FormControl((this.flowData.welcome ? this.flowData.welcome.msg : []), [Validators.required])
+        });
+     }
+
+
+   openWelcomeEditModal() {
+       console.log("opening welcome")
+       this.buildWelcomeForm();
+       this.isMelcomeModal = true;
+
+   }
+
+   editWelcomeFlowItem() {
+
+     if(this.createWelcomeFlowItem.invalid) {
+
+     } else {
+       this.flowData.welcome = { msg: this.createWelcomeFlowItem.value.msg };
+       this.isWelcomeModalUpdating = true;
+       let data = { welcome: this.flowData.welcome };
+
+       this.Api.updateModule(this.flowData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.isWelcomeModalUpdating = false;
+                                     this.Toast.show("Welcome Message was set!", 4000, "is-success");
+                                     this.isMelcomeModal = false;
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.isWelcomeModalUpdating = false;
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-danger");
+                                 }  
+                               );
+
+     }
+
+   }
+
+
+
+
+    buildFinalForm() {
+       this.createFinalFlowItem = new FormGroup({
+         msg: new FormControl((this.flowData.final ? this.flowData.final.msg : []), [Validators.required])
+        });
+     }
+
+
+   openFinalEditModal() {
+       console.log("opening final")
+       this.buildFinalForm();
+       this.isFinalModal = true;
+
+   }
+
+   editFinalFlowItem() {
+
+     if(this.createFinalFlowItem.invalid) {
+
+     } else {
+       this.flowData.final = { msg: this.createFinalFlowItem.value.msg };
+       this.isFinalModalUpdating = true;
+       let data = { final: this.flowData.final };
+
+       this.Api.updateModule(this.flowData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.isFinalModalUpdating = false;
+                                     this.Toast.show("Final Action was set!", 4000, "is-success");
+                                     this.isFinalModal = false;
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.isFinalModalUpdating = false;
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-danger");
+                                 }  
+                               );
+
+     }
 
    }
 
