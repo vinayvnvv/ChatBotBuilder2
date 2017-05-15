@@ -1,0 +1,70 @@
+
+	<div class="columns">
+
+	  <div class="column is-3 ">
+         <aside class="menu">
+		  <p class="menu-label">
+		    Services
+		  </p>
+		  <ul class="menu-list">
+		    <li><a [class.is-active]="tab == 'email'" (click)="changeTab('email')">Email</a></li>
+		    <li><a [class.is-active]="tab == 'api'" (click)="changeTab('api')">Api</a></li>
+		  </ul>
+		  
+		</aside>
+	  </div>
+
+	  <div class="column">
+
+	    <div class="columns is-multiline anim sliceInUp" *ngIf="tab == 'email'">  <!-- email tab start -->
+		  <div class="column is-6" *ngFor="let item of ServicesData.services.email">
+           
+           <div class="card">
+			  <div class="card-content">
+			    <div class="media">
+			      <div class="media-left">
+			        <figure class="image is-24x24">
+			          <span class="icon">
+						  <i class="fa fa-envelope" aria-hidden="true"></i>
+					 </span>
+			        </figure>
+			      </div>
+			      <div class="media-content">
+			        <p class="title is-6">{{item.name}}</p>
+			      </div>
+			    </div>
+                <hr class="hr" />
+			    <div class="content">
+			      <div class="ellipsis">To : <span *ngFor="let to of item.to"><span class="tag is-light">{{to}}</span> &nbsp;</span></div>
+			      <hr class="hr" />
+			      <div class="ellipsis">Subject : <small>{{item.subject}}</small></div>
+			       <hr class="hr" />
+			      <div class="ellipsis">Body : <small>{{item.body}}</small></div>
+			      <hr class="hr"/>
+			      <div>
+			      	<a class="button is-success is-small is-outlined">Edit</a>
+					<a class="button is-danger is-small is-outlined">Delete</a>
+				 </div>
+			    </div>
+			  </div>
+			</div>
+		 </div>
+		</div>  <!-- email tab end -->
+
+
+		<div class="columns is-multiline anim sliceInUp align-center flex-center" *ngIf="tab == 'api'"> 
+		   
+            <article class="message is-warning">
+			  <div class="message-header">
+			    <p>Sorry, Api services are not supported in this version!</p>
+			    <button class="delete"></button>
+			  </div>
+			  <div class="message-body">
+			    Api Service's are available from very next release..
+			  </div>
+			</article>
+
+		</div>
+
+	  </div>
+	</div>    

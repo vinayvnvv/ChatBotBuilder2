@@ -10,13 +10,38 @@
     .hide-mobile {
        display: none!important;
     }
+
+    .r-border {
+      border-right: 0!important;
+      border-bottom: 1px solid #d9d9d9;
+    }
 }
 
 .modal.is-active {
-  z-index: 40;
+  z-index: 400;
 }
 .s-table {
  display: table!important;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.align-center {
+  text-align: center;
+}
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+hr.hr {
+    padding: 0;
+    margin: 9px 3px;
 }
 .loading {
    display: block;
@@ -182,4 +207,10 @@
   padding: 5px;
   font-size: 14px;
   margin-top: 3px;
+}
+
+.sticked {
+  z-index: 100;
+  transition: .3s all;
+  opacity: 0.9;
 }

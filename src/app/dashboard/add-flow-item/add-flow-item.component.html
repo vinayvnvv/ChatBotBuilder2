@@ -9,7 +9,7 @@
 			  <span class="panel-block" *ngIf="isLoadingFlow">
 			  	<div class="loader-bar"></div>
 			  </span>
-			  <span class="panel-block is-active  s-table" *ngIf="!isLoadingFlow">
+			  <span class="panel-block is-active flex-wrap" *ngIf="!isLoadingFlow">
 			    <span class="panel-icon">
 			      <i class="fa fa-share"></i>
 			    </span>
@@ -44,10 +44,22 @@
 	  </div>
 	  <div class="column">
 
-	  <sub-loader *ngIf="isLoadingFlow" loader-title="Loading Flow.."></sub-loader>
+	    <!-- tabs -->
+	    <div class="tabs">
+		  <ul>
+		    <li [class.is-active]="selectedTab == 'flow'" (click)="selectedTab = 'flow'"><a>Flow</a></li>
+		    <li [class.is-active]="selectedTab == 'service'" (click)="selectedTab = 'service'"><a>Services</a></li>
+		  </ul>
+		</div>
 
+		<sub-loader *ngIf="isLoadingFlow" loader-title="Loading Flow.."></sub-loader>
 
-	    <div class="flow anim sliceInUp" *ngIf="!isLoadingFlow">
+		<div *ngIf="!isLoadingFlow && selectedTab != 'flow'" class="anim sliceInUp"> <!-- start of service tab -->
+        	<services-view [ServicesData]="flowData"></services-view>
+        </div>  <!-- end of service tab -->
+
+      <div *ngIf="!isLoadingFlow && selectedTab == 'flow'"> <!-- start of flow tab -->
+	    <div class="flow anim sliceInUp" >
 
         <!-- welcome card -->
           <div class="flow-card-divider" *ngIf="!flowData.welcome" style="margin-bottom: -5px;">
@@ -218,8 +230,11 @@
           </div>
 
           
-        <!-- final card end -->
+	        <!-- final card end -->
+	    </div> <!-- end of flow tab -->
 
+
+        
 
 
 	    </div>

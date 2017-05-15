@@ -1,10 +1,12 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Loader, Toast, Utility} from './../../services/common.services';
 import { ApiService } from './../../services/api.services';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StringsService } from './../../services/strings.service';
 import { Models } from './../../services/models';
+import { ServicesViewComponent } from './childs/services-view.component';
+ 
 
 @Component({
   selector: 'app-add-flow-item',
@@ -12,6 +14,9 @@ import { Models } from './../../services/models';
   styleUrls: ['./add-flow-item.component.css'],
   providers: [ Loader, Toast, ApiService, Models, Utility]
 })
+
+
+
 export class AddFlowItemComponent implements OnInit {
 
   routerParams: any;
@@ -35,6 +40,7 @@ export class AddFlowItemComponent implements OnInit {
   private isWelcomeModalUpdating:boolean = false;
   private isFinalModal: boolean = false;
   private isFinalModalUpdating:boolean = false;
+  private selectedTab:string = "flow";
   constructor(
        private activeRouter: ActivatedRoute,
        private Loader: Loader,
@@ -45,6 +51,8 @@ export class AddFlowItemComponent implements OnInit {
        private Models: Models,
        private Utility: Utility
   	) { }
+
+  @ViewChild('ServicesViewComponent') public ServicesViewComponent: ServicesViewComponent
 
   ngOnInit() {
   	this.activeRouter.params.subscribe(params => {

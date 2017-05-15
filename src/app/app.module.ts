@@ -21,10 +21,13 @@ import { AuthService } from './services/auth.service';
 import { RouteModule } from './routes/app.routes';
 import { routingComponents } from './routes/app.routes';
 import { AuthGuard } from './services/auth.guard';
+
+
 import { AddFlowComponent } from './dashboard/add-flow/add-flow.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { ListComponent } from './dashboard/list/list.component';
 import { AddFlowItemComponent } from './dashboard/add-flow-item/add-flow-item.component';
+import { ServicesViewComponent } from './dashboard/add-flow-item/childs/services-view.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { AddFlowItemComponent } from './dashboard/add-flow-item/add-flow-item.co
     AddFlowComponent,
     HeaderComponent,
     ListComponent,
-    AddFlowItemComponent
+    AddFlowItemComponent,
+    ServicesViewComponent
   ],
   imports: [
     BrowserModule,
