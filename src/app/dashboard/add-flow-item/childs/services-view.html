@@ -16,8 +16,10 @@
 
 	  <div class="column">
 
-	    <div class="align-right">
-	    	<a class="button is-primary is-outlined" (click)="openEmailServiceModal('edit', -1)">
+	    
+        <div *ngIf="tab == 'email'"> <!-- email tab start -->
+        <div class="align-right">
+	    	<a class="button is-primary is-outlined" (click)="openEmailServiceModal('insert', -1)">
 		    	<span class="icon">
 					   <i class="fa fa-plus"></i>
 			    </span>
@@ -25,9 +27,8 @@
 	       </a>
 	    </div>
 	    <br/>
-
-	    <div class="columns is-multiline anim sliceInUp" *ngIf="tab == 'email'">  <!-- email tab start -->
-		  <div class="column is-6" *ngFor="let item of ServicesData.services.email">
+	    <div class="columns is-multiline anim sliceInUp">  
+		  <div class="column is-6" *ngFor="let item of ServicesData.services.email; let $i = index;">
            
            <div class="card">
 			  <div class="card-content">
@@ -52,13 +53,14 @@
 			      <div class="ellipsis">Body : <small>{{item.body}}</small></div>
 			      <hr class="hr"/>
 			      <div>
-			      	<a class="button is-success is-small is-outlined">Edit</a>
-					<a class="button is-danger is-small is-outlined">Delete</a>
+			      	<a class="button is-success is-small is-outlined" (click)="openEmailServiceModal('edit', $i)">Edit</a>
+					<a class="button is-danger is-small is-outlined" (click)="openDeleteEmailServiceModal($i)">Delete</a>
 				 </div>
 			    </div>
 			  </div>
 			</div>
 		 </div>
+		</div> 
 		</div>  <!-- email tab end -->
 
 
@@ -94,7 +96,7 @@
   <div class="modal-background"></div>
   <div class="modal-card anim zoomIn">
     <header class="modal-card-head">
-      <p class="modal-card-title">Welcome Message</p>
+      <p class="modal-card-title">{{emailServiceEditStatus.mode | uppercase}} Email Service</p>
       <button class="delete" (click)="isEditEmailServiceModal = false" *ngIf="!isWelcomeModalUpdating"></button>
     </header>
     <section class="modal-card-body">
@@ -138,8 +140,6 @@
          	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.body">{{emailServiceFormErrors.body}}</div>
        </div>
 
-     {{emailServiceFormErr || emailServiceFormErrors.body}}
-
 
     </form>
 
@@ -147,11 +147,35 @@
 
     </section>
     <footer class="modal-card-foot">
-      <a class="button is-success tooltip"  [class.is-disabled]="(emailServiceForm.invalid)" [class.is-loading]="isWelcomeModalUpdating" (click)="updateEmailService()">Save changes
+      <a class="button is-success tooltip"  [class.is-disabled]="(emailServiceForm.invalid)" (click)="updateEmailService()" [class.is-loading]="emailServiceEditStatus.updating">{{emailServiceEditStatus.mode | uppercase}}
        <span class="tooltiptext" *ngIf="(emailServiceForm.invalid)">Fill are required fields(*)</span> 
       </a>
-      <a class="button" (click)="isEditEmailServiceModal = false" *ngIf="!isWelcomeModalUpdating">Cancel</a>
+      <a class="button" (click)="isEditEmailServiceModal = false" [class.is-disabled]="emailServiceEditStatus.updating" >Cancel</a>
     </footer>
   </div>
 </div>
 
+<!-- email service  delete modal -->
+
+
+<div class="modal is-active" *ngIf="emailServiceDeleteStatus.isModal">
+  <div class="modal-background" (click)="emailServiceDeleteStatus.isModal = false"></div>
+  <div class="modal-content">
+     <div class="card anim zoomIn">
+		  <div class="card-content">
+		    <div class="media">
+		      <div class="media-content">
+		        <p class="title is-4">Confirm to Delete? </p>
+		        <p class="subtitle is-6">No longer available for recover!</p>
+		      </div>
+		    </div>
+
+		    <div class="content">
+		      <a class="button is-primary" [class.is-loading]="emailServiceDeleteStatus.updating" (click)="deleteEmailService()">Delete</a>
+		      <a class="button is-danger is-outlined" (click)="emailServiceDeleteStatus.isModal = false" [class.is-disabled]="emailServiceDeleteStatus.updating">Cancel</a>
+		    </div>
+		  </div>
+		</div>
+  </div>
+  <button class="modal-close" (click)="emailServiceDeleteStatus.isModal = false"></button>
+</div>

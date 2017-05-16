@@ -15,11 +15,21 @@ export class ServicesViewComponent implements OnInit {
 	private isEditEmailServiceModal:boolean = false;
 	private emailServiceForm: FormGroup;
 	private emailServiceFormErr: boolean = false;
-	private emailServiceEditMode: string;
+	private emailServiceEditStatus = {
+		   mode:"",
+		   index: -1,
+		   updating: false
+	};
+  private emailServiceDeleteStatus = {
+       isModal: false,
+       index: -1,
+       updating: false
+  }
 
 	constructor(
             private Utility: Utility,
-            private Api: ApiService
+            private Api: ApiService,
+            private Toast: Toast
 		) {
 		console.log("called servives view componrnt");
 	}
@@ -28,6 +38,7 @@ export class ServicesViewComponent implements OnInit {
 
 	ngOnInit() {
 		 this.buildEmailServiceForm();
+		 console.log(this.ServicesData)
 	}
 
 	changeTab(tab) {
@@ -84,7 +95,7 @@ export class ServicesViewComponent implements OnInit {
             'required': 'Specify atleast one recipient.'
         },
         'subject': {
-            'required': 'Specify atleast one Validation error message.'
+            'required': 'Specify Subject of the email.'
         },
         'body': {
             'required': 'Specify Body of the email.'
@@ -93,17 +104,77 @@ export class ServicesViewComponent implements OnInit {
     };
 
 	openEmailServiceModal(mode, index) {
+		console.log("index", index)
+		this.emailServiceForm.reset();
+		if(mode == 'edit')
+			this.emailServiceForm.setValue(this.ServicesData.services.email[index]);
         this.isEditEmailServiceModal = true;
-        this.emailServiceEditMode = mode;
+        this.emailServiceEditStatus.mode = mode;
+        this.emailServiceEditStatus.index = index;
 
 	}
 
 	updateEmailService() {
 	   this.emailServiceFormErr = true;
+	   let emailData;
 	   if(this.emailServiceForm.valid) {
-            if(this.emailServiceEditMode == 'insert') {
-            	this.Utility.addModuleAt(0, this.ServicesData, this.emailServiceForm.value, "insert");
+	   	this.emailServiceEditStatus.updating = true;
+            if(this.emailServiceEditStatus.mode == 'insert') {
+            	emailData = this.Utility.addModuleAt(0, this.ServicesData.services.email, this.emailServiceForm.value, "insert");
+            } else {
+            	emailData = this.Utility.addModuleAt(this.emailServiceEditStatus.index, this.ServicesData.services.email, this.emailServiceForm.value, "edit");
             }
+
+          this.ServicesData.services.email = emailData; 
+          let data = {
+               	  "services.email": emailData
+               }  
+          this.Api.updateModule(this.ServicesData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.emailServiceEditStatus.updating = false;
+                                     this.Toast.show("Email Service is updated!", 4000, "is-success");
+                                     this.isEditEmailServiceModal = false;       
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.emailServiceEditStatus.updating = false;
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                                 }  
+                               );           
 	   }
 	}
+
+  openDeleteEmailServiceModal(index) {
+    console.log("delete call")
+    this.emailServiceDeleteStatus.index = index;
+    this.emailServiceDeleteStatus.isModal = true;
+  }
+
+  deleteEmailService() {
+       this.emailServiceDeleteStatus.updating = true;
+       let emailData;
+       let ser_temp = JSON.parse(JSON.stringify(this.ServicesData.services.email));
+       emailData = this.Utility.removeModuleAt(ser_temp, this.emailServiceDeleteStatus.index);
+       let data = {
+                   "services.email": emailData
+               };
+          this.Api.updateModule(this.ServicesData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.emailServiceDeleteStatus.updating = false;
+                                     this.Toast.show("Email Service is Deleted!", 4000, "is-success");
+                                     this.ServicesData.services.email = emailData;    
+                                     this.emailServiceDeleteStatus.isModal = false;  
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.emailServiceDeleteStatus.updating = false;
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                                 }  
+                               );           
+     
+  }
 }

@@ -66,4 +66,9 @@ export class Utility {
        data.splice(index, mode, item);
        return data;  
   }
+
+  removeModuleAt(array, at) { 
+       array.splice(at, 1);
+       return array;
+    }
 }
