@@ -16,6 +16,16 @@
 
 	  <div class="column">
 
+	    <div class="align-right">
+	    	<a class="button is-primary is-outlined" (click)="openEmailServiceModal('edit', -1)">
+		    	<span class="icon">
+					   <i class="fa fa-plus"></i>
+			    </span>
+		        <span> New Email Service</span>
+	       </a>
+	    </div>
+	    <br/>
+
 	    <div class="columns is-multiline anim sliceInUp" *ngIf="tab == 'email'">  <!-- email tab start -->
 		  <div class="column is-6" *ngFor="let item of ServicesData.services.email">
            
@@ -68,3 +78,80 @@
 
 	  </div>
 	</div>    
+
+
+
+
+
+
+
+
+
+
+	<!-- email servive edit modal -->
+
+<div class="modal is-active" *ngIf="isEditEmailServiceModal">
+  <div class="modal-background"></div>
+  <div class="modal-card anim zoomIn">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Welcome Message</p>
+      <button class="delete" (click)="isEditEmailServiceModal = false" *ngIf="!isWelcomeModalUpdating"></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="emailServiceForm">
+
+      <div class="input-container">
+         	<div class="label">Name of the email Service *	</div>
+         	<div class="field">
+         		<input formControlName="name" type='text' />
+         	</div>
+         	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.name">{{emailServiceFormErrors.name}}</div>
+       </div>
+
+
+
+       <div class="input-container no-style">
+         	<div class="label">Module Message *	</div>
+         	<div class="field">
+         		<tag-input (onFocus)="msg_welcome_err = true" class='tooltip' formControlName="to" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+         	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.to">{{emailServiceFormErrors.to}} </div>
+       </div>
+
+
+       <div class="input-container">
+         	<div class="label">Email Subject *	</div>
+         	<div class="field">
+         		<input formControlName="subject" type='text' />
+         	</div>
+         	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.subject">{{emailServiceFormErrors.subject}}</div>
+       </div>
+
+
+       <div class="input-container">
+         	<div class="label">Email Body *	</div>
+         	<div class="field">
+         		<input formControlName="body" type='text' />
+         	</div>
+         	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.body">{{emailServiceFormErrors.body}}</div>
+       </div>
+
+     {{emailServiceFormErr || emailServiceFormErrors.body}}
+
+
+    </form>
+
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-success tooltip"  [class.is-disabled]="(emailServiceForm.invalid)" [class.is-loading]="isWelcomeModalUpdating" (click)="updateEmailService()">Save changes
+       <span class="tooltiptext" *ngIf="(emailServiceForm.invalid)">Fill are required fields(*)</span> 
+      </a>
+      <a class="button" (click)="isEditEmailServiceModal = false" *ngIf="!isWelcomeModalUpdating">Cancel</a>
+    </footer>
+  </div>
+</div>
+

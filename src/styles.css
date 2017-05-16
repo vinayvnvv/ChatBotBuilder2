@@ -30,6 +30,9 @@
 .align-center {
   text-align: center;
 }
+.align-right {
+  text-align: right;
+}
 .flex-center {
   align-items: center;
   justify-content: center;
