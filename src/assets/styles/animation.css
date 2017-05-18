@@ -1,3 +1,38 @@
+/* animations */
+.anim-1 {
+  animation-duration: 0.1s;
+}
+.anim-2 {
+  animation-duration: 0.2s;
+}
+.anim-3 {
+  animation-duration: 0.3s;
+}
+.anim-4 {
+  animation-duration: 0.4s;
+}
+.anim-5 {
+  animation-duration: 0.5s;
+}
+.anim-6 {
+  animation-duration: 0.6s;
+}
+.anim-7 {
+  animation-duration: 0.7s;
+}
+.anim-8 {
+  animation-duration: 0.8s;
+}
+.anim-9 {
+  animation-duration: 0.9s;
+}
+.anim-10 {
+  animation-duration: 1s;
+}
+
+
+
+
 .spinner {
   width: 40px;
   height: 40px;

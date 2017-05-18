@@ -28,6 +28,8 @@ import { HeaderComponent } from './dashboard/header/header.component';
 import { ListComponent } from './dashboard/list/list.component';
 import { AddFlowItemComponent } from './dashboard/add-flow-item/add-flow-item.component';
 import { ServicesViewComponent } from './dashboard/add-flow-item/childs/services-view.component';
+import { AddMenuComponent } from './dashboard/add-menu/add-menu.component';
+import { ViewMenuComponent } from './dashboard/view-menu/view-menu.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ServicesViewComponent } from './dashboard/add-flow-item/childs/services
     HeaderComponent,
     ListComponent,
     AddFlowItemComponent,
-    ServicesViewComponent
+    ServicesViewComponent,
+    AddMenuComponent,
+    ViewMenuComponent
   ],
   imports: [
     BrowserModule,

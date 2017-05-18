@@ -45,7 +45,7 @@
 	  <div class="column">
 
 	    <!-- tabs -->
-	    <div class="tabs">
+	    <div class="tabs" stick-from-top="0">
 		  <ul>
 		    <li [class.is-active]="selectedTab == 'flow'" (click)="selectedTab = 'flow'"><a>Flow</a></li>
 		    <li [class.is-active]="selectedTab == 'service'" (click)="selectedTab = 'service'"><a>Services</a></li>
@@ -62,7 +62,7 @@
 	    <div class="flow anim sliceInUp" >
 
         <!-- welcome card -->
-          <div class="flow-card-divider" *ngIf="!flowData.welcome" style="margin-bottom: -5px;">
+          <div class="flow-card-divider" *ngIf="!flowData.welcome.msg" style="margin-bottom: -5px;">
 	    	  <div class="left">
 	    		<a class="button is-primary is-medium" (click)="openWelcomeEditModal()">
 			    <span class="icon">
@@ -75,7 +75,7 @@
 	    	</div>
 
 
-          <div class="end-card-content" *ngIf="flowData.welcome">
+          <div class="end-card-content" *ngIf="flowData.welcome.msg">
               <div class="box flow-card" [class.is-loading]="i==4">
 	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
@@ -108,7 +108,7 @@
 	    		<div class="bars"></div>
 	    	  </div>
 	    	  <div class="right">
-	    	  		<article class="message is-primary" *ngIf="!flowData.modules">
+	    	  		<article class="message is-primary" *ngIf="!flowData.modules || flowData.modules.length == 0">
 					  <div class="message-body">
 					     No Flows Items are added! click on <span class="tag is-info add-flow-indicater" (mouseleave)="indi = ''" (mouseenter)="indi = 'wobble'">Add</span> icon to add Items.
 					  </div>
@@ -152,7 +152,7 @@
 					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
 					            <span>Copy</span>
 					          </a> &nbsp;
-					          <a class="button is-small is-danger is-outlined">
+					          <a class="button is-small is-danger is-outlined" (click)="openFlowItemDeleteModal(i)">
 					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
 					            <span>Delete</span>
 					          </a>
@@ -189,7 +189,7 @@
 	    	</div>
 
 
-	    	<div class="flow-card-divider" *ngIf="!flowData.final">
+	    	<div class="flow-card-divider" *ngIf="!flowData.final.msg">
 	    	  <div class="left">
 	    		<a class="button is-primary is-medium" (click)="openFinalEditModal()">
 			    <span class="icon">
@@ -203,7 +203,7 @@
 
           
 
-          <div class="end-card-content" *ngIf="flowData.final">
+          <div class="end-card-content" *ngIf="flowData.final.msg">
               <div class="box flow-card" [class.is-loading]="false">
 	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
@@ -430,6 +430,34 @@
       <a class="button" (click)="isFinalModal = false" *ngIf="!isFinalModalUpdating">Cancel</a>
     </footer>
   </div>
+</div>
+
+
+
+
+<!-- flow item confirm delete modal -->
+
+
+<div class="modal is-active" *ngIf="flowItemDeleteStatus.isModal">
+  <div class="modal-background" (click)="flowItemDeleteStatus.isModal = false"></div>
+  <div class="modal-content">
+     <div class="card anim zoomIn">
+		  <div class="card-content">
+		    <div class="media">
+		      <div class="media-content">
+		        <p class="title is-4">Confirm to Delete? </p>
+		        <p class="subtitle is-6">No longer available for recover!</p>
+		      </div>
+		    </div>
+
+		    <div class="content">
+		      <a class="button is-primary" [class.is-loading]="flowItemDeleteStatus.updating" (click)="deleteFlowItem()">Delete</a>
+		      <a class="button is-danger is-outlined" (click)="flowItemDeleteStatus.isModal = false" [class.is-disabled]="flowItemDeleteStatus.updating">Cancel</a>
+		    </div>
+		  </div>
+		</div>
+  </div>
+  <button class="modal-close" (click)="flowItemDeleteStatus.isModal = false"></button>
 </div>
 
 

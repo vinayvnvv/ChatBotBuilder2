@@ -1,0 +1,83 @@
+<div class="section container anim sliceInUp">
+	<div class="columns">
+	  <div class="column is-3 r-border">
+         <h1 class="title">New Menu</h1>
+		 <h2 class="subtitle">Add Menu's to your bot</h2>
+	  </div>
+	  <div class="column">
+
+      <form [formGroup]="addMenuForm" >
+
+         <div class="input-container">
+         	<div class="label">Menu Name</div>
+         	<div class="field">
+         		<input type="text" name="" formControlName="name" [(ngModel)]="formVars.name" autofocus="true" />
+         	</div>
+         	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
+         </div>
+
+
+         <div class="input-container no-style">
+         	<div class="label">Menu Matches</div>
+         	<div class="field">
+
+         		<tag-input class='tooltip' formControlName="matches" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Items'" (onAdd)="onItemAdded($event)" [editable]="true" [modelAsStrings]="true" [(ngModel)]="formVars.matches">  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+            
+         	<div class="err" *ngIf="formErrors.matches">{{formErrors.matches}}</div>
+         </div>
+
+
+
+         <div class="input-container">
+         	<div class="label">Menu Type</div>
+         	<div class="field">
+         		<span class="select">
+			      <select formControlName="type">
+			        <option *ngFor="let t of Strings.menuTypes" value="{{t.value}}">{{t.title}}</option>
+			      </select>
+			    </span>
+         	</div>
+         	<div class="err" *ngIf="formErrors.type">{{formErrors.type}}</div>
+         </div>
+
+
+         <div class="input-container no-style">
+         	<div class="label">Menu Items</div>
+         	<div class="field">
+
+         		<tag-input class='tooltip' formControlName="menus" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Items'" (onAdd)="onItemAdded($event)" [editable]="true" [modelAsStrings]="true" [(ngModel)]="formVars.menus">  
+                 <span class="tooltiptext">Type and Press Enter to add items</span> 
+               </tag-input>
+         	</div>
+            
+         	<div class="err" *ngIf="formErrors.menus">{{formErrors.menus}}</div>
+         </div>
+
+
+
+
+
+         <a class="button is-success is-loading" [class.is-disabled]="!addMenuForm.valid" (click)="updateMenu()" [class.is-loading]="formStatus.updating">Create</a> 
+         <a class="button" [routerLink]="['/dashboard']" [class.is-disabled]="formStatus.updating">Cancel</a>
+
+	  </form>		
+
+			
+	  	
+	  </div>
+	 </div>
+</div>	  
+
+
+
+
+
+
+
+
+
+
+

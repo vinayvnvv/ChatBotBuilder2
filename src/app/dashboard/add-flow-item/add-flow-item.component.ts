@@ -41,6 +41,11 @@ export class AddFlowItemComponent implements OnInit {
   private isFinalModal: boolean = false;
   private isFinalModalUpdating:boolean = false;
   private selectedTab:string = "flow";
+  private flowItemDeleteStatus = {
+       isModal: false,
+       index: -1,
+       updating: false
+  }
   constructor(
        private activeRouter: ActivatedRoute,
        private Loader: Loader,
@@ -179,6 +184,7 @@ export class AddFlowItemComponent implements OnInit {
 
 
    updateFlowItem() {
+      if(this.isInValidFlowItemForm()) return;
       if(this.updateFlowType == 'edit') {  //update
           this.flowData.modules = this.Utility.addModuleAt(this.editFlowItemIndex, this.flowData.modules, this.createFlowItemForm.value, "edit");
           this.updateMsg = "Flow Updated Succesfully!";
@@ -210,6 +216,15 @@ export class AddFlowItemComponent implements OnInit {
    }
 
 
+   isInValidFlowItemForm() {
+     return  (
+               (this.createFlowItemForm.invalid) || 
+               (this.createFlowItemForm.value.validate != 'none' && this.createFlowItemForm.value.validateErrMsg.length==0) || 
+               (this.createFlowItemForm.value.shortcut != 'none' && this.createFlowItemForm.value.shortcutData.length==0)
+             );
+   }
+
+
 
 
 
@@ -218,7 +233,7 @@ export class AddFlowItemComponent implements OnInit {
 
    buildWelcomeForm() {
        this.createWelcomeFlowItem = new FormGroup({
-         msg: new FormControl((this.flowData.welcome ? this.flowData.welcome.msg : []), [Validators.required])
+         msg: new FormControl((this.flowData.welcome.msg ? this.flowData.welcome.msg : []), [Validators.required])
         });
      }
 
@@ -263,7 +278,7 @@ export class AddFlowItemComponent implements OnInit {
 
     buildFinalForm() {
        this.createFinalFlowItem = new FormGroup({
-         msg: new FormControl((this.flowData.final ? this.flowData.final.msg : []), [Validators.required])
+         msg: new FormControl((this.flowData.final.msg ? this.flowData.final.msg : []), [Validators.required])
         });
      }
 
@@ -301,6 +316,38 @@ export class AddFlowItemComponent implements OnInit {
 
      }
 
+   }
+
+
+   openFlowItemDeleteModal(index) {
+       this.flowItemDeleteStatus.index = index;
+       this.flowItemDeleteStatus.isModal = true;
+   }
+
+
+   deleteFlowItem() {
+        this.flowItemDeleteStatus.updating = true;
+        let ser_temp = JSON.parse(JSON.stringify(this.flowData.modules));
+        let tempData = this.Utility.removeModuleAt(ser_temp, this.flowItemDeleteStatus.index);
+        let data = {
+                   "modules": tempData
+               };
+
+            this.Api.updateModule(this.flowData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.flowItemDeleteStatus.updating = false;
+                                     this.Toast.show("Flow Item is Deleted!", 4000, "is-success");
+                                     this.flowData.modules = tempData;    
+                                     this.flowItemDeleteStatus.isModal = false;  
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.flowItemDeleteStatus.updating = false;
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                                 }  
+                               );    
    }
 
 

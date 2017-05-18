@@ -116,3 +116,11 @@
   animation-iteration-count: infinite;
 }
 
+
+.tabs.sticked {
+    background-color: #fff;
+ }
+.tabs.sticked.hide-mobile {
+  display: block!important;
+}
+

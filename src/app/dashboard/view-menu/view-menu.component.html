@@ -1,0 +1,93 @@
+<div class="section container">
+	<div class="columns">
+	  <div class="column is-3 r-border">
+	    <div stick-from-top="0">
+         <nav class="panel">
+			  <p class="panel-heading">
+			    {{menuData.name || 'Loading...'}}
+			  </p>
+			  <span class="panel-block" *ngIf="isLoadingMenu">
+			  	<div class="loader-bar"></div>
+			  </span>
+			  <span class="panel-block is-active flex-wrap" *ngIf="!isLoadingMenu">
+			    <span class="panel-icon">
+			      <i class="fa fa-share"></i>
+			    </span>
+			    <span class="tag" *ngFor="let mt of menuData.matches">{{mt}}</span>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingMenu">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Created at: {{menuData.timestamp_created.at}}</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingMenu">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Modified at: {{menuData.timestamp_updated.at}}</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingMenu && menuData.statastics">
+			    <span class="panel-icon">
+			      <i class="fa fa-check-square"></i>
+			    </span>
+			    <small>Triggerd: {{menuData.statastics.triggered || '0'}} times</small>
+			  </span>
+			  <span class="panel-block" *ngIf="!isLoadingMenu && menuData.statastics">
+			    <span class="panel-icon">
+			      <i class="fa fa-clock-o"></i>
+			    </span>
+			    <small>Last Triggerd: {{menuData.statastics.triggeredAt || '0'}} ago</small>
+			  </span>
+	</nav>
+		</div> 
+	  </div>
+	  <div class="column">
+
+	  
+
+	  	<div class="tabs">
+		  <ul>
+		    <li class="is-active"><a>Menu</a></li>
+		  </ul>
+		</div>
+
+		<div>
+		     <sub-loader *ngIf="isLoadingMenu" loader-title="Loading Flow.."></sub-loader>
+
+		     <aside class="menu anim-4 sliceInUp" *ngIf="!isLoadingMenu">
+				  <p class="menu-label">
+				    Menu Items
+				  </p>
+				  <ul class="menu-list">
+				    <li *ngFor="let m of menuData.menus">
+				    	<a>{{m}} 
+					    	<span class="icon is-small">
+						      <i class="fa fa-pencil" aria-hidden="true"></i>
+						    </span>
+					    </a>
+  				    </li>
+
+  				    <li>
+  				      <a><input type="text" value="sample"/></a>
+  				    </li>
+				  </ul>
+		     </aside>
+
+
+		</div>
+
+	    
+
+      
+			
+	  	
+	  </div>
+	 </div>
+</div>	  
+
+
+
+
+
+

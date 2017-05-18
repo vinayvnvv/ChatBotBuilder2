@@ -156,7 +156,7 @@ export class ServicesViewComponent implements OnInit {
        this.emailServiceDeleteStatus.updating = true;
        let emailData;
        let ser_temp = JSON.parse(JSON.stringify(this.ServicesData.services.email));
-       emailData = this.Utility.removeModuleAt(ser_temp, this.emailServiceDeleteStatus.index);
+       emailData = this.Utility.removeModuleAt(ser_temp, this.emailServiceDeleteStatus.index);  
        let data = {
                    "services.email": emailData
                };

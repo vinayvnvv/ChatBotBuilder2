@@ -19,7 +19,7 @@
 	    
         <div *ngIf="tab == 'email'"> <!-- email tab start -->
         <div class="align-right">
-	    	<a class="button is-primary is-outlined" (click)="openEmailServiceModal('insert', -1)">
+	    	<a class="button is-primary is-outlined anim-9 {{email_service_indi}}" (click)="openEmailServiceModal('insert', -1)">
 		    	<span class="icon">
 					   <i class="fa fa-plus"></i>
 			    </span>
@@ -27,6 +27,15 @@
 	       </a>
 	    </div>
 	    <br/>
+
+	    <article class="message is-primary" *ngIf="!ServicesData.services.email || ServicesData.services.email == 0">
+					  <div class="message-body">
+					     No Email Services found!,  click on <span class="tag is-info add-email-service-indicater"  (mouseleave)="email_service_indi = ''" (mouseenter)="email_service_indi = 'wobble'">New Email Service</span> to add services.
+					  </div>
+	   </article>
+
+
+
 	    <div class="columns is-multiline anim sliceInUp">  
 		  <div class="column is-6" *ngFor="let item of ServicesData.services.email; let $i = index;">
            
@@ -113,9 +122,9 @@
 
 
        <div class="input-container no-style">
-         	<div class="label">Module Message *	</div>
+         	<div class="label">Recipients *	</div>
          	<div class="field">
-         		<tag-input (onFocus)="msg_welcome_err = true" class='tooltip' formControlName="to" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
+         		<tag-input (onFocus)="msg_welcome_err = true" class='tooltip' formControlName="to" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Recipients'" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>

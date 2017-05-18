@@ -6,6 +6,8 @@ import { AuthGuard } from './../services/auth.guard';
 import { AddFlowComponent } from './../dashboard/add-flow/add-flow.component';
 import { ListComponent } from './../dashboard/list/list.component';
 import { AddFlowItemComponent } from './../dashboard/add-flow-item/add-flow-item.component';
+import { AddMenuComponent } from './../dashboard/add-menu/add-menu.component';
+import { ViewMenuComponent } from './../dashboard/view-menu/view-menu.component';
 
 
 const routes : Routes = [
@@ -25,6 +27,14 @@ const routes : Routes = [
           {
             path:'',
             component: ListComponent
+          },
+          {
+            path: 'add-menu',
+            component: AddMenuComponent
+          },
+          {
+            path: 'menu/:id',
+            component: ViewMenuComponent
           }
    		 ]
      },
@@ -41,4 +51,4 @@ const routes : Routes = [
 	]
 })
 export class RouteModule {}
-export const routingComponents = [ DashboardComponent, LoginComponent, AddFlowComponent, ListComponent ];
+export const routingComponents = [ DashboardComponent, LoginComponent, AddFlowComponent, ListComponent, AddMenuComponent, ViewMenuComponent ];

@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ApiService } from './../../services/api.services';
 import { Loader, Toast } from './../../services/common.services';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -18,13 +19,29 @@ export class ListComponent implements OnInit {
           private Api: ApiService,
           private zone: NgZone,
           private Loader: Loader,
-          private Toast: Toast	
+          private Toast: Toast,
+          private route: ActivatedRoute
   	) { }
 
   ngOnInit() {
    
      this.getModules();
+     this.setActiveTab();
        
+  }
+
+
+  setActiveTab() {
+    this.route
+      .queryParams
+      .subscribe(params => {
+         
+           if(params.activeTab == 'menu')
+             this.filterModules("menu");
+           else 
+             this.filterModules("flow");
+        
+      });
   }
 
 
@@ -36,7 +53,7 @@ export class ListComponent implements OnInit {
                                             this.Loader.hideRoot();
                                             console.log(res);
 	                                        this.Modules = res;
-	                                        this.filterModules("flow");
+	                                        this.setActiveTab();
                                          });
                                          
                                        },
