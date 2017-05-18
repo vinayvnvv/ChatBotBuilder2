@@ -15,6 +15,11 @@ export class ViewMenuComponent implements OnInit {
   private menuData: any = [];
   private isLoadingMenu: boolean = true;
   private routerParams: any;
+  private editable = [];
+  private editMenu = [];
+  private editMenuStatus = {
+      updating: false
+  }
 
   constructor(
          private Api: ApiService,
@@ -38,7 +43,7 @@ export class ViewMenuComponent implements OnInit {
                  .subscribe(
                              res => { 
                                             console.log(res);
-	                                        this.menuData = res;
+	                                          this.menuData = res;
                                             this.isLoadingMenu = false;
                                          
                                        },
@@ -49,4 +54,37 @@ export class ViewMenuComponent implements OnInit {
                            );
   }
 
+  showEditableForm(index) {
+    this.editMenu = JSON.parse(JSON.stringify(this.menuData.menus));
+    this.editable[index] = true;
+  }
+
+  updateMenuItem(index) {
+    if(this.editMenu[index].length != 0) {
+      this.editMenuStatus.updating = true;
+        var data = {
+          menus: this.editMenu
+        }
+
+        this.Api.updateModule(this.menuData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.Toast.show("Item updated", 4000, "is-success");
+                                     this.editMenuStatus.updating = false;
+                                    
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                                      this.editMenuStatus.updating = false;
+                                 }   
+                               ); 
+
+
+
+    }
+  }
+
 }
+ 

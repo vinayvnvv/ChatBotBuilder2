@@ -60,16 +60,26 @@
 				    Menu Items
 				  </p>
 				  <ul class="menu-list">
-				    <li *ngFor="let m of menuData.menus">
-				    	<a>{{m}} 
-					    	<span class="icon is-small">
+				    <li *ngFor="let m of menuData.menus; let $i = index;">
+				    	<a *ngIf="!editable[$i]" class="anim-3 slideInDown">{{m}} 
+					    	<span class="icon is-small" (click)="showEditableForm($i)">
 						      <i class="fa fa-pencil" aria-hidden="true"></i>
 						    </span>
 					    </a>
-  				    </li>
+					    <a *ngIf="editable[$i]" class="anim-3 slideInUp">
+					    	<input type="text" [(ngModel)]="editMenu[$i]" value="{{menuData.menus[$i]}}"/>
+					    	
+						    <span class="icon is-small" (click)="editable[$i] = false"  >
+						      <i class="fa fa-times" aria-hidden="true"></i>
+						    </span>
 
-  				    <li>
-  				      <a><input type="text" value="sample"/></a>
+						    <span class="icon is-small" (click)="updateMenuItem($i)" [class.is-disabled]="editMenu[$i].length == 0">
+						      <i class="fa fa-check" aria-hidden="true"></i>
+						    </span>
+					    </a>
+					    <div class="err" *ngIf="editable[$i] && editMenu[$i].length == 0">
+					      <span class="tag is-danger anim-2 slideInDown">Cannot be blank!</span>
+					    </div>
   				    </li>
 				  </ul>
 		     </aside>
