@@ -144,7 +144,7 @@
        <div class="input-container">
          	<div class="label">Email Body *	</div>
          	<div class="field">
-         		<input formControlName="body" type='text' />
+         		<textarea formControlName="body" rows="5" class="mail-body-textarea"></textarea>
          	</div>
          	<div class="err" *ngIf="emailServiceFormErr || emailServiceFormErrors.body">{{emailServiceFormErrors.body}}</div>
        </div>

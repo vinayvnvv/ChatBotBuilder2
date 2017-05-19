@@ -54,22 +54,32 @@
 
 		<div>
 		     <sub-loader *ngIf="isLoadingMenu" loader-title="Loading Flow.."></sub-loader>
-
-		     <aside class="menu anim-4 sliceInUp" *ngIf="!isLoadingMenu">
+          <div *ngIf="!isLoadingMenu">
+		     <aside class="menu anim-4 sliceInUp" >
 				  <p class="menu-label">
 				    Menu Items
 				  </p>
 				  <ul class="menu-list">
 				    <li *ngFor="let m of menuData.menus; let $i = index;">
-				    	<a *ngIf="!editable[$i]" class="anim-3 slideInDown">{{m}} 
-					    	<span class="icon is-small" (click)="showEditableForm($i)">
+				      <div class="loader-bar" *ngIf="editable[$i] && editMenuStatus.updating"></div>
+				    	<a *ngIf="!editable[$i] && !deletable[$i]" class="anim-3 slideInDown" >{{m}} 
+					    	<span class="icon is-small" (click)="showDeleteForm($i)">
+						      <i class="fa fa-trash" aria-hidden="true"></i>
+						    </span>
+						    <span class="icon is-small" (click)="showEditableForm($i)">
 						      <i class="fa fa-pencil" aria-hidden="true"></i>
 						    </span>
+
 					    </a>
-					    <a *ngIf="editable[$i]" class="anim-3 slideInUp">
+					    <a *ngIf="deletable[$i]" class="anim-3 slideInUp" [class.is-disabled]="editMenuStatus.updating">
+                          {{m}}
+                          <a class="button is-danger is-outlined is-small ad-action-del anim-4 slideInLeft" (click)="deleteItem($i)" [class.is-loading]="editMenuStatus.updating">Confirm Delete</a>
+
+					    </a>
+					    <a *ngIf="editable[$i]" class="anim-3 slideInUp" [class.is-disabled]="editMenuStatus.updating">
 					    	<input type="text" [(ngModel)]="editMenu[$i]" value="{{menuData.menus[$i]}}"/>
 					    	
-						    <span class="icon is-small" (click)="editable[$i] = false"  >
+						    <span class="icon is-small" (click)="cancelEditableForm()"  >
 						      <i class="fa fa-times" aria-hidden="true"></i>
 						    </span>
 
@@ -83,7 +93,15 @@
   				    </li>
 				  </ul>
 		     </aside>
+             <br/>
+		     <a class="button is-info is-outlined is-small" (click)="addMenuItem()">
+		     	<span class="icon is-small">
+			      <i class="fa fa-plus"></i>
+			    </span>
+			    <span>Add items</span>
+			 </a>
 
+         </div>
 
 		</div>
 

@@ -186,10 +186,10 @@ export class AddFlowItemComponent implements OnInit {
    updateFlowItem() {
       if(this.isInValidFlowItemForm()) return;
       if(this.updateFlowType == 'edit') {  //update
-          this.flowData.modules = this.Utility.addModuleAt(this.editFlowItemIndex, this.flowData.modules, this.createFlowItemForm.value, "edit");
+          this.flowData.modules = this.Utility.addModuleAt(this.editFlowItemIndex, this.flowData.modules, this.Models.moduleItems(this.createFlowItemForm.value), "edit");
           this.updateMsg = "Flow Updated Succesfully!";
       } else {   //insert
-          this.flowData.modules = this.Utility.addModuleAt(this.editFlowItemIndex, this.flowData.modules, this.createFlowItemForm.value, "insert");
+          this.flowData.modules = this.Utility.addModuleAt(this.editFlowItemIndex, this.flowData.modules, this.Models.moduleItems(this.createFlowItemForm.value), "insert");
           this.updateMsg = "Flow inserted Succesfully!";
       }
  

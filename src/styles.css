@@ -217,3 +217,10 @@ hr.hr {
   transition: .3s all;
   opacity: 0.9;
 }
+
+.mail-body-textarea {
+  border: 1px solid #d9d9d9;
+  width: 100%;
+  padding: 7px;
+  line-height: 1.3;
+}

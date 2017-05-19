@@ -46,3 +46,11 @@
 .err {
 	padding: 0 11px;
 }
+
+
+.ad-action-del {
+	float: right;
+    position: relative;
+    top: -4px;
+    line-height: 1.1;
+}

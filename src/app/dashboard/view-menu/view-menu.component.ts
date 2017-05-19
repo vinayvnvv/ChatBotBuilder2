@@ -8,7 +8,7 @@ import { Loader, Toast, Utility} from './../../services/common.services';
   selector: 'app-view-menu',
   templateUrl: './view-menu.component.html',
   styleUrls: ['./view-menu.component.css'],
-  providers: [ ApiService, Toast ]
+  providers: [ ApiService, Toast, Utility ]
 })
 export class ViewMenuComponent implements OnInit {
 
@@ -17,6 +17,7 @@ export class ViewMenuComponent implements OnInit {
   private routerParams: any;
   private editable = [];
   private editMenu = [];
+  private deletable = [];
   private editMenuStatus = {
       updating: false
   }
@@ -24,7 +25,8 @@ export class ViewMenuComponent implements OnInit {
   constructor(
          private Api: ApiService,
          private activeRouter: ActivatedRoute,
-         private Toast: Toast
+         private Toast: Toast,
+         private Utility: Utility
   	) { }
 
   ngOnInit() {
@@ -54,9 +56,30 @@ export class ViewMenuComponent implements OnInit {
                            );
   }
 
-  showEditableForm(index) {
+  showEditableForm(index, force) {
+    if(!force) {
+    this.menuData.menus = this.menuData.menus.filter(
+                                function checkAdult(item) {
+                                  return item != "";
+                            });
+  }
     this.editMenu = JSON.parse(JSON.stringify(this.menuData.menus));
+    this.deletable = [];
+    this.editable = [];
     this.editable[index] = true;
+  }
+
+
+  cancelEditableForm() {
+     this.menuData.menus = this.menuData.menus.filter(
+                                function checkAdult(item) {
+                                  return item != "";
+                            });
+     this.editMenu = this.editMenu.filter(
+                                function checkAdult(item) {
+                                  return item != "";
+                            });
+     this.editable = [];
   }
 
   updateMenuItem(index) {
@@ -70,7 +93,9 @@ export class ViewMenuComponent implements OnInit {
                      .subscribe(
                           res => {
                                      console.log(res);
-                                     this.Toast.show("Item updated", 4000, "is-success");
+                                     this.menuData.menus[index] = this.editMenu[index];
+                                     this.editable[index]  = false;
+                                     this.Toast.show("Item Updated", 4000, "is-success");
                                      this.editMenuStatus.updating = false;
                                     
                                  },
@@ -84,6 +109,48 @@ export class ViewMenuComponent implements OnInit {
 
 
     }
+  }
+
+  addMenuItem() {
+    if(this.editMenu[this.editMenu.length-1] == '') return;
+    this.menuData.menus.push("");
+    this.showEditableForm(this.menuData.menus.length-1, true);
+
+  }
+
+  showDeleteForm(index) {
+      this.editable = [];
+      this.deletable = [];
+      this.deletable[index] = true;
+  }
+
+
+  deleteItem(index) {
+       this.editMenuStatus.updating = true; 
+       let temp_d_ = JSON.parse(JSON.stringify(this.menuData.menus));
+       var data = {
+          menus: this.Utility.removeModuleAt(temp_d_, index)
+        
+        }
+
+      this.Api.updateModule(this.menuData._id, data) 
+                     .subscribe(
+                          res => {
+                                     console.log(res);
+                                     this.menuData.menus = data.menus;
+                                     this.deletable[index]  = false;
+                                     this.Toast.show("Item Deleted!", 4000, "is-success");
+                                     this.editMenuStatus.updating = false;
+                                    
+                                 },
+                          err => {
+                                      console.log(err)
+                                      this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                                      this.editMenuStatus.updating = false;
+                                 }   
+                               );   
+
+
   }
 
 }

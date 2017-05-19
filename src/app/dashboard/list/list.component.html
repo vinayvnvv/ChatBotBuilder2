@@ -5,7 +5,7 @@
 
 
 	<div class="columns">
-	  <div class="column is-3">
+	  <div class="column is-3 r-border">
 	    
 	    <div stick-from-top="0">
 	     	<aside class="menu">
@@ -53,32 +53,48 @@
 
            <div class="columns is-multiline">
 			  <div class="column is-6 anim-4 sliceInUp" *ngFor="let item of filteredModulesData" >
-			    <div class="card">
-				  <header class="card-header">
-				    <p class="card-header-title is-primary">
-				      <a class="button is-link" [routerLink]="item.type == 'flow' ? ['flow-item', item._id] : ['menu', item._id]">{{item.name}}</a>
-				    </p>
-				    <a class="card-header-icon">
-				      <span class="icon">
-				        <i class="fa fa-angle-down"></i>
-				      </span>
-				    </a>
-				  </header>
-				  <div class="card-content">
-				    <div class="content">
-				      Matches:	<span class="tag for-space" *ngFor="let m of item.matches">{{m}}</span>
-				      <br>
-				      <small>Created: 11:09 PM - 1 Jan 2016</small>
-				    </div>
-				  </div>
-				  <footer class="card-footer">
-				    <a class="card-footer-item">Save</a>
-				    <a class="card-footer-item">Edit</a>
-				    <a class="card-footer-item">Delete</a>
-				  </footer>
-				</div>
-			  </div>
+		   <div class="list-card" >
+		   		<div class="header">
+                 	<h5 class="title is-5" [routerLink]="item.type == 'flow' ? ['flow-item', item._id] : ['menu', item._id]">{{item.name}}</h5>
+		   		</div>
+		   		<div class="content">
+		   			<div class="matches">
+		   				<span class="item" *ngFor="let m of item.matches">{{m}}</span>
+		   			</div>
+		   			<div class="details">
+		   				<div class="row">Created at: 3 months ago</div>
+		   				<div class="row">Triggerd 3 times</div>
+		   				<div class="row">Last triggered 3 days ago</div>
+		   			</div>
+		   		</div>
+		   		<div class="footer">
+		   			   <a class="button is-small is-info is-outlined">
+					    <span class="icon is-small ">
+					      <i class="fa fa-pencil" aria-hidden="true"></i>
+					    </span>
+					    <span>Edit</span>
+					  </a>
+					  <a class="button is-small is-primary is-outlined">
+					    <span class="icon is-small ">
+					      <i class="fa fa-clone" aria-hidden="true"></i>
+					    </span>
+					    <span>Copy</span>
+					  </a>
+
+					  <a class="button is-small is-danger is-outlined	">
+					    <span class="icon is-small">
+					     <i class="fa fa-trash-o" aria-hidden="true"></i>
+					    </span>
+					    <span>Delete</span>
+					  </a>
+		   		</div>
 		   </div>
+
+		 </div>
+		   </div>
+
+
+         
 
 
 
