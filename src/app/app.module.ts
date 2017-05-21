@@ -31,6 +31,9 @@ import { ServicesViewComponent } from './dashboard/add-flow-item/childs/services
 import { AddMenuComponent } from './dashboard/add-menu/add-menu.component';
 import { ViewMenuComponent } from './dashboard/view-menu/view-menu.component';
 
+//directives
+import { AutoTag } from './directives/auto-tag';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,8 @@ import { ViewMenuComponent } from './dashboard/view-menu/view-menu.component';
     AddFlowItemComponent,
     ServicesViewComponent,
     AddMenuComponent,
-    ViewMenuComponent
+    ViewMenuComponent,
+    AutoTag
   ],
   imports: [
     BrowserModule,

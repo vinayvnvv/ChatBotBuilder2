@@ -1,21 +1,27 @@
 .list-card {
-	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 1px 5px 1px rgba(197, 196, 196, 0.14);
 	background-color: #fff;
 	border-radius: 0px;
-	border:1px solid #f3f3f3;
+	border:1px solid #e0e0e0;
 }
 
 .list-card .header {
 	padding: 11px 21px;
+	padding-bottom: 0px;	
 	background-color: #fdfdfd;
 
 }
 .list-card .header .title {
 	display: inline-block;
 	cursor: pointer;
+	font-weight: 500!important;
+	padding-bottom: 7px;
+	border-bottom: 2px solid transparent;
+	outline: none;
 }
+
 .list-card .header .title:hover {
-     border-bottom: 1px solid #d9d9d9;
+     border-bottom: 2px solid #a9a9a9;
 }
 .list-card .content {
 	padding: 11px 21px;
@@ -23,10 +29,11 @@
 }
 
 .list-card .content .matches .item {
-  background-color: #f0f0f0;
+  background-color: #f4f4f4;
   padding: 5px 9px;
   font-size: 13px;
   margin: 0 2px;
+  color: #333;
 }
 
 .list-card .content .matches .item:first-child {

@@ -19,10 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
         "../node_modules/bulma/css/bulma.css",
         "assets/styles/animation.css",
-        "assets/libs/animate.css"
+        "assets/libs/animate.css",
+        "./theme.scss",
+        "styles.css"
       ],
       "scripts": [
         "assets/libs/toggle-class.js",

@@ -1,6 +1,5 @@
 .flow {
 	display: flex;
-	background-color: #fff;
 	padding: 11px 9% 11px 3px;
 	flex-direction: column;
 }
@@ -33,6 +32,7 @@
 .flow .flow-card-content .flow-card {
 	height: auto;
 	flex-grow: 70;
+  max-width: 400px;
 }
 
 .flow .flow-card-content .flow-card.is-loading {
@@ -67,10 +67,12 @@
   width: 30%;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 .flow-card-divider .right {
   width: 70%;
   padding: 11px;
+  max-width: 400px;
 }
 .bar-add-icon {
   flex-basis: 30px;

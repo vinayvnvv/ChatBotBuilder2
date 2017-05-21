@@ -263,7 +263,7 @@
          <div class="input-container">
          	<div class="label">Name Of the Module *</div>
          	<div class="field">
-         		<input type="text" formControlName="name"/>
+         		<input type="text" formControlName="name" auto-tag [autoTagValue]="createFlowItemForm"/>
          	</div>
          	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
          </div>
@@ -278,7 +278,7 @@
          	{{focused_msg}}
          	<div class="err" *ngIf="formErrors.msg">{{formErrors.msg}}</div>
          	<div class="err" *ngIf="!formErrors.msg && msg_sub_err && createFlowItemForm.value.msg.length==0">{{validationMessages.msg.required}}</div>
-         </div>
+         </div>	
 
          <div class="input-container no-style">
          	<div class="label">Before Message</div>
@@ -308,7 +308,7 @@
 			  <div class="column">
                <div class="input-container">
 			    <span class="select">
-			      <select formControlName="validate">
+							<select formControlName="validate">
 			        <option *ngFor="let v of validationTypeArray" value="{{v.value}}">{{v.title}}</option>
 			      </select>
 			    </span>
