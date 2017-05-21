@@ -19,7 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bulma/css/bulma.css",
         "assets/styles/animation.css",
         "assets/libs/animate.css",
         "./theme.scss",

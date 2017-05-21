@@ -52,6 +52,25 @@
 		  </ul>
 		</div>
 
+
+   <div class="f-card">
+		 <div class="title"><span class="index">1</span><span class="text">Title card</span></div>
+		 <div class="content">
+			 <div class="msgs">
+				 <div class="item">This is msg</div>
+			 </div>
+		 </div>
+		 <div class="footer">
+			 <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">
+					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+					            <span>Edit</span>
+			 </a>
+		 </div>
+	 </div>
+
+
+
+
 		<sub-loader *ngIf="isLoadingFlow" loader-title="Loading Flow.."></sub-loader>
 
 		<div *ngIf="!isLoadingFlow && selectedTab != 'flow'" class="anim sliceInUp"> <!-- start of service tab -->
