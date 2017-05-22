@@ -52,6 +52,10 @@ export class AutoTag implements OnInit {
 
 
         console.log(this.tagValue)
+        this.tagValue = [
+                            {"name":"Ask for name", "value":"{{$flow[0]}}"},
+                            {"name":"Ask for Phone", "value":"{{$flow[1]}}"}
+                        ];
 
 
          window["appendText"] = function(e, value, index) {
@@ -64,13 +68,17 @@ export class AutoTag implements OnInit {
        }
 
       this.el.nativeElement.onkeyup = (e: any)  => {
+           
            console.log(e.target.selectionStart)
            if(e.keyCode == 50) {
-               console.log("triggerd @s");
+               let loop_list = "";
+               for(let i=0;i<this.tagValue.length;i++) {
+                 loop_list += `<div class="auto-list-item" onclick="appendText(event, '` + this.tagValue[i].value + `' , '`+ e.target.selectionStart + `')">` + this.tagValue[i].name + `</div>`;
+               }
+               console.log("triggerd @s", loop_list);
                let a = ["vinay", "bv"];
-               let t = `<div auto-list>
-                           <div onclick="appendText(event, 'vinay' , '`+ e.target.selectionStart + `')">Vinay</div>
-                           <div>yadav</div>
+               let t = `<div auto-list class="auto-list anim-2 sliceInUp">
+                           ` + loop_list + `
                         </div> `;
 
             var node = document.createElement("div");        

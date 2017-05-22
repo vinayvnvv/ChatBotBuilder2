@@ -130,8 +130,10 @@
 .f-card {
   min-width: 100px;
   border: 1px solid #d9d9d9;
-  box-shadow: 1px 2px 1px 1px #e9e9e9;
+  box-shadow: 0 1px 5px 1px rgba(197, 196, 196, 0.14);
   background-color: #fdfdfd;  
+  flex-grow: 70;
+  max-width: 400px;
 }
 
 .f-card .title {
@@ -148,13 +150,13 @@
   flex-basis: 30px;
   width:30px; 
   text-align: center;
-  border-radius: 50px;
+  border-radius: 11px;
 }
 .f-card .title .text { 
   margin-left: 15px;
-  font-size: 23px;
+  font-size: 19px;
   font-weight: 400;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #e9e9e9;
   cursor: pointer; 
   outline: none;
 }
@@ -164,18 +166,38 @@
 .f-card .content {
   padding: 5px 15px;
   padding-bottom: 0px;
+  margin-bottom: 7px;
 }
 .f-card .content .msgs {
   background-color: #f4f4f4;
   padding: 5px 7px;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 300;
   display: inline-block;
   border-left:2px solid #d9d9d9;
+}
+.f-card .content .others {
+   font-size: 13px;
+   color:#888;
+   font-weight: 300;
+   padding: 5px 0px;
+}
+.f-card .content .others:last-child {
+  padding-bottom: 0px;
+}
+.f-card .content .others span {
+  color: #777;
+  font-weight: 400;
 }
 .f-card .footer {
   background-color: transparent;
   padding: 0px;
-  padding: 5px 15px;
+  padding: 5px 0px;
+  margin: 0px 15px;
   border-top: 1px solid #f0f0f0;
   text-align: right;
+}
+.f-card .footer a {
+  border: 0px;
+  opacity: 0.7;
 }

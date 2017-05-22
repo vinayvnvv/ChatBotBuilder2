@@ -53,20 +53,7 @@
 		</div>
 
 
-   <div class="f-card">
-		 <div class="title"><span class="index">1</span><span class="text">Title card</span></div>
-		 <div class="content">
-			 <div class="msgs">
-				 <div class="item">This is msg</div>
-			 </div>
-		 </div>
-		 <div class="footer">
-			 <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">
-					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
-					            <span>Edit</span>
-			 </a>
-		 </div>
-	 </div>
+  
 
 
 
@@ -145,41 +132,40 @@
 	    	    	<div class="bar-m"></div>
 	    	    	<div class="bars"></div>
 	    	    </div>
-	    		<div class="box flow-card" [class.is-loading]="i==editFlowItemIndex && isLoadingeditFlowItem" [ngClass]="{'anim': (i==editFlowItemIndex && isLoadingeditFlowItem), 'fadeInRight': (updateFlowType != 'edit'), 'pulse': (updateFlowType == 'edit')}">
-	    		    <div class="loader-bar" *ngIf="i==editFlowItemIndex && isLoadingeditFlowItem"></div>
-					  <article class="media">
-					    <div class="media-left">
-					      <figure class="image is-16x16">
-					       {{i+1}}
-					      </figure>
-					    </div>
-					    <div class="media-content">
-					      <div class="content">
-					        <p>
-					          <strong><a class="button is-outlined">{{item.name}}</a></strong> <small>@ Dec</small> <small>31m</small>
-					          <br>
-					          <span class="l-tag is-light" *ngFor="let m of item.msg">{{m}}</span>
-					        </p>
-					      </div>
-					      <nav class="level is-mobile flow-card-actions">
-					        <div class="level-left">
-					          <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">
-					            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
-					            <span>Edit</span>
-					          </a>  &nbsp;
-					          <a class="button is-small is-info is-outlined">
-					            <span class="icon is-small"><i class="fa fa-clone"></i></span>
-					            <span>Copy</span>
-					          </a> &nbsp;
-					          <a class="button is-small is-danger is-outlined" (click)="openFlowItemDeleteModal(i)">
-					            <span class="icon is-small"><i class="fa fa-trash"></i></span>
-					            <span>Delete</span>
-					          </a>
-					        </div>
-					      </nav>
-					    </div>
-					  </article>
-	    			</div>
+	    		
+
+
+                    <div class="f-card" [class.is-loading]="i==editFlowItemIndex && isLoadingeditFlowItem" [ngClass]="{'anim': (i==editFlowItemIndex && isLoadingeditFlowItem), 'fadeInRight': (updateFlowType != 'edit'), 'pulse': (updateFlowType == 'edit')}">
+			         <div class="loader-bar" *ngIf="i==editFlowItemIndex && isLoadingeditFlowItem"></div>
+					 <div class="title"><span class="index">{{i+1}}</span><span class="text" (click)="openEditFlowItem(i, 'edit')">{{item.name}}</span></div>
+					 <div class="content">
+						 <div class="msgs">
+							 <div class="item" *ngFor="let m of item.msg">{{m}}</div>
+						 </div>
+						 <div class="others">Validation : <span>none</span></div>
+					 </div>
+					 <div class="footer">
+						 <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">
+				            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+				            <span>Edit</span>
+				          </a>  &nbsp;
+				          <a class="button is-small is-info is-outlined">
+				            <span class="icon is-small"><i class="fa fa-clone"></i></span>
+				            <span>Copy</span>
+				          </a> &nbsp;
+				          <a class="button is-small is-danger is-outlined" (click)="openFlowItemDeleteModal(i)">
+				            <span class="icon is-small"><i class="fa fa-trash"></i></span>
+				            <span>Delete</span>
+				          </a>
+					 </div>
+				 </div>
+
+
+
+
+
+
+
 	    	</div>
 
 

@@ -3,10 +3,8 @@
 // 2. Set your own initial variables
 // Update blue
 // Add pink and its invert
-$blu-pri: #00BCD4;
+$blu-pri: #00B8D4;
 $blu-pri-invert: #fff;
-// Add a serif family
-$family-serif: 'Roboto', sans-serif;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
@@ -18,6 +16,9 @@ $danger: $orange;
 
 $body-background: #fafbfc;
 
+$family-sans-serif :	-apple-system, BlinkMacSystemFont, "Segoe UI",
+"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+"Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 // 4. Import the rest of Bulma
 @import "../node_modules/bulma/bulma.sass";

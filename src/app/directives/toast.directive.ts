@@ -3,7 +3,7 @@ import { RootScope } from './../services/root.scope';
 
 @Component({
 	selector: "toast",
-	template: `<div class="notification {{rootScope.toast.type}}" *ngIf="rootScope.toast.show">
+	template: `<div class="notification {{rootScope.toast.type}} anim-2 slideInRight" *ngIf="rootScope.toast.show">
 				  <button class="delete" (click)="closeToast()"></button>
 				  {{rootScope.toast.text}}
 			   </div>`
