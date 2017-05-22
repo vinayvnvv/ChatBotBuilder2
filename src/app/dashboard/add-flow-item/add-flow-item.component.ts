@@ -351,6 +351,20 @@ export class AddFlowItemComponent implements OnInit {
    }
 
 
+   constructAutoList() {
+     let data = [];
+     let fw = this.flowData.modules;
+       for(let i=0;i<this.editFlowItemIndex;i++) {
+         let d = {
+             name: fw[i].name,
+             value: "{{$flow[" + i + "]}}"
+         };
+         data.push(d);
+       }
+       return data;
+   }
+
+
 
 
 }

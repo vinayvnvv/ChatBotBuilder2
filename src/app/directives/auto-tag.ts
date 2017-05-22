@@ -75,9 +75,13 @@ export class AutoTag implements OnInit {
                for(let i=0;i<this.tagValue.length;i++) {
                  loop_list += `<div class="auto-list-item" onclick="appendText(event, '` + this.tagValue[i].value + `' , '`+ e.target.selectionStart + `')">` + this.tagValue[i].name + `</div>`;
                }
+               if(this.tagValue.length == 0) {
+                 loop_list = "<div class='no-res'>No Variables Injection, Since it is a first flow</div>";
+               }
                console.log("triggerd @s", loop_list);
                let a = ["vinay", "bv"];
                let t = `<div auto-list class="auto-list anim-2 sliceInUp">
+                        <div class="title">Variables Injection</div>
                            ` + loop_list + `
                         </div> `;
 

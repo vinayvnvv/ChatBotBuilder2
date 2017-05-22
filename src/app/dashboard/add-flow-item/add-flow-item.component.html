@@ -268,7 +268,7 @@
          <div class="input-container">
          	<div class="label">Name Of the Module *</div>
          	<div class="field">
-         		<input type="text" formControlName="name" auto-tag [autoTagValue]="createFlowItemForm"/>
+         		<input type="text" formControlName="name" auto-tag [autoTagValue]="constructAutoList()"/>
          	</div>
          	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
          </div>

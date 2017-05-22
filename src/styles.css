@@ -239,6 +239,20 @@ hr.hr {
   background-color: #f0f0f0;
 }
 
+.auto-list .title {
+  font-size: 13px;
+  color:#777;
+  padding: 9px 17px;
+  margin: 0;
+}
+
+
+.auto-list .no-res {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 9px 15px;
+}
+
 .auto-list .auto-list-item { 
   padding: 5px 11px;
   font-size: 15px;
