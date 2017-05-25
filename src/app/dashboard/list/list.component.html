@@ -81,7 +81,7 @@
 					    <span>Copy</span>
 					  </a>
 
-					  <a class="button is-small is-danger is-outlined	">
+					  <a class="button is-small is-danger is-outlined" (click)="openDeleteModuleModal(item._id)">
 					    <span class="icon is-small">
 					     <i class="fa fa-trash-o" aria-hidden="true"></i>
 					    </span>
@@ -100,4 +100,36 @@
 
 	  </div>
 	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- email service  delete modal -->
+
+
+<div class="modal is-active" *ngIf="moduleDeleteStatus.isModal">
+  <div class="modal-background" (click)="moduleDeleteStatus.isModal = false"></div>
+  <div class="modal-content">
+     <div class="card anim zoomIn">
+		  <div class="card-content">
+		    <div class="media">
+		      <div class="media-content">
+		        <p class="title is-4">Confirm to Delete? </p>
+		        <p class="subtitle is-6">No longer available for recover!</p>
+		      </div>
+		    </div>
+
+		    <div class="content">
+		      <a class="button is-primary" [class.is-loading]="moduleDeleteStatus.updating" (click)="deleteModule()">Delete</a>
+		      <a class="button is-danger is-outlined" (click)="moduleDeleteStatus.isModal = false" [class.is-disabled]="moduleDeleteStatus.updating">Cancel</a>
+		    </div>
+		  </div>
+		</div>
+  </div>
+  <button class="modal-close" (click)="moduleDeleteStatus.isModal = false"></button>
 </div>

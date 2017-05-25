@@ -40,6 +40,11 @@ export class ApiService {
                     .map(this.extractData);
   }
 
+    deleteModule(id) {
+     return this._http.delete(this.String.apis.deleteModules + this.rootScope._auth_user.id + "/" + id)
+                    .map(this.extractData);
+    }
+
    
 
   private extractData(res: Response) {
@@ -47,3 +52,6 @@ export class ApiService {
     return body   || { };
   }
 }
+
+
+
