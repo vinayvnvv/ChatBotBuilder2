@@ -3,6 +3,13 @@
 	background-color: #fff;
 	border-radius: 0px;
 	border:1px solid #e0e0e0;
+	cursor: pointer;
+	transition: .4s all;
+	outline: none;
+}
+
+.list-card:hover {
+	box-shadow: 0 1px 11px 4px rgba(0, 0, 0, 0.14);
 }
 
 .list-card .header {
@@ -34,6 +41,7 @@
   font-size: 13px;
   margin: 0 2px;
   color: #333;
+  border-top:2px solid #d9d9d9;
 }
 
 .list-card .content .matches .item:first-child {
@@ -46,7 +54,7 @@
 
 .list-card .content .details .row {
 	padding: 3px 0px;
-	color: #888;
+	color: #666;
 	font-size: 12px;
 }
 .list-card .footer {
@@ -59,7 +67,7 @@
 }
 
 .list-card .footer .button {
-	opacity: 0.7;
+	opacity: 0.8;
 	border-width: 0px;
 }
 .list-card .footer .button:hover {	

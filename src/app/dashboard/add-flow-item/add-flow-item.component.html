@@ -139,7 +139,7 @@
 			         <div class="loader-bar" *ngIf="i==editFlowItemIndex && isLoadingeditFlowItem"></div>
 					 <div class="title"><span class="index">{{i+1}}</span><span class="text" (click)="openEditFlowItem(i, 'edit')">{{item.name}}</span></div>
 					 <div class="content">
-						 <div class="msgs">
+						 <div class="msgs border-left-primary">
 							 <div class="item" *ngFor="let m of item.msg">{{m}}</div>
 						 </div>
 						 <div class="others">Validation : <span>none</span></div>
