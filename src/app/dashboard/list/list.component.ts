@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   public filteredModulesData;
   public isMenuTab;
   public isFlowTab;
-  private moduleDeleteStatus = {
+  public moduleDeleteStatus = {
        mode:"",
        index: -1,
        updating: false,

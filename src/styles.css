@@ -6,7 +6,11 @@ body {
 	display: block;
 	width: 100%;
 }
-
+._title { 
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.078em;
+}
 .section {
   background-color: transparent;
 }

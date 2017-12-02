@@ -21,8 +21,10 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular2-moment": "^1.7.0",
     "bulma": "^0.4.1",
     "core-js": "^2.4.1",
+    "moment": "^2.19.3",
     "ng2-tag-input": "^1.2.6",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"

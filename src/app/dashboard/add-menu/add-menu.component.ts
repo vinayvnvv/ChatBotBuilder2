@@ -15,7 +15,11 @@ export class AddMenuComponent implements OnInit {
 
   matches = [];
   addMenuForm: FormGroup;
-  formVars = {};
+  formVars = {
+    name: null,
+    matches: [],
+    menus: []
+  };
   formStatus = {
   	  mode: "",
   	  updating: false
@@ -27,7 +31,7 @@ export class AddMenuComponent implements OnInit {
          private Loader: Loader,
          private zone: NgZone,
          private router: Router,
-         private Strings: StringsService
+         public Strings: StringsService
   	) { }
 
   ngOnInit() {

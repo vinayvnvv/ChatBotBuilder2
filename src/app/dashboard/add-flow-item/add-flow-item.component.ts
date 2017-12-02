@@ -20,28 +20,28 @@ import { ServicesViewComponent } from './childs/services-view.component';
 export class AddFlowItemComponent implements OnInit {
 
   routerParams: any;
-  private flowData: any = [];
-  private isLoadingFlow:boolean = true;
-  private createFlowItemForm: FormGroup;
-  private createWelcomeFlowItem: FormGroup;
-  private createFinalFlowItem: FormGroup;
-  private msg = [];
-  private s_e_msg = [];
-  private v_e_msg = [];
-  private validationTypeArray: any;
-  private suggestionTypeArray: any;
-  private isActiveModal: boolean = false;
-  private editFlowItemIndex: number = null;
-  private msg_sub_err: boolean = false;
-  private updateFlowType: any;
-  private isLoadingeditFlowItem: boolean = false;
-  private updateMsg: string;
-  private isMelcomeModal: boolean = false;
-  private isWelcomeModalUpdating:boolean = false;
-  private isFinalModal: boolean = false;
-  private isFinalModalUpdating:boolean = false;
-  private selectedTab:string = "flow";
-  private flowItemDeleteStatus = {
+  flowData: any = [];
+  isLoadingFlow:boolean = true;
+  createFlowItemForm: FormGroup;
+  createWelcomeFlowItem: FormGroup;
+  createFinalFlowItem: FormGroup;
+  msg = [];
+  s_e_msg = [];
+  v_e_msg = [];
+  validationTypeArray: any;
+  suggestionTypeArray: any;
+  isActiveModal: boolean = false;
+  editFlowItemIndex: number = null;
+  msg_sub_err: boolean = false;
+  updateFlowType: any;
+  isLoadingeditFlowItem: boolean = false;
+  updateMsg: string;
+  isMelcomeModal: boolean = false;
+  isWelcomeModalUpdating:boolean = false;
+  isFinalModal: boolean = false;
+  isFinalModalUpdating:boolean = false;
+  selectedTab:string = "flow";
+  flowItemDeleteStatus = {
        isModal: false,
        index: -1,
        updating: false

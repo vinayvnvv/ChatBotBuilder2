@@ -13,19 +13,19 @@
 			    <span class="panel-icon">
 			      <i class="fa fa-share"></i>
 			    </span>
-			    <span class="tag" *ngFor="let mt of menuData.matches">{{mt}}</span>
+			    <span class="tag" *ngFor="let mt of menuData.matches">{{mt}}&nbsp;</span>
 			  </span>
 			  <span class="panel-block" *ngIf="!isLoadingMenu">
 			    <span class="panel-icon">
 			      <i class="fa fa-clock-o"></i>
 			    </span>
-			    <small>Created at: {{menuData.timestamp_created.at}}</small>
+			    <small>Created at: {{menuData.timestamp_created.at | amTimeAgo}}</small>
 			  </span>
 			  <span class="panel-block" *ngIf="!isLoadingMenu">
 			    <span class="panel-icon">
 			      <i class="fa fa-clock-o"></i>
 			    </span>
-			    <small>Modified at: {{menuData.timestamp_updated.at}}</small>
+			    <small>Modified at: {{menuData.timestamp_updated.at | amTimeAgo}}</small>
 			  </span>
 			  <span class="panel-block" *ngIf="!isLoadingMenu && menuData.statastics">
 			    <span class="panel-icon">
@@ -33,11 +33,11 @@
 			    </span>
 			    <small>Triggerd: {{menuData.statastics.triggered || '0'}} times</small>
 			  </span>
-			  <span class="panel-block" *ngIf="!isLoadingMenu && menuData.statastics">
+			  <span class="panel-block" *ngIf="!isLoadingMenu && menuData.statastics && menuData.statastics.triggered>0">
 			    <span class="panel-icon">
 			      <i class="fa fa-clock-o"></i>
 			    </span>
-			    <small>Last Triggerd: {{menuData.statastics.triggeredAt || '0'}} ago</small>
+			    <small>Last Triggerd: {{menuData.statastics.triggeredAt | amTimeAgo}} ago</small>
 			  </span>
 	</nav>
 		</div> 

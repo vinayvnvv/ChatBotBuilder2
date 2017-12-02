@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  origin: '/',
+  host: "https://botflow.herokuapp.com/"
 };

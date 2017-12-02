@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 export class StringsService {
    port: number = 3000;
    public origin: string;
@@ -8,7 +9,7 @@ export class StringsService {
    menuTypes: any;
    constructor() {
    	    this.port = 3000;
-   		this.origin = location.protocol + "//" + location.hostname + ":" + this.port + "/";
+   		this.origin = environment.origin;
    		console.log("Api Origin==", this.origin)
 	
 

@@ -12,7 +12,7 @@ import { Component, ElementRef } from '@angular/core';
 })
 
 export class SubLoaderComponent {
-   private title;
+   public title;
    constructor(
             private elRef: ElementRef
     ) {  }

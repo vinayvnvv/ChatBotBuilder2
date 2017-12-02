@@ -38,4 +38,8 @@ export class AuthService {
       console.log("setting auth", this.Strings.authInstance.storageName)
       localStorage.setItem(this.Strings.authInstance.storageName, JSON.stringify(data));
     }
+
+    logout() {
+      localStorage.removeItem(this.Strings.authInstance.storageName);
+    }
 }

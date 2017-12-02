@@ -11,7 +11,7 @@ import { RootScope } from './../services/root.scope';
 export class ToastComponent  {
 
     constructor(
-          private rootScope: RootScope
+          public rootScope: RootScope
     	) {}
 
     closeToast() {

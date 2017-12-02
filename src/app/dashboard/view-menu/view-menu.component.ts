@@ -12,13 +12,13 @@ import { Loader, Toast, Utility} from './../../services/common.services';
 })
 export class ViewMenuComponent implements OnInit {
 
-  private menuData: any = [];
-  private isLoadingMenu: boolean = true;
-  private routerParams: any;
-  private editable = [];
-  private editMenu = [];
-  private deletable = [];
-  private editMenuStatus = {
+  menuData: any = [];
+  isLoadingMenu: boolean = true;
+  routerParams: any;
+  editable = [];
+  editMenu = [];
+  deletable = [];
+  editMenuStatus = {
       updating: false
   }
 

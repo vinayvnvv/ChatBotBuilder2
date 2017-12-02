@@ -2,4 +2,8 @@
     padding: 11px 0px;
     background-color: transparent;
 }
+.dashboard {
+	margin-top: 56px;
+	min-height: calc( 100vh - 264px );
+}
 

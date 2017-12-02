@@ -11,16 +11,16 @@ import { Loader, Toast, Utility} from './../../../services/common.services';
 
 export class ServicesViewComponent implements OnInit {
 
-	private tab: string = "email";
-	private isEditEmailServiceModal:boolean = false;
-	private emailServiceForm: FormGroup;
-	private emailServiceFormErr: boolean = false;
-	private emailServiceEditStatus = {
+ tab: string = "email";
+ isEditEmailServiceModal:boolean = false;
+ emailServiceForm: FormGroup;
+ emailServiceFormErr: boolean = false;
+ emailServiceEditStatus = {
 		   mode:"",
 		   index: -1,
 		   updating: false
 	};
-  private emailServiceDeleteStatus = {
+  emailServiceDeleteStatus = {
        isModal: false,
        index: -1,
        updating: false

@@ -18,9 +18,9 @@ import { RootScope } from './../services/root.scope';
 })
 
 export class LoaderComponent implements OnInit {
-	private always: boolean;
+	public always: boolean;
 	constructor(
-            private rootScope:RootScope,
+            public rootScope:RootScope,
             private elRef: ElementRef
 		) {  }
 

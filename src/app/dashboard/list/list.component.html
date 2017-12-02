@@ -61,14 +61,14 @@
 		   			<div class="matches">
 		   				<span class="item border-top-primary" *ngFor="let m of item.matches">{{m}}</span>
 		   			</div>
-		   			<div class="details">
-		   				<div class="row"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Created at: 3 months ago</div>
-		   				<div class="row"><span class="icon is-small"><i class="fa fa-check-square" aria-hidden="true"></i></span> Triggerd 3 times</div>
-		   				<div class="row"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Last triggered 3 days ago</div>
+		   			<div class="details">	
+		   				<div class="row"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Created at: <b>{{item.timestamp_created.at | amTimeAgo}}</b></div>
+		   				<div class="row"><span class="icon is-small"><i class="fa fa-check-square" aria-hidden="true"></i></span> Triggerd <b>{{item.statastics.triggered}}</b> times</div>
+		   				<div class="row" *ngIf="item.statastics.triggered>0"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Last triggered <b>{{item.statastics.triggeredAt | amTimeAgo}}</b></div>
 		   			</div>
 		   		</div>
 		   		<div class="footer">
-		   			   <a class="button is-small is-info is-outlined">
+		   			   <a class="button is-small is-info is-outlined" [routerLink]="item.type == 'flow' ? ['flow-item', item._id] : ['menu', item._id]">
 					    <span class="icon is-small ">
 					      <i class="fa fa-pencil" aria-hidden="true"></i>
 					    </span>

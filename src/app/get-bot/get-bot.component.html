@@ -1,0 +1,22 @@
+<div class="modal is-active" *ngIf="open">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-content">
+     <header class="modal-card-head">
+      <p class="modal-card-title">Get Your Bot</p>
+      <button class="delete" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <h6 class="subtitle is-6">Copy below snippet and paste in to your application to run the bot!</h6>
+      <code class="" style="background-color: #f5f5f5;color:#777"> 
+        &#60;<span style="color: green">script</span> <span style="color: #08c">chat-bot-id</span>="<span style="color: #800">{{chat_bot_id}}</span>" <span style="color: #08c">type</span>="<span style="color: #800">text/javascript</span>" <span style="color: #08c">src</span>="<span style="color: #800">{{(host == 'localhost') ? origin : host }}bot/build/script_build.js</span>"&#62;&#60;/<span style="color: green">script</span>&#62;
+       </code>
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-success" *ngIf="false">Save changes</a>
+      <a class="button" (click)="closeModal()" >Cancel</a>
+    </footer>
+  </div>
+  <button class="modal-close" (click)="closeModal()"></button>
+</div>

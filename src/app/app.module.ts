@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { TagInputModule } from 'ng2-tag-input'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MomentModule } from 'angular2-moment';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -33,6 +35,7 @@ import { ViewMenuComponent } from './dashboard/view-menu/view-menu.component';
 
 //directives
 import { AutoTag } from './directives/auto-tag';
+import { GetBotComponent } from './get-bot/get-bot.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { AutoTag } from './directives/auto-tag';
     ServicesViewComponent,
     AddMenuComponent,
     ViewMenuComponent,
-    AutoTag
+    AutoTag,
+    GetBotComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { AutoTag } from './directives/auto-tag';
     RouteModule,
     TagInputModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MomentModule
   ],
   providers: [StringsService , RootScope, AuthGuard, AuthService],
   bootstrap: [AppComponent]
