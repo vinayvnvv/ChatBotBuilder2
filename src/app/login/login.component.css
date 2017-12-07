@@ -4,6 +4,7 @@
 	height: 100%;
 	position: fixed;
 	width: 100%;
+	z-index: 10;
 }
 .login .body {
 	flex-grow: 1;
@@ -21,12 +22,24 @@
 }
 .login .body .card-l {
 	width: 30%;
-	box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
     color: #4a4a4a;
     margin: 0 auto;
-    min-width: 400px;
+    min-width: 250px;
+    border-radius: 0!important;
 }
 
 .login .body .card-l div {
   margin: 11px 7px;
+}
+
+.overlay {
+	bottom: 0;
+    direction: ltr;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
 }

@@ -1,4 +1,4 @@
-<nav class="nav hero is-primary">
+<nav class="nav hero iss-primary">
  <div class="container">
 		  <div class="nav-left">
 		    <a class="nav-item">
@@ -7,13 +7,13 @@
 		  </div>
 
 		  <div class="nav-center">
-		    <a class="nav-item">
+		    <!-- <a class="nav-item">
 		      <span class="icon">
 		        <i class="fa fa-github"></i>
 		      </span>
-		    </a>
-		    <a class="nav-item">
-		      <span class="icon">
+		    </a> -->
+		    <a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
+		      <span class="icon" >
 		        <i class="fa fa-twitter"></i>
 		      </span>
 		    </a>
@@ -37,6 +37,9 @@
 		      Documentation
 		    </a> -->
 		    <a class="nav-item">
+		      <span class="icon is-small">
+		              <i class="fa fa-google"></i>
+		      </span>&nbsp;
 		      {{rootScope._auth_user.name}}
 		      <span class="icon">
 		              <i class="fa fa-angle-down"></i>
@@ -46,13 +49,13 @@
 		    <div class="nav-item">
 		      <div class="field is-grouped">
 		        <p class="control">
-		          <a class="button is-light" (click)="isGetBotModal = true">
+		          <a class="button is-primary" (click)="isGetBotModal = true">
 		            <span class="icon is-small">
 		              <i class="fa fa-code"></i>
 		            </span>
 		            <span>Get Bot</span>
 		          </a> &nbsp;
-		          <a class="button is-primary is-inverted is-outlined" (click)="logout()" >
+		          <a class="button iss-primary iss-inverted iss-outlined" (click)="logout()" >
 		            <span class="icon is-small">
 		              <i class="fa fa-power-off"></i>
 		            </span>

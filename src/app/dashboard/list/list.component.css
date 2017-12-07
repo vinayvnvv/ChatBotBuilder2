@@ -73,3 +73,10 @@
 .list-card .footer .button:hover {	
 	opacity: 1;
 }
+
+.no-items-indi {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 250px;
+}

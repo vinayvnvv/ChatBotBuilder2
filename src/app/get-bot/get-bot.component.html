@@ -1,22 +1,144 @@
 <div class="modal is-active" *ngIf="open">
   <div class="modal-background" (click)="closeModal()"></div>
   <div class="modal-content">
-     <header class="modal-card-head">
-      <p class="modal-card-title">Get Your Bot</p>
-      <button class="delete" (click)="closeModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      <h6 class="subtitle is-6">Copy below snippet and paste in to your application to run the bot!</h6>
-      <code class="" style="background-color: #f5f5f5;color:#777"> 
-        &#60;<span style="color: green">script</span> <span style="color: #08c">chat-bot-id</span>="<span style="color: #800">{{chat_bot_id}}</span>" <span style="color: #08c">type</span>="<span style="color: #800">text/javascript</span>" <span style="color: #08c">src</span>="<span style="color: #800">{{(host == 'localhost') ? origin : host }}bot/build/script_build.js</span>"&#62;&#60;/<span style="color: green">script</span>&#62;
-       </code>
+
+    <div *ngIf="view == 'code'">
+       <header class="modal-card-head">
+        <p class="modal-card-title">Get Your Bot</p>
+        <button class="delete" (click)="closeModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <h6 class="subtitle is-6">Copy below snippet and paste in to your application to run the bot!</h6>
+        <code class="" style="background-color: #f5f5f5;color:#777"> 
+          &#60;<span style="color: green">script</span> <span style="color: #08c">chat-bot-id</span>="<span style="color: #800">{{chat_bot_id}}</span>" <span style="color: #08c">type</span>="<span style="color: #800">text/javascript</span>" <span style="color: #08c">src</span>="<span style="color: #800">{{(host == 'localhost') ? origin : host }}bot/build/script_prod-min.js</span>"&#62;&#60;/<span style="color: green">script</span>&#62;
+         </code>
+
+         <br/><br/>
+          <a class="button is-info" (click)="goView('setup')">Setup Bot</a>
 
 
-    </section>
-    <footer class="modal-card-foot">
-      <a class="button is-success" *ngIf="false">Save changes</a>
-      <a class="button" (click)="closeModal()" >Cancel</a>
-    </footer>
+      </section>
+      <footer class="modal-card-foot">
+        <a class="button is-success" *ngIf="false">Save changes</a>
+        <a class="button" (click)="closeModal()" >Cancel</a>
+      </footer>
+  </div>
+
+  <div *ngIf="view == 'setup'">
+      <header class="modal-card-head">
+        <p class="modal-card-title">SetUp Bot</p>
+        <button class="delete" (click)="closeModal()"></button>
+      </header>
+      <section class="modal-card-body">
+
+
+          <sub-loader *ngIf="isLoadingInitData" loader-title="Getting Bot Configuration.."></sub-loader>
+        
+          <div *ngIf="!isLoadingInitData">
+            <form [formGroup]="botSetUpForm" >
+            <section class="section _section">
+              <h3 class="title is-4">Intializers</h3>
+
+              <div class="input-container">
+                  <div class="label">Bot name in ToolBar</div>
+                  <div class="field">
+                    <input type="text" name="" formControlName="bot_name" [(ngModel)]="formVars.bot_name"/>
+                  </div>
+                  <div class="err" *ngIf="formErrors.bot_name">{{formErrors.bot_name}}</div>
+              </div>
+
+
+              <div class="input-container no-style">
+                  <div class="label">Welcome messages</div>
+                  <div class="field">
+
+                    <tag-input class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add msg'"  [editable]="true" [modelAsStrings]="true" [(ngModel)]="formVars.msg">  
+                         <span class="tooltiptext">Type and Press Enter to add items</span> 
+                       </tag-input>
+                  </div>
+                    
+                  <div class="err" *ngIf="formErrors.msg">{{formErrors.msg}}</div>
+                 
+             </div>
+
+             <div class="input-container no-style">
+                  <div class="label">Suggestion Type</div>
+                  <div class="field">
+                      <div class="input-container">
+                        <span class="select">
+                          <select formControlName="shortcut" [(ngModel)]="formVars.shortcut">
+                            <option *ngFor="let s of suggestionTypeArray" value="{{s.value}}">{{s.title}}</option>
+                         </select>
+                        </span>
+                      </div>
+               
+                  </div>
+                    
+                  <div class="err" *ngIf="formErrors.shortcut">{{formErrors.shortcut}}</div>
+
+                   <ul *ngIf="formVars.shortcut != suggestionTypeArray[0].value">
+                      <tag-input (onFocus)="s_msg_sub_err = true"  class='tooltip' formControlName="shortcutData" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Suggestion Items *'" [editable]="true" [modelAsStrings]="true" [(ngModel)]="formVars.shortcutData">  
+                         <span class="tooltiptext">Type and Press Enter to add items</span> 
+                      </tag-input>                      
+                      <div class="err" *ngIf="s_msg_sub_err && botSetUpForm.value.shortcutData.length == 0" >
+                        <br/>{{validationMessages.shortcutData.required}}</div>
+                  </ul>
+             </div>
+
+
+
+            </section>
+
+            <section class="section _section">
+              <h3 class="title is-4">Theme Setting</h3>
+
+              <div class="input-container">
+                  <div class="label">Theme background color <span class="_clrpkrshw" [style.background]="formVars.style.bgcolor"></span></div>
+                  <div class="field">
+                    <input type="text" name="" formControlName="bgcolor" [(colorPicker)]="formVars.style.bgcolor"  [value]="formVars.style.bgcolor"/>
+                  </div>
+                  <div class="err" *ngIf="formErrors.bgcolor">{{formErrors.bgcolor}}</div>
+              </div>
+
+              <div class="input-container">
+                  <div class="label">Theme Text color <span class="_clrpkrshw" [style.background]="formVars.style.color"></span></div>
+                  <div class="field">
+                    <input type="text" name="" formControlName="color" [(colorPicker)]="formVars.style.color"  [value]="formVars.style.color"/>
+                  </div>
+                  <div class="err" *ngIf="formErrors.color">{{formErrors.color}}</div>
+              </div>
+
+              <div class="input-container">
+                  <div class="label">Bot Height (in %)</div>
+                  <div class="field">
+                    <input type="text" name="" formControlName="height" [(ngModel)]="formVars.style.height"  />
+                  </div>
+                  <div class="err" *ngIf="formErrors.height">{{formErrors.height}}</div>
+              </div>
+
+              <div class="input-container">
+                  <div class="label">Bot Width</div>
+                  <div class="field">
+                    <input type="text" name="" formControlName="width" [(ngModel)]="formVars.style.width"  />
+                  </div>
+                  <div class="err" *ngIf="formErrors.width">{{formErrors.width}}</div>
+              </div>
+
+
+            </section>
+          </form>
+        </div>
+
+
+
+      </section>
+      <footer class="modal-card-foot">
+        <a class="button is-success" [class.is-disabled]="!botSetUpForm.valid || isLoadingInitData || isUpdatingInitData" (click)="updateBotSetupData()" [class.is-loading]="isUpdatingInitData">Save changes</a>
+        <a class="button" (click)="goView('code')">Cancel</a>
+      </footer>
+  </div>
+
+
   </div>
   <button class="modal-close" (click)="closeModal()"></button>
 </div>

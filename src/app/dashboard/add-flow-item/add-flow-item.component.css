@@ -83,13 +83,18 @@
 }
 .bar-add-icon i {
 	border: 7px solid #d9d9d9;
-	color: #777;
-	padding: 4px 9px;
-	border-radius: 7px;
+	color: #999;
+	border-radius: 50em;
 	background: #f0f0f0;
 	cursor: pointer;
 	z-index: 20;
   transition: 0.1s all;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
 }
 
 .bar-add-icon i:hover {

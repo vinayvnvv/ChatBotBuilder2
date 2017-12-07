@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './../home/home.component';
 import { DashboardComponent } from './../dashboard/dashboard.component';
 import { LoginComponent } from './../login/login.component';
 import { AuthGuard } from './../services/auth.guard';
@@ -11,7 +12,6 @@ import { ViewMenuComponent } from './../dashboard/view-menu/view-menu.component'
 
 
 const routes : Routes = [
-     { path: "", redirectTo: '/dashboard', pathMatch: 'full'},
      { path:"dashboard", 
        component: DashboardComponent, 
        canActivate: [AuthGuard],
@@ -21,24 +21,26 @@ const routes : Routes = [
 		        component: AddFlowComponent
 		      },
           {
-            path: 'flow-item/:id',
-            component: AddFlowItemComponent
-          },
-          {
-            path:'',
-            component: ListComponent
-          },
-          {
             path: 'add-menu',
             component: AddMenuComponent
           },
           {
+            path: 'flow-item/:id',
+            component: AddFlowItemComponent
+          },
+          {
             path: 'menu/:id',
             component: ViewMenuComponent
+          },
+          {
+            path:'',
+            component: ListComponent
           }
+          
    		 ]
      },
-     { path:"login", component: LoginComponent}
+     { path:"login", component: LoginComponent},
+     { path: "", component: HomeComponent}
 ];
 
 @NgModule({

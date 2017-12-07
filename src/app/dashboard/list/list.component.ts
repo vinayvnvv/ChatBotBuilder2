@@ -117,5 +117,28 @@ export class ListComponent implements OnInit {
   }
 
 
+  indicateUser(ev, to) {
+    let className = "wobble";
+    if(to == 'flow') {
+      let el:Element = document.getElementById("add_flow");
+      if(!el) return;
+      if(ev == 'enter')
+        el.classList.add(className);
+      else 
+        el.classList.remove(className)
+
+    }
+
+    if(to == 'menu') {
+      let el:Element = document.getElementById("add_menu");
+      if(!el) return;
+      if(ev == 'enter')
+        el.classList.add(className);
+      else 
+        el.classList.remove(className)
+    }
+  }
+
+
 
 }

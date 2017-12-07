@@ -15,7 +15,9 @@ body {
   background-color: transparent;
 }
 
-
+.wobble {
+  animation-duration: 1.3s;
+}
 @media screen and (max-width: 768px) {
     .hide-mobile {
        display: none!important;
@@ -26,7 +28,6 @@ body {
       border-bottom: 1px solid #d9d9d9;
     }
 }
-
 
 .modal.is-active {
   z-index: 400;
@@ -286,4 +287,15 @@ hr.hr {
   font-size: 14px;
   margin-top: 13px;
   justify-content: center;
+}
+
+.reading-loader {
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 400px 104px;
+    position: relative;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
 }

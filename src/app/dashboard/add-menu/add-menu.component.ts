@@ -26,7 +26,7 @@ export class AddMenuComponent implements OnInit {
   }
 
   constructor(
-  		 private Api: ApiService,
+  		   private Api: ApiService,
          private Toast: Toast,
          private Loader: Loader,
          private zone: NgZone,

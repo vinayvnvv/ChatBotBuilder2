@@ -2,7 +2,8 @@ import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { TagInputModule } from 'ng2-tag-input'; 
+import { TagInputModule } from 'ngx-chips'; 
+import { ColorPickerModule } from 'ngx-color-picker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MomentModule } from 'angular2-moment';
@@ -36,6 +37,8 @@ import { ViewMenuComponent } from './dashboard/view-menu/view-menu.component';
 //directives
 import { AutoTag } from './directives/auto-tag';
 import { GetBotComponent } from './get-bot/get-bot.component';
+import { ModulesLoaderComponent } from './directives/modules-loader/modules-loader.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,9 @@ import { GetBotComponent } from './get-bot/get-bot.component';
     AddMenuComponent,
     ViewMenuComponent,
     AutoTag,
-    GetBotComponent
+    GetBotComponent,
+    ModulesLoaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { GetBotComponent } from './get-bot/get-bot.component';
     TagInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MomentModule
+    MomentModule,
+    ColorPickerModule
   ],
   providers: [StringsService , RootScope, AuthGuard, AuthService],
   bootstrap: [AppComponent]

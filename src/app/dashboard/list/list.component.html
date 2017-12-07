@@ -3,7 +3,6 @@
 
 
 
-
 	<div class="columns">
 	  <div class="column is-3 r-border">
 	    
@@ -47,7 +46,19 @@
 	  </div>
 	  <div class="column">
 
-	  <sub-loader *ngIf="!Modules" loader-title="Loading Modules.."></sub-loader>
+	  <!-- <sub-loader *ngIf="!Modules" loader-title="Loading Modules.."></sub-loader> -->
+	  <app-modules-loader *ngIf="!Modules"></app-modules-loader>
+
+	  <div *ngIf="Modules && filteredModulesData.length == 0 " class="no-items-indi">
+	  		<article class="message is-primary">
+			  <div class="message-body">
+			     <span *ngIf="isFlowTab == 'is-active'">No Flows are added!,  click on <span class="tag is-info add-flow-indicater" (mouseleave)="indicateUser('leave', 'flow')" (mouseenter)="indicateUser('enter', 'flow')">Add Flow</span> button to add Flows.</span>
+
+			     <span *ngIf="isMenuTab == 'is-active'">No Menu's are added!,  click on <span class="tag is-info add-flow-indicater" (mouseleave)="indicateUser('leave', 'menu')" (mouseenter)="indicateUser('enter', 'menu')">Add Menu</span> button to add Menu's.</span>
+
+			  </div>
+			</article>
+	  </div>
 	    
            
 

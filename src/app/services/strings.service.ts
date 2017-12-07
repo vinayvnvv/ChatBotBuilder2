@@ -31,7 +31,7 @@ export class StringsService {
 			deleteModules: this.origin + "api/manager/modules/delete/",
 			createModules: this.origin + "api/manager/modules/create/",
 			updateInitBot : this.origin + "api/manager/modules/init/",
-			getInitBot : this.origin + "api/manager/modules/init/",
+			getInitBot : this.origin + "api/manager/modules/init_bot/",
 			initBotDB : this.origin + "api/manager/modules/init_db/"
 	};
 

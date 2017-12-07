@@ -142,7 +142,8 @@
 						 <div class="msgs border-left-primary">
 							 <div class="item" *ngFor="let m of item.msg">{{m}}</div>
 						 </div>
-						 <div class="others">Validation : <span>none</span></div>
+						 <div class="others">Validation : <span>{{item.validate ? item.validate : 'No validations added'}}</span></div>
+						 <div class="others">Suggestions : <span>{{item.shortcut ? item.shortcut : 'No suggestions added'}}</span></div>
 					 </div>
 					 <div class="footer">
 						 <a class="button is-small is-primary is-outlined" (click)="openEditFlowItem(i, 'edit')">

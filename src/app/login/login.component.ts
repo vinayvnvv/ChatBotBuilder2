@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
 
     
 
-    this.gapi.auth2.init().signIn(params).then((res) => {
+    this.gapi.auth2.init().signIn(params).then(
+      (res) => {
     	 	console.log(window["authInstance"])
           // Service.loader.hideRoot();
           // Service.loader.showRoot('Initializing!'); 
@@ -101,7 +102,11 @@ export class LoginComponent implements OnInit {
             //   Service.Toast("There was error in initializing! Please refresh the page and login again!");
             // })
             //$state.go("dashboard");	 
-    })
+    },
+    (err) => {
+        this.Loader.hideRoot();
+        this.Toast.show(err.error, 8000, "is-danger");
+    });
 
   }
 

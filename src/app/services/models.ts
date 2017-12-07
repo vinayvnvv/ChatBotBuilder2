@@ -9,6 +9,21 @@ class ModuleFlow {
       public shortcutData;
 }
 
+class InitBot {
+      public bot_name;
+      public msg;
+      public shortcut;
+      public shortcutData;
+      public style = {
+            bgcolor: null,
+            color: null,
+            width: null,
+            height: null,
+            positionX: null,
+            positionY: null
+      }
+}
+
 export class Models {
 	moduleItems(m) {
        let model = new ModuleFlow();
@@ -50,4 +65,31 @@ export class Models {
         }
          return model; 	
 	}
+
+     initBot = function(m) {
+       let model = new InitBot();
+         if(!m.bot_name || m.bot_name == '') model.bot_name = null;
+         else model.bot_name = m.bot_name;
+         if(m.msg == undefined || m.msg == null || m.msg == '') model.msg = "Welcome!";
+         else model.msg = m.msg;
+
+         if(m.shortcut == undefined || m.shortcut == '' || m.shortcut == null || m.shortcut == 'none') {
+                model.shortcut = null;
+                model.shortcutData = [];
+
+              } else { 
+                     model.shortcut = m.shortcut;
+                     if(m.shortcutData == undefined || m.shortcutData == '' || m.shortcutData == null || m.shortcutData.length == 0) {
+                       model.shortcut = null;
+                       model.shortcutData = [];    
+                     } else {
+                           model.shortcutData = m.shortcutData;
+                     }
+
+              }
+
+          model.style = m.style;    
+        return model;      
+     }
 }
+

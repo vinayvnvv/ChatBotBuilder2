@@ -1,0 +1,174 @@
+<div class="home">
+	<div class='palx-bg is-hidden-mobile'></div>
+	<nav class="nav hero is-primary">
+	 <div class="container">
+			  <div class="nav-left">
+			    <a class="nav-item">
+			      <h2 class="subtitle _title">botflow</h2>
+			    </a>
+			  </div>
+
+			  <div class="nav-center">
+			  </div>
+
+			  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+			  <span class="nav-toggle" (click)="isMenu = !isMenu" [class.is-active] = "isMenu">
+			    <span></span>
+			    <span></span>
+			    <span></span>
+			  </span>
+			  <!-- Add the modifier "is-active" to display it on mobile -->
+			  <div class="nav-right nav-menu" [class.is-active] = "isMenu">
+			    <a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
+			      <!-- <span class="icon" >
+			        <i class="fa fa-twitter"></i>
+			      </span> -->
+			      Features
+			    </a>
+			  	<a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
+			      <span class="icon" >
+			        <i class="fa fa-twitter"></i>
+			      </span>
+			    </a>
+			    <div class="nav-item">
+			      <div class="field is-grouped">
+			        <p class="control">
+			          <a class="button is-primary is-inverted" (click)="logout()" >
+			            <span class="icon is-small">
+			              <i class="fa fa-power-off"></i>
+			            </span>
+			            <span>Login</span>
+			          </a>
+			        </p>
+			      </div>
+			    </div>
+			  </div>
+		</div>	  
+	</nav>
+	<section class="hero is-primary main-ad">
+	  <div class="hero-body">
+	    <div class="container">
+	      <div class="columns">
+	      	<div class="column is-6 title-sec">
+		      <h1 class="title _ttl">
+		        Create Flows, Automate Queries & Help People!
+		      </h1>
+		      <h2 class="subtitle">
+		       An automated <b>chat-bots</b> based on the flows.
+		      </h2>
+		      <div>
+		      	<a class="button is-black iss-outlined" (click)="logout()" >Create for Free</a>&nbsp;&nbsp;
+		      	<a class="button is-primary is-inverted">Register</a>
+		      </div>
+		    </div>
+		    <div class="column is-6 img-sec is-hidden-mobile">
+		    	<img src="assets/img/launch-bg.svg"/>
+		    </div>
+		  </div>
+	    </div>
+	  </div>
+	</section>
+
+	<section class="features _pd">
+		<div class="container">
+		   <div class="_ftrs _ovlpd">	
+				<div class="_t_bar has-text-centered">
+					<h1 class="title _ttl has-text-weight-bold">
+				       Features
+				    </h1>
+				    <div class="_dvdr"></div>
+				</div>
+				<div class="columns is-multiline _bd">
+					<div class='column is-4 has-text-centered' *ngFor="let item of featuresData">
+						<div class="_itm">
+							<div class="_ic">
+								<i class="{{item.icon}}" aria-hidden="true"></i>
+							</div>
+							<div class="_tt">
+								<h2 class="subtitle is-4">{{item.name}}</h2>
+							</div>
+							<div class='_desc'>
+								{{item.desc}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<div class="container _sections">
+		<section class="hero is-dark is-bold _shadow _nocode">
+		  <div class="hero-body">
+		  	<div class="columns">
+			  	<div class="column is-2 _ic">
+			  		<b><i class="fa fa-code" aria-hidden="true"></i></b>
+			  	</div>
+			  	<div class="column is-10">
+			  		<h1 class="title">
+				       <b> One JS Snippet all that works!</b>
+				    </h1>
+			      <h2 class="subtitle">
+			        Just insert the snippet which will convert into your bot and auto initiated.
+			      </h2>
+			  	</div>
+			  </div>
+		      
+		    </div>
+		</section>
+	</div>
+
+	<section class="features">
+		<div class="container">
+		   <div class="_ftrs">	
+				<div class="_t_bar has-text-centered">
+					<h1 class="title _ttl has-text-weight-bold">
+				       Features
+				    </h1>
+				    <div class="_dvdr"></div>
+				</div>
+				<div class="columns is-multiline _bd">
+					<div class='column is-4 has-text-centered' *ngFor="let item of featuresData">
+						<div class="_itm">
+							<div class="_ic">
+								<i class="{{item.icon}}" aria-hidden="true"></i>
+							</div>
+							<div class="_tt">
+								<h2 class="subtitle is-4">{{item.name}}</h2>
+							</div>
+							<div class='_desc'>
+								{{item.desc}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container">
+		<section class="hero" style="background-color: transparent;">
+		  <div class="hero-body">
+		    <div class=" has-text-centered">
+		    	<a class='button is-primary is-large'>Create For Free</a>
+		    </div>
+		  </div>
+		</section>
+	</div>
+
+	<footer class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered">
+	      <p>
+	        <strong>botflow</strong> | The website content
+	        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+	      </p>
+
+	      <span hresf="http://localhost:3000/ui-manager">botflow @ 2017-2018</span> | <a href="ui-manager">Material Dashboard</a>
+	    </div>
+	  </div>
+	</footer>
+
+
+</div>
