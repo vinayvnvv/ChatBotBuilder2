@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       this.Loader.hideRoot();
       console.log(this.rootScope)
-      this.Toast.show("Welcome to dash board", 5000, "is-info")
+      ///this.Toast.show("Welcome to dash board", 5000, "is-info")
   }
 
 }

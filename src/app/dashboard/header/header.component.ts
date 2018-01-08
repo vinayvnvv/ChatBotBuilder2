@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   isMenu: boolean = false;
   isGetBotModal: boolean = false;
+  atTop: boolean = true;
   constructor(
        public rootScope: RootScope,
        private authService: AuthService,
@@ -19,11 +20,22 @@ export class HeaderComponent implements OnInit {
   	) { }
 
   ngOnInit() {
+    this.listenOnBodyScroll();
   }
 
   logout() {
   		this.authService.logout();
   		this.router.navigate(['login']);
   }
+
+  listenOnBodyScroll() {
+    window.addEventListener("scroll", (e) => {
+      let el:HTMLElement = e.target['scrollingElement'];
+      if(el.scrollTop == 0)
+        this.atTop = true;
+      else this.atTop = false;
+    });
+
+}
 
 }

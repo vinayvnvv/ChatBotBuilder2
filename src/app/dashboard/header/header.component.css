@@ -4,5 +4,10 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 6px 10px 0 rgba(0, 0, 0, 0.06), 0 1px 18px 0 rgba(0, 0, 0, 0.03)
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.08), 0 6px 10px 0 rgba(0, 0, 0, 0.06), 0 1px 18px 0 rgba(0, 0, 0, 0.03);
+	transition: 0.3s all;
+}
+.nav.at-top {
+	background-color: #fafbfc;
+	box-shadow: none;
 }

@@ -19,11 +19,17 @@
 			  </span>
 			  <!-- Add the modifier "is-active" to display it on mobile -->
 			  <div class="nav-right nav-menu" [class.is-active] = "isMenu">
-			    <a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
+			    <a class="nav-item" href="#features">
 			      <!-- <span class="icon" >
 			        <i class="fa fa-twitter"></i>
 			      </span> -->
 			      Features
+			    </a>
+			    <a class="nav-item" [routerLink]="['/dashboard']">
+			      <span class="icon is-small">
+			        <i class="fa fa-wrench" aria-hidden="true"></i>
+			      </span>&nbsp;
+			      Manage
 			    </a>
 			  	<a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
 			      <span class="icon" >
@@ -33,7 +39,7 @@
 			    <div class="nav-item">
 			      <div class="field is-grouped">
 			        <p class="control">
-			          <a class="button is-primary is-inverted" (click)="logout()" >
+			          <a class="button is-primary is-inverted" [routerLink]="['/dashboard']" >
 			            <span class="icon is-small">
 			              <i class="fa fa-power-off"></i>
 			            </span>
@@ -57,8 +63,8 @@
 		       An automated <b>chat-bots</b> based on the flows.
 		      </h2>
 		      <div>
-		      	<a class="button is-black iss-outlined" (click)="logout()" >Create for Free</a>&nbsp;&nbsp;
-		      	<a class="button is-primary is-inverted">Register</a>
+		      	<a class="button is-black iss-outlined" [routerLink]="['/dashboard']">Create for Free</a>&nbsp;&nbsp;
+		      	<a class="button is-primary is-inverted" [routerLink]="['/dashboard']">Register</a>
 		      </div>
 		    </div>
 		    <div class="column is-6 img-sec is-hidden-mobile">
@@ -69,7 +75,7 @@
 	  </div>
 	</section>
 
-	<section class="features _pd">
+	<section class="features _pd" id="features">
 		<div class="container">
 		   <div class="_ftrs _ovlpd">	
 				<div class="_t_bar has-text-centered">
@@ -110,7 +116,7 @@
 				       <b> One JS Snippet all that works!</b>
 				    </h1>
 			      <h2 class="subtitle">
-			        Just insert the snippet which will convert into your bot and auto initiated.
+			        Just insert the snippet which will convert into your bot and auto will start.
 			      </h2>
 			  	</div>
 			  </div>
@@ -124,12 +130,12 @@
 		   <div class="_ftrs">	
 				<div class="_t_bar has-text-centered">
 					<h1 class="title _ttl has-text-weight-bold">
-				       Features
+				       What's Special?
 				    </h1>
 				    <div class="_dvdr"></div>
 				</div>
 				<div class="columns is-multiline _bd">
-					<div class='column is-4 has-text-centered' *ngFor="let item of featuresData">
+					<div class='column is-4 has-text-centered' *ngFor="let item of specialData">
 						<div class="_itm">
 							<div class="_ic">
 								<i class="{{item.icon}}" aria-hidden="true"></i>
@@ -151,7 +157,7 @@
 		<section class="hero" style="background-color: transparent;">
 		  <div class="hero-body">
 		    <div class=" has-text-centered">
-		    	<a class='button is-primary is-large'>Create For Free</a>
+		    	<a class='button is-primary is-large _shadow' [routerLink]="['/dashboard']">Create For Free</a>
 		    </div>
 		  </div>
 		</section>
