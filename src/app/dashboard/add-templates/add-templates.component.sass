@@ -1,0 +1,48 @@
+$_template_color: #e0e0e0
+$_template_color_hover: #c6c6c6
+._template
+ & ._item_out
+ 	padding: 21px
+ 	& ._item
+	 	min-height: 190px
+	 	border: 9px solid $_template_color
+	 	border-radius: 5px
+	 	cursor: pointer
+	 	transition: 0.2777s all
+	 	background-color: #f9f9f961
+	 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12)
+	 	&:hover
+	 		border-color: $_template_color_hover
+	 		& ._txt
+	 			background-color: $_template_color_hover
+	 	& ._ic
+	 		display: flex
+	 		height: 142px
+	 		display: flex
+	 		align-items: center
+	 		justify-content: center
+	 		& i
+	 			font-size: 61px
+	 			color: #b4b4b4
+	 	& ._txt
+	 		display: flex
+	 		min-height: 30px
+	 		display: flex
+	 		align-items: center
+	 		justify-content: center
+	 		background-color: $_template_color
+	 		transition: 0.2777s all
+	 	&._loader
+	 		border-color: transparent
+	 		& ._ic
+	 			& span
+	 				min-width: 60px
+	 				min-height: 60px
+	 				border-radius: 50em
+	 				background-color: $_template_color
+	 		& ._txt
+	 			background-color: transparent
+	 			& span
+	 				width: 60%
+	 				background-color: $_template_color
+	 				height: 21px

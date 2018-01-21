@@ -1,0 +1,31 @@
+<div class='templates'>
+	<br/><br/>
+	<h2>Templates</h2>
+	<button (click)="insertTemplateModal()">Add Templates</button>
+	<table class="data-tbl">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Module</th>
+				<th>Used</th>
+				<th>Created</th>
+				<th>Updated</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of templates">
+				<td>{{item.name}}</td>
+				<td>{{item.module}}</td>
+				<td class="text-right">{{item.statastics.used}}</td>
+				<td>{{item.timestamp.created | date}}</td>
+				<td>{{item.timestamp.updated | date}}</td>
+				<td><button (click)="editTemplateModal(item)">Edit</button>&nbsp;<button (click)="deleteTemplateModal(item)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<app-add-template [(visible)]="templateModal.open" [action]="templateModal.action" [editData]="templateModal.data" (onClose)="onInsertTemplateModalClose($event)"></app-add-template>
+

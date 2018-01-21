@@ -1,12 +1,21 @@
-class ModuleFlow {
-      public name;
-      public msg;
-      public beforeMsg;
-      public afterMsg;
-      public validate;
-      public validateErrMsg;
+export class ValidateParams {
+  public pattern: string;
+}
+
+export class ValidateModule {
+  public type: string;
+  public errMsg: Array<string> = [];
+  public params: ValidateParams;
+}
+
+export class ModuleFlow {
+      public name: string;
+      public msg: Array<string> = [];
+      public beforeMsg: Array<string> = [];
+      public afterMsg: Array<string> = [];
+      public validate: ValidateModule;
       public shortcut;
-      public shortcutData;
+      public shortcutData: Array<string> = [];
 }
 
 class InitBot {
@@ -44,12 +53,13 @@ export class Models {
 
        if(m.validate == undefined || m.validate == '' || m.validate == null || m.validate == 'none' ) {
        	  model.validate = null;
-       	  model.validateErrMsg = [];
+       	  //model.validate.errMsg = [];
 
        	} else { 
-       		model.validate = m.validate;
-       		if(m.validateErrMsg == undefined || m.validateErrMsg == '' || m.validateErrMsg == null || m.validateErrMsg.length == 0) model.validateErrMsg = [];
-       		else model.validateErrMsg = m.validateErrMsg;
+          model.validate = new ValidateModule();
+       		model.validate.type = m.validate;
+       		if(m.validateErrMsg == undefined || m.validateErrMsg == '' || m.validateErrMsg == null || m.validateErrMsg.length == 0) model.validate.errMsg = [];
+       		else model.validate.errMsg = m.validateErrMsg;
 
        	}
 

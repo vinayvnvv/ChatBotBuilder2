@@ -32,7 +32,9 @@ export class StringsService {
 			createModules: this.origin + "api/manager/modules/create/",
 			updateInitBot : this.origin + "api/manager/modules/init/",
 			getInitBot : this.origin + "api/manager/modules/init_bot/",
-			initBotDB : this.origin + "api/manager/modules/init_db/"
+			initBotDB : this.origin + "api/manager/modules/init_db/",
+			getTemplates : this.origin + "api/admin/templates",
+			copyTemplates: this.origin + "api/admin/templates/copy"
 	};
 
 	    this.validationTypeArray = [

@@ -6,6 +6,7 @@ import { StringsService } from './../services/strings.service';
 import { Models } from './../services/models'; 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Toast } from './../services/common.services';
+import { DashboardComponent } from './../dashboard/dashboard.component';
 @Component({
   selector: 'app-get-bot',
   templateUrl: './get-bot.component.html',
@@ -49,7 +50,8 @@ export class GetBotComponent implements OnInit {
       private http: Http,
       private Strings: StringsService,
       private Models: Models,
-      private Toast: Toast
+      private Toast: Toast,
+      private dashboard: DashboardComponent
   	) { 
   }
 
@@ -93,6 +95,7 @@ export class GetBotComponent implements OnInit {
             (res) => {
                 this.isUpdatingInitData = false;
                 this.Toast.show("Bot Setup is updated!", 4000, "is-success");
+                this.dashboard.loadTestBot();
             },
             (err) => {
                 this.isUpdatingInitData = false;

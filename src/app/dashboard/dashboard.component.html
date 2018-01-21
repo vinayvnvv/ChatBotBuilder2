@@ -15,7 +15,7 @@
 				    <div class="nav-item">
 				      <div class="field is-grouped">
 				        <p class="control">
-				          <a [routerLink]="['add-flow']" class="button is-primary is-outlined" id="add_flow">
+				          <a (click)="openAddTemplateModal()" class="button is-primary is-outlined" id="add_flow">
 				            <span class="icon">
 				              <i class="fa fa-plus"></i>
 				            </span>
@@ -56,6 +56,12 @@
     </div>
   </div>
 </footer>
+
+
+
+<!-- modals -->
+
+<app-add-templates *ngIf="addTemplateModal.open" [(visible)]="addTemplateModal.open"></app-add-templates>
 
 
 

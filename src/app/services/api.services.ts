@@ -45,6 +45,16 @@ export class ApiService {
                     .map(this.extractData);
     }
 
+    getTemplates(): Observable<any> {
+        return this._http.get(this.String.apis.getTemplates)
+                    .map(this.extractData);
+   }
+
+   copyModule(id): Observable<any> {
+    return this._http.post(this.String.apis.copyTemplates + "/" + id + "/" + this.rootScope._auth_user.id , {})
+                    .map(this.extractData);
+    }
+
    
 
   private extractData(res: Response) {

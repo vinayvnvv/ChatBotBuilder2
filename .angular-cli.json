@@ -5,8 +5,10 @@
   },
   "apps": [
     {
+      "name": "dashboard",
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/dashboard",
+      "deployUrl": "dashboard/",
       "assets": [
         "assets",
         "favicon.ico"
@@ -27,6 +29,33 @@
       "scripts": [
         "assets/libs/toggle-class.js",
         "assets/libs/sticky.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "admin",
+      "root": "src",
+      "outDir": "dist/admin",
+      "deployUrl": "admin/",
+      "assets": [
+        "admin-app/assets",
+        "favicon.ico"
+      ],
+      "index": "admin-app/index.html",
+      "main": "admin-app/main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "admin-app/styles.sass"
+      ],
+      "scripts": [
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

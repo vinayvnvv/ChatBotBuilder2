@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentRef } from '@angular/core';
 import { RootScope } from './../../services/root.scope';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.listenOnBodyScroll();
+    
   }
 
   logout() {

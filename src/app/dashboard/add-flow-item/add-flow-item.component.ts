@@ -4,8 +4,10 @@ import { Loader, Toast, Utility} from './../../services/common.services';
 import { ApiService } from './../../services/api.services';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StringsService } from './../../services/strings.service';
-import { Models } from './../../services/models';
+import { Models, ModuleFlow, ValidateModule, ValidateParams } from './../../services/models';
 import { ServicesViewComponent } from './childs/services-view.component';
+import { RootScope } from '../../services/root.scope';
+
  
 
 @Component({
@@ -41,6 +43,7 @@ export class AddFlowItemComponent implements OnInit {
   isFinalModal: boolean = false;
   isFinalModalUpdating:boolean = false;
   selectedTab:string = "flow";
+  flowEditData: ModuleFlow = new ModuleFlow();
   flowItemDeleteStatus = {
        isModal: false,
        index: -1,
@@ -54,7 +57,8 @@ export class AddFlowItemComponent implements OnInit {
        private zone: NgZone,
        private String: StringsService,
        private Models: Models,
-       private Utility: Utility
+       private Utility: Utility,
+       private rootScope: RootScope
   	) { }
 
   @ViewChild('ServicesViewComponent') public ServicesViewComponent: ServicesViewComponent
@@ -167,15 +171,37 @@ export class AddFlowItemComponent implements OnInit {
 
     };
     openEditFlowItem(index, type) {
-      this.buildForm();
+      //this.buildForm();
+      this.flowEditData = new ModuleFlow();
       this.msg_sub_err = false;
-      this.isActiveModal = true;
       this.editFlowItemIndex = index;
       this.updateFlowType = type;
       if(type == 'edit') {
-        this.createFlowItemForm.setValue(this.flowData.modules[index]);
-        if(this.createFlowItemForm.value.validate == null) this.createFlowItemForm.patchValue({validate: this.String.validationTypeArray[0].value});
-        if(this.createFlowItemForm.value.shortcut == null) this.createFlowItemForm.patchValue({shortcut: this.String.suggestionTypeArray[0].value});
+
+        this.flowEditData = this.flowData.modules[index];
+        if(this.flowEditData.validate == null) {
+          this.flowEditData.validate = new ValidateModule();
+          this.flowEditData.validate.type = this.String.validationTypeArray[0].value;
+          this.flowEditData.validate.params = new ValidateParams();
+          //this.createFlowItemForm.patchValue({validate: this.String.validationTypeArray[0].value});
+        } 
+        if(this.flowEditData.shortcut == null) {
+          this.flowEditData.shortcut = this.String.suggestionTypeArray[0].value;
+          //this.createFlowItemForm.patchValue({shortcut: this.String.suggestionTypeArray[0].value});
+        }
+
+        this.isActiveModal = true;
+        
+        // this.createFlowItemForm.setValue(this.flowData.modules[index]);
+        // if(this.createFlowItemForm.value.validate == null) this.createFlowItemForm.patchValue({validate: this.String.validationTypeArray[0].value});
+        // if(this.createFlowItemForm.value.shortcut == null) this.createFlowItemForm.patchValue({shortcut: this.String.suggestionTypeArray[0].value});
+      } else {
+
+        this.flowEditData.validate = new ValidateModule();
+        this.flowEditData.validate.params = new ValidateParams();
+        this.flowEditData.validate.type = this.String.validationTypeArray[0].value;
+        this.flowEditData.shortcut = this.String.suggestionTypeArray[0].value;
+        this.isActiveModal = true;
       }
     }
 

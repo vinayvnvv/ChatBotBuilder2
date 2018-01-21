@@ -3,7 +3,7 @@ import { StringsService } from './../services/strings.service';
 import { RootScope } from './../services/root.scope';
 import { Loader, Toast, Utility } from './../services/common.services';
 import { environment } from './../../environments/environment';
-
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +14,17 @@ import { environment } from './../../environments/environment';
 export class DashboardComponent implements OnInit {
 
    d_a = "vinay";
+   addTemplateModal = {
+     open: false
+   };
 
   constructor(
   				private String: StringsService,
   				private rootScope: RootScope,
   				private Loader: Loader,
           private Toast: Toast,
-          private utility: Utility
+          private utility: Utility,
+          private router: Router
   			 ) {  
   						
   		       }
@@ -38,6 +42,12 @@ export class DashboardComponent implements OnInit {
     e.setAttribute('chat-bot-id', this.utility.getBotId(this.rootScope));
     e.setAttribute('test-bot', 'true');
     document.body.appendChild(e);
+  }
+
+
+  openAddTemplateModal() {
+    this.router.navigate(['dashboard/add-flow']);
+    this.addTemplateModal.open = true;
   }
 
 

@@ -1,0 +1,40 @@
+.app-modal
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	left: 0
+	overflow: hidden
+	z-index: 999
+	display: flex
+	align-items: center
+	justify-content: center
+	& .back-drop
+		width: 100%
+		height: 100%
+		position: fixed
+		left: 0
+		top: 0
+		background: #000
+		opacity: 0.2
+		z-index: 1
+	& .modal
+		z-index: 2
+		background: #fff
+		min-width: 200px
+		max-width: 890px
+		width: 100%
+		&>.modal-header
+			height: 52px
+			display: flex
+			align-items: center
+			padding: 0 11px
+			font-size: 19px
+		&>.modal-body
+			padding: 11px
+		&>.modal-footer
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			padding: 0 11px
+			height: 32px

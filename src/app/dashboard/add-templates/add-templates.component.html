@@ -1,0 +1,34 @@
+<div class="modal is-active">
+  <div class="modal-background" (click)="!isCoping && closeModal(true)"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Select Template</p>
+      <button class="delete" aria-label="close" (click)="!isCoping && closeModal(true)"></button>
+    </header>
+    <section class="modal-card-body">
+      <sub-loader *ngIf="isCoping" loader-title="Copying Flow.."></sub-loader>
+      <div *ngIf="!isCoping" class="_template columns is-multiline is-variable is-6">
+      	<div class="column is-4 _item_out" *ngFor="let item of templates" (click)="copyTemplates(item)">
+      		<div class="_item">
+      			<div class="_ic"><i class="fa fa-plus-square-o" aria-hidden="true"></i></div>
+      			<div class="_txt">{{item.name}}</div>
+      		</div>
+      	</div>
+      	<div class="column is-4 _item_out" *ngIf="isProgress">
+      		<div class="_item _loader">
+      			<div class="_ic">
+      				<span class='reading-loader'></span>
+      			</div>
+      			<div class="_txt">
+      				<span class="reading-loader"></span>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+    </section>
+    <!-- <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button" (click)="closeModal()" >Cancel</button>
+    </footer> -->
+  </div>
+</div>

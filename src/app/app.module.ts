@@ -39,6 +39,7 @@ import { AutoTag } from './directives/auto-tag';
 import { GetBotComponent } from './get-bot/get-bot.component';
 import { ModulesLoaderComponent } from './directives/modules-loader/modules-loader.component';
 import { HomeComponent } from './home/home.component';
+import { AddTemplatesComponent } from './dashboard/add-templates/add-templates.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { HomeComponent } from './home/home.component';
     AutoTag,
     GetBotComponent,
     ModulesLoaderComponent,
-    HomeComponent
+    HomeComponent,
+    AddTemplatesComponent,
   ],
   imports: [
     BrowserModule,

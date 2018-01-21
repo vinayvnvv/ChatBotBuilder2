@@ -75,7 +75,7 @@
 		   			<div class="details">	
 		   				<div class="row"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Created at: <b>{{item.timestamp_created.at | amTimeAgo}}</b></div>
 		   				<div class="row"><span class="icon is-small"><i class="fa fa-check-square" aria-hidden="true"></i></span> Triggerd <b>{{item.statastics.triggered}}</b> times</div>
-		   				<div class="row" *ngIf="item.statastics.triggered>0"><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Last triggered <b>{{item.statastics.triggeredAt | amTimeAgo}}</b></div>
+		   				<div class="row" ><span class="icon is-small"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Last triggered <b> {{(item.statastics.triggered>0) ? (item.statastics.triggeredAt | amTimeAgo) : 'not yet triggered'}}</b></div>
 		   			</div>
 		   		</div>
 		   		<div class="footer">

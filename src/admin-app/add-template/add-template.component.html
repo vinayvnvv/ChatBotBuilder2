@@ -1,0 +1,30 @@
+<div class="app-modal" *ngIf="visible">
+	<div class="back-drop"></div>
+	<div class="modal">
+		<div class="modal-header">{{action | uppercase}} Templae</div>
+		<div class="modal-body">
+			<form [formGroup]="addForm">
+				<div>
+					<div>Name:</div>
+					<div><input type="text" formControlName="name" [(ngModel)]="formVars.name"/></div>
+					<div class="err" *ngIf="(addForm.controls.name.invalid && addForm.controls.name.touched) || (showFormErrs && addForm.controls.name.invalid)">
+						Required field!
+					</div>
+				</div>
+				<div>
+					<div>Module:</div>
+					<div><textarea rows="5" formControlName="module" [(ngModel)]="formVars.module"></textarea></div>
+					<div class="err" *ngIf="(addForm.controls.module.invalid && addForm.controls.module.touched) || (showFormErrs && addForm.controls.module.invalid)">
+						Required field!
+					</div>
+				</div>
+			</form>
+
+		</div>
+		<div class="modal-footer">
+			<button (click)="submitForm(addForm)" *ngIf="!isprogress">{{action}}</button>&nbsp;
+			<button (click)="closeModal()" *ngIf="!isprogress">Close</button>
+			<span *ngIf="isprogress">Inserting...</span>
+		</div>
+	</div>
+</div>

@@ -17,5 +17,8 @@ export class RootScope {
 	};
 
 
+
+
+
 	
 }

@@ -142,7 +142,7 @@
 						 <div class="msgs border-left-primary">
 							 <div class="item" *ngFor="let m of item.msg">{{m}}</div>
 						 </div>
-						 <div class="others">Validation : <span>{{item.validate ? item.validate : 'No validations added'}}</span></div>
+						 <div class="others">Validation : <span>{{item.validate ? item.validate.type : 'No validations added'}}</span></div>
 						 <div class="others">Suggestions : <span>{{item.shortcut ? item.shortcut : 'No suggestions added'}}</span></div>
 					 </div>
 					 <div class="footer">
@@ -269,7 +269,7 @@
          <div class="input-container">
          	<div class="label">Name Of the Module *</div>
          	<div class="field">
-         		<input type="text" formControlName="name" auto-tag [autoTagValue]="constructAutoList()"/>
+         		<input type="text" formControlName="name" auto-tag [autoTagValue]="constructAutoList()" [(ngModel)]="flowEditData.name"/>
          	</div>
          	<div class="err" *ngIf="formErrors.name">{{formErrors.name}}</div>
          </div>
@@ -277,7 +277,7 @@
           <div class="input-container no-style">
          	<div class="label">Module Message *	</div>
          	<div class="field">
-         		<tag-input (onFocus)="msg_sub_err = true" class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
+         		<tag-input (onFocus)="msg_sub_err = true" class='tooltip' formControlName="msg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true" [(ngModel)]="flowEditData.msg">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
@@ -289,7 +289,7 @@
          <div class="input-container no-style">
          	<div class="label">Before Message</div>
          	<div class="field">
-         		<tag-input class='tooltip' formControlName="beforeMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
+         		<tag-input class='tooltip' formControlName="beforeMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [(ngModel)]="flowEditData.beforeMsg" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
@@ -299,7 +299,7 @@
          <div class="input-container no-style">
          	<div class="label">After Message</div>
          	<div class="field">
-         		<tag-input class='tooltip' formControlName="afterMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
+         		<tag-input class='tooltip' [(ngModel)]="flowEditData.afterMsg" formControlName="afterMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Msgs'" [editable]="true" [modelAsStrings]="true">  
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
@@ -314,13 +314,13 @@
 			  <div class="column">
                <div class="input-container">
 			    <span class="select">
-							<select formControlName="validate">
+							<select formControlName="validate" [(ngModel)]="flowEditData.validate.type">
 			        <option *ngFor="let v of validationTypeArray" value="{{v.value}}">{{v.title}}</option>
 			      </select>
 			    </span>
 
 			    <div *ngIf="createFlowItemForm.value.validate != 'none'">
-                      <tag-input (onFocus)="v_msg_sub_err = true" class='tooltip' formControlName="validateErrMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Validate Msgs *'" [editable]="true" [modelAsStrings]="true">  
+                      <tag-input [(ngModel)]="flowEditData.validate.errMsg" (onFocus)="v_msg_sub_err = true" class='tooltip' formControlName="validateErrMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Validate Msgs *'" [editable]="true" [modelAsStrings]="true">  
 		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
 		              </tag-input>
 		              <div class="err" *ngIf="formErrors.validateErrMsg"><br/>{{formErrors.validateErrMsg}}</div>
@@ -341,14 +341,14 @@
 			  <div class="column">
 			   <div class="input-container">
 			    <span class="select">
-			      <select formControlName="shortcut">
+			      <select formControlName="shortcut" [ngModel]="flowEditData.shortcut">
 			        <option *ngFor="let s of suggestionTypeArray" value="{{s.value}}">{{s.title}}</option>
 			      </select>
 			    </span>
 
 
 			    <div *ngIf="createFlowItemForm.value.shortcut != 'none'">
-                      <tag-input (onFocus)="s_msg_sub_err = true"  class='tooltip' formControlName="shortcutData" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Suggestion Items *'" [editable]="true" [modelAsStrings]="true">  
+                      <tag-input [(ngModel)]="flowEditData.shortcutData" (onFocus)="s_msg_sub_err = true"  class='tooltip' formControlName="shortcutData" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Suggestion Items *'" [editable]="true" [modelAsStrings]="true">  
 		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
 		              </tag-input>
 		              <div class="err" *ngIf="formErrors.shortcutData"><br/>{{formErrors.shortcutData}}</div>
