@@ -40,6 +40,7 @@ import { GetBotComponent } from './get-bot/get-bot.component';
 import { ModulesLoaderComponent } from './directives/modules-loader/modules-loader.component';
 import { HomeComponent } from './home/home.component';
 import { AddTemplatesComponent } from './dashboard/add-templates/add-templates.component';
+import { FixAtTop } from './directives/fix-at-top.directive';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AddTemplatesComponent } from './dashboard/add-templates/add-templates.c
     ModulesLoaderComponent,
     HomeComponent,
     AddTemplatesComponent,
+    FixAtTop
   ],
   imports: [
     BrowserModule,

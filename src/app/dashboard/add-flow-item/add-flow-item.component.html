@@ -1,7 +1,7 @@
 <div class="section container">
 	<div class="columns">
 	  <div class="column is-3 r-border">
-	    <div stick-from-top="0">
+	    <div fix-at-top [topDistance]="77">
          <nav class="panel">
 			  <p class="panel-heading">
 			    {{flowData.name || 'Loading...'}}
@@ -45,7 +45,7 @@
 	  <div class="column is-9">
 
 	    <!-- tabs -->
-	    <div class="tabs" stick-from-top="0">
+	    <div class="tabs">
 		  <ul>
 		    <li [class.is-active]="selectedTab == 'flow'" (click)="selectedTab = 'flow'"><a>Flow</a></li>
 		    <li [class.is-active]="selectedTab == 'service'" (click)="selectedTab = 'service'"><a>Services</a></li>
@@ -318,6 +318,15 @@
 			        <option *ngFor="let v of validationTypeArray" value="{{v.value}}">{{v.title}}</option>
 			      </select>
 			    </span>
+
+
+			    <div *ngIf="createFlowItemForm.value.validate == 'pattern'">
+			    	  <div class="field">
+				    	  <input type="text" formControlName="validatePattern"  [(ngModel)]="flowEditData.validate.params.pattern" placeholder="Add Pattern" />
+				      </div>
+		              <div class="err" *ngIf="formErrors.validatePattern"><br/>{{formErrors.validatePattern}}</div>
+		              <div class="err" *ngIf="v_msg_sub_err && (createFlowItemForm.value.validatePattern == '' || !createFlowItemForm.value.validatePattern)"><br/>{{validationMessages.validatePattern.required}}</div>
+			    </div>
 
 			    <div *ngIf="createFlowItemForm.value.validate != 'none'">
                       <tag-input [(ngModel)]="flowEditData.validate.errMsg" (onFocus)="v_msg_sub_err = true" class='tooltip' formControlName="validateErrMsg" [placeholder]="'+ Add'" [secondaryPlaceholder]="'Add Validate Msgs *'" [editable]="true" [modelAsStrings]="true">  

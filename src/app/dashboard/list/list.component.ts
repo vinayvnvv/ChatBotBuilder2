@@ -53,6 +53,8 @@ export class ListComponent implements OnInit {
 
 
   getModules() {
+    this.Modules = null;
+    this.filteredModulesData = null;
   	this.Api.getModules()
                  .subscribe(
                              res => { 

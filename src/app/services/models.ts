@@ -60,6 +60,15 @@ export class Models {
        		model.validate.type = m.validate;
        		if(m.validateErrMsg == undefined || m.validateErrMsg == '' || m.validateErrMsg == null || m.validateErrMsg.length == 0) model.validate.errMsg = [];
        		else model.validate.errMsg = m.validateErrMsg;
+          if(m.validate == 'pattern') {
+            model.validate.params = new ValidateParams();
+            if(m.validatePattern == undefined || m.validatePattern == '' || m.validatePattern == null) {
+              model.validate.params.pattern = '';
+            } else{
+              model.validate.params.pattern = m.validatePattern;
+            }
+          }
+           
 
        	}
 

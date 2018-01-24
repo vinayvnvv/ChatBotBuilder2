@@ -112,6 +112,7 @@ export class AddFlowItemComponent implements OnInit {
        afterMsg: new FormControl([], []),
        validate: new FormControl(this.validationTypeArray[0].value,[]),
        validateErrMsg: new FormControl([],[]),
+       validatePattern: new FormControl('',[]),
        shortcut: new FormControl(this.suggestionTypeArray[0].value,[]),
        shortcutData: new FormControl([],[]),
 
@@ -151,6 +152,7 @@ export class AddFlowItemComponent implements OnInit {
         'name': '',
         'msg': '',
         'validateErrMsg':'',
+        'validatePattern':'',
         'shortcutData':''
     };
 
@@ -164,6 +166,9 @@ export class AddFlowItemComponent implements OnInit {
         },
         'validateErrMsg': {
             'required': 'Specify atleast one Validation error message.'
+        },
+        'validatePattern': {
+            'required': 'Please enter pattern.'
         },
         'shortcutData': {
             'required': 'Specify atleast one Suggestion item.'
@@ -185,6 +190,9 @@ export class AddFlowItemComponent implements OnInit {
           this.flowEditData.validate.params = new ValidateParams();
           //this.createFlowItemForm.patchValue({validate: this.String.validationTypeArray[0].value});
         } 
+        if(this.flowEditData.validate != null && this.flowEditData.validate.params == null) {
+          this.flowEditData.validate.params = new ValidateParams();
+        }
         if(this.flowEditData.shortcut == null) {
           this.flowEditData.shortcut = this.String.suggestionTypeArray[0].value;
           //this.createFlowItemForm.patchValue({shortcut: this.String.suggestionTypeArray[0].value});
@@ -246,6 +254,7 @@ export class AddFlowItemComponent implements OnInit {
      return  (
                (this.createFlowItemForm.invalid) || 
                (this.createFlowItemForm.value.validate != 'none' && this.createFlowItemForm.value.validateErrMsg.length==0) || 
+               (this.createFlowItemForm.value.validate == 'pattern' && (this.createFlowItemForm.value.validatePattern=='' || !this.createFlowItemForm.value.validatePattern)) ||
                (this.createFlowItemForm.value.shortcut != 'none' && this.createFlowItemForm.value.shortcutData.length==0)
              );
    }

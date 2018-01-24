@@ -40,7 +40,8 @@ export class StringsService {
 	    this.validationTypeArray = [
 	                             {title:"None", value:"none"},
 		                         {title:"Number", value:"number"},
-		                         {title:"Email", value:"email"}
+		                         {title:"Email", value:"email"},
+		                         {title:"Pattern", value:"pattern"}
 		                       ];
 	
 		this.suggestionTypeArray = [
