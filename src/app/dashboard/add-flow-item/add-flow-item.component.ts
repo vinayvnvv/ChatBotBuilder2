@@ -49,6 +49,10 @@ export class AddFlowItemComponent implements OnInit {
        index: -1,
        updating: false
   }
+  isNameEdit = {
+    show: false,
+    loading: false
+  };
   constructor(
        private activeRouter: ActivatedRoute,
        private Loader: Loader,
@@ -211,6 +215,28 @@ export class AddFlowItemComponent implements OnInit {
         this.flowEditData.shortcut = this.String.suggestionTypeArray[0].value;
         this.isActiveModal = true;
       }
+    }
+
+    updateFlowName(form) {
+      console.log(form.value.name)
+      var data = { name: form.value.name };
+      this.isNameEdit.loading = true;
+      this.Api.updateModule(this.flowData._id, data) 
+                   .subscribe(
+                        res => {
+                                   this.isNameEdit.loading = false;
+                                   this.flowData.name = form.value.name;
+                                   this.isNameEdit.show = false;
+                                   this.Toast.show("Name Updated", 4000, "is-success");
+                                  
+                               },
+                        err => {
+                                    this.isNameEdit.loading = false;
+                                    this.Toast.show("Error in Server,  Please try again!", 4000, "is-error");
+                               }  
+                             );      
+
+
     }
 
     

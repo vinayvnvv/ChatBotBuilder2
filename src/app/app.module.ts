@@ -41,6 +41,7 @@ import { ModulesLoaderComponent } from './directives/modules-loader/modules-load
 import { HomeComponent } from './home/home.component';
 import { AddTemplatesComponent } from './dashboard/add-templates/add-templates.component';
 import { FixAtTop } from './directives/fix-at-top.directive';
+import { SugShowerComponent } from './directives/sug-shower/sug-shower.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FixAtTop } from './directives/fix-at-top.directive';
     ModulesLoaderComponent,
     HomeComponent,
     AddTemplatesComponent,
-    FixAtTop
+    FixAtTop,
+    SugShowerComponent,
   ],
   imports: [
     BrowserModule,

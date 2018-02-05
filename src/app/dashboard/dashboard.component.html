@@ -44,6 +44,8 @@
 </div>
 
 
+
+
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
@@ -61,7 +63,8 @@
 
 <!-- modals -->
 
-<app-add-templates *ngIf="addTemplateModal.open" [(visible)]="addTemplateModal.open"></app-add-templates>
+<app-add-templates *ngIf="addTemplateModal.open" [(visible)]="addTemplateModal.open" ></app-add-templates>
+<app-sug-shower [position]="testBotSug" [title]="'You can test the bot here!!'" [timeout]="3700" [delay]="2000"></app-sug-shower>
 
 
 

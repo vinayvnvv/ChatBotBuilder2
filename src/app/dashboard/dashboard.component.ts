@@ -4,6 +4,7 @@ import { RootScope } from './../services/root.scope';
 import { Loader, Toast, Utility } from './../services/common.services';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
+import { SugPosition } from './../directives/sug-shower/sug-shower.component';
  
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
    addTemplateModal = {
      open: false
    };
+   testBotSug: SugPosition;
 
   constructor(
   				private String: StringsService,
@@ -32,7 +34,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       this.Loader.hideRoot();
       this.loadTestBot();
+      this.initTestBotSug();
       ///this.Toast.show("Welcome to dash board", 5000, "is-info")
+  }
+
+  initTestBotSug() {
+    this.testBotSug = new SugPosition();
+    this.testBotSug.bottom = 0;
+    this.testBotSug.right = 0;
+    this.testBotSug.height = 60;
+    this.testBotSug.width = 100;
+    this.testBotSug.leftToRight = false;
+    this.testBotSug.topToBottom = false;
   }
 
   loadTestBot() {

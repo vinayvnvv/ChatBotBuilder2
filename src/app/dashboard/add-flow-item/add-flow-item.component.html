@@ -3,9 +3,26 @@
 	  <div class="column is-3 r-border">
 	    <div fix-at-top [topDistance]="77">
          <nav class="panel">
-			  <p class="panel-heading">
-			    {{flowData.name || 'Loading...'}}
-			  </p>
+         	  <div class="loader-bar" *ngIf="isNameEdit.loading"></div>
+			  <div class="panel-heading">
+			  	<div *ngIf="!isNameEdit.show">
+				    <span>{{flowData.name || 'Loading...'}}</span>
+				    <button (click)="isNameEdit.show = true" class="button is-primary is-small is-outlined">Edit</button>
+				</div>
+			    <div class="input-container" *ngIf="isNameEdit.show">
+			    	<form  #nameForm="ngForm">
+					    <div class="field">
+			         		<input type="text" name="name" [ngModel]="flowData.name" [attr.autofocus]="isNameEdit.show" required minlength="3" />
+			         	</div>
+			         	<div class="err" *ngIf="nameForm.invalid">Name Should contain more than 3 letters!</div>
+			         	 <div *ngIf="!isNameEdit.loading">
+					         <button (click)="updateFlowName(nameForm)" class="button is-primary is-small " [disabled]="nameForm.invalid">Save</button>
+					         <button (click)="isNameEdit.show = false" class="button is-danger is-small is-outlined">Cancel</button>
+					     </div>
+					 </form>
+		         </div>
+
+			  </div>
 			  <span class="panel-block" *ngIf="isLoadingFlow">
 			  	<div class="loader-bar"></div>
 			  </span>
@@ -82,16 +99,13 @@
 
 
           <div class="end-card-content" *ngIf="flowData.welcome.msg">
-              <div class="box flow-card" [class.is-loading]="i==4">
+              <div class="flow-card" [class.is-loading]="i==4">
 	    		    <div class="loader-bar" *ngIf="i==4"></div>
 					  <article class="media">
 					    <div class="media-content">
 					      <div class="content">
-					        <p>
-					          <strong><a class="button is-outlined">Welcome Message</a></strong>
-					          <br>
-					          <span class="l-tag is-light" *ngFor="let m of flowData.welcome.msg">{{m}}</span>
-					        </p>
+					          <div class="title"><span class="text">Welcome Message</span></div>
+					          <div class="msgs border-left-primary" *ngFor="let m of flowData.welcome.msg">{{m}}</div>
 					      </div>
 					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
@@ -215,11 +229,8 @@
 					  <article class="media">
 					    <div class="media-content">
 					      <div class="content">
-					        <p>
-					          <strong><a class="button is-outlined">End Flow </a></strong>
-					          <br>
-					          <span class="l-tag is-light" *ngFor="let m of flowData.final.msg">{{m}}</span>
-					        </p>
+					      	 <div class="title"><span class="text">End Flow</span></div>
+					         <div class="msgs border-left-primary" *ngFor="let m of flowData.final.msg">{{m}}</div>
 					      </div>
 					      <nav class="level is-mobile flow-card-actions">
 					        <div class="level-left">
