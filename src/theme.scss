@@ -8,13 +8,13 @@ $blu-pri-invert: #fff;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: #00d1b2;
+$primary: #3273dc;
 $primary-invert: $blu-pri-invert;
 // Use the existing orange as the danger color
 $danger: $orange;
 // Use the new serif family
 
-$body-background: #fafbfc;
+$body-background-color: #fafbfc;
 
 $family-sans-serif :	-apple-system, BlinkMacSystemFont, "Segoe UI",
 "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
@@ -25,3 +25,4 @@ $family-sans-serif :	-apple-system, BlinkMacSystemFont, "Segoe UI",
 @import "assets/sass/vars_css.sass";
 // 4. Import the rest of Bulma
 @import "../node_modules/bulma/bulma.sass";
+

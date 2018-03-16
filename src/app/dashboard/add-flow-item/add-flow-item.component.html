@@ -31,6 +31,22 @@
 			      <i class="fa fa-share"></i>
 			    </span>
 			    <span class="tag" *ngFor="let mt of flowData.matches">{{mt}}</span>
+			    <button (click)="isMatchEdit = true" class="button is-primary is-small is-outlined">Edit</button>
+			    <span *ngIf="isMatchEdit">
+			    <multi-input-array>
+				      <ng-template #templateRef>
+				      	<div class="input-container">
+				      		<div class="field">
+				         		<input type="text" placeholder="Add Items"/>  
+				         	</div>
+					    </div>
+				      </ng-template>
+				      <ng-template #delTemplateRef>
+				        <button>x</button><br/>
+				      </ng-template>
+				      <multi-input [template]="templateRef" [deleteTemplate]="delTemplateRef" [(model)]="flowData.matches"></multi-input>
+				</multi-input-array>
+				</span>
 			  </span>
 			  <span class="panel-block" *ngIf="!isLoadingFlow">
 			    <span class="panel-icon">
@@ -276,6 +292,7 @@
     </header>
     <section class="modal-card-body">
 
+
       <form [formGroup]="createFlowItemForm" >
          <div class="input-container">
          	<div class="label">Name Of the Module *</div>
@@ -294,7 +311,7 @@
          	</div>
          	{{focused_msg}}
          	<div class="err" *ngIf="formErrors.msg">{{formErrors.msg}}</div>
-         	<div class="err" *ngIf="!formErrors.msg && msg_sub_err && createFlowItemForm.value.msg.length==0">{{validationMessages.msg.required}}</div>
+         	<div class="err" *ngIf="!formErrors.msg && msg_sub_err && createFlowItemForm.value.msg.length==0 ">{{validationMessages.msg.required}}</div>
          </div>	
 
          <div class="input-container no-style">
@@ -344,7 +361,7 @@
 		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
 		              </tag-input>
 		              <div class="err" *ngIf="formErrors.validateErrMsg"><br/>{{formErrors.validateErrMsg}}</div>
-		              <div class="err" *ngIf="v_msg_sub_err && createFlowItemForm.value.validateErrMsg.length==0"><br/>{{validationMessages.validateErrMsg.required}}</div>
+		              <div class="err" *ngIf="v_msg_sub_err && createFlowItemForm.value.validateErrMsg.length==0 "><br/>{{validationMessages.validateErrMsg.required}}</div>
 			    </div>
 
 
@@ -372,7 +389,7 @@
 		                 <span class="tooltiptext">Type and Press Enter to add items</span> 
 		              </tag-input>
 		              <div class="err" *ngIf="formErrors.shortcutData"><br/>{{formErrors.shortcutData}}</div>
-		              <div class="err" *ngIf="s_msg_sub_err && createFlowItemForm.value.shortcutData.length==0"><br/>{{validationMessages.shortcutData.required}}</div>
+		              <div class="err" *ngIf="s_msg_sub_err && createFlowItemForm.value.shortcutData.length==0 "><br/>{{validationMessages.shortcutData.required}}</div>
 			    </div>
 
 
@@ -382,8 +399,8 @@
      </form>
     </section>
     <footer class="modal-card-foot">
-      <span class="button is-success tooltip" [class.is-disabled]="(createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0)" (click)="updateFlowItem()">{{updateFlowType | uppercase}}
-      <span class="tooltiptext" *ngIf="((createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0))">Fill are required fields(*)</span> 
+      <span class="button is-primary tooltip" [class.is-disabled]="(createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0)" (click)="updateFlowItem()">{{updateFlowType | uppercase}}
+      <span class="tooltiptext" *ngIf="((createFlowItemForm.invalid) || (createFlowItemForm.value.validate != 'none' && createFlowItemForm.value.validateErrMsg.length==0) || (createFlowItemForm.value.shortcut != 'none' && createFlowItemForm.value.shortcutData.length==0)) ">Fill are required fields(*)</span> 
       </span>
       <a class="button" (click)="isActiveModal = false">Cancel</a>
     </footer>
@@ -411,14 +428,14 @@
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
-         	<div class="err" *ngIf="msg_welcome_err && createWelcomeFlowItem.value.msg.length==0">Specify atleast one message! </div>
+         	<div class="err" *ngIf="msg_welcome_err && createWelcomeFlowItem.value.msg.length==0 ">Specify atleast one message! </div>
        </div>
     </form>
 
 
     </section>
     <footer class="modal-card-foot">
-      <a class="button is-success" (click)="editWelcomeFlowItem() && msg_welcome_err = true" [class.is-loading]="isWelcomeModalUpdating">Save changes</a>
+      <a class="button is-primary" (click)="editWelcomeFlowItem() && msg_welcome_err = true" [class.is-loading]="isWelcomeModalUpdating">Save changes</a>
       <a class="button" (click)="isMelcomeModal = false" *ngIf="!isWelcomeModalUpdating">Cancel</a>
     </footer>
   </div>
@@ -445,14 +462,14 @@
                  <span class="tooltiptext">Type and Press Enter to add items</span> 
                </tag-input>
          	</div>
-         	<div class="err" *ngIf="msg_final_err && createFinalFlowItem.value.msg.length==0">Specify atleast one message! </div>
+         	<div class="err" *ngIf="msg_final_err && createFinalFlowItem.value.msg.length==0 ">Specify atleast one message! </div>
        </div>
     </form>
 
 
     </section>
     <footer class="modal-card-foot">
-      <a class="button is-success" (click)="editFinalFlowItem() && msg_final_err = true" [class.is-loading]="isFinalModalUpdating">Save changes</a>
+      <a class="button is-primary" (click)="editFinalFlowItem() && msg_final_err = true" [class.is-loading]="isFinalModalUpdating">Save changes</a>
       <a class="button" (click)="isFinalModal = false" *ngIf="!isFinalModalUpdating">Cancel</a>
     </footer>
   </div>

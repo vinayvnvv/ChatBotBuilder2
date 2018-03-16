@@ -3,15 +3,8 @@
 <dashboard-header></dashboard-header>
 
 <!-- sub nav -->
-<nav class="force-padding nav">
- <div class="container">
-		  <div class="nav-left">
-		  </div>
-
-		  <div class="nav-center">
-		  </div>
-
-		  <div class="nav-right">
+<!-- <nav class="force-padding nav"> -->
+ <div class="section container" style="display: flex;align-items: center;padding-top: 1em; padding-bottom: 0">
 				    <div class="nav-item">
 				      <div class="field is-grouped">
 				        <p class="control">
@@ -32,10 +25,10 @@
 				        </p>
 				      </div>
 				   </div>
-		  </div>
 	</div>	  
-</nav>
+<!-- </nav> -->
 <!-- sub nav end --> 
+
 
 
 
@@ -64,7 +57,7 @@
 <!-- modals -->
 
 <app-add-templates *ngIf="addTemplateModal.open" [(visible)]="addTemplateModal.open" ></app-add-templates>
-<app-sug-shower [position]="testBotSug" [title]="'You can test the bot here!!'" [timeout]="3700" [delay]="2000"></app-sug-shower>
+<app-sug-shower [position]="testBotSug" [title]="'You can test the bot here!!'" [timeout]="3700" [delay]="2000" *ngIf="environment.production"></app-sug-shower>
 
 
 

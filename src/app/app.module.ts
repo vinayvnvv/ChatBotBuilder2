@@ -7,6 +7,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MomentModule } from 'angular2-moment';
+import { MultiInputModule } from '@ng-libs/multi-input-array';    
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -42,6 +43,7 @@ import { HomeComponent } from './home/home.component';
 import { AddTemplatesComponent } from './dashboard/add-templates/add-templates.component';
 import { FixAtTop } from './directives/fix-at-top.directive';
 import { SugShowerComponent } from './directives/sug-shower/sug-shower.component';
+import { MultiInputComponent } from './directives/multi-input/multi-input.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { SugShowerComponent } from './directives/sug-shower/sug-shower.component
     AddTemplatesComponent,
     FixAtTop,
     SugShowerComponent,
+    MultiInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { SugShowerComponent } from './directives/sug-shower/sug-shower.component
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MomentModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MultiInputModule
   ],
   providers: [StringsService , RootScope, AuthGuard, AuthService],
   bootstrap: [AppComponent]

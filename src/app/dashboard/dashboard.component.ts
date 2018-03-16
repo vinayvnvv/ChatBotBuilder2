@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
      open: false
    };
    testBotSug: SugPosition;
+   environment = environment;
 
   constructor(
   				private String: StringsService,

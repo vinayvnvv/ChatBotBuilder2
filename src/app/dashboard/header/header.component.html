@@ -1,79 +1,73 @@
-<nav class="nav hero iss-primary" [class.at-top]="atTop">
+<nav class="navbar nav hero iss-primary is-transperant" [class.at-top]="atTop">
  <div class="container">
-		  <div class="nav-left">
-		    <a class="nav-item" [routerLink]="['/']">
+		  <div class="navbar-brand">
+		    <a class="navbar-item" [routerLink]="['/']">
 		      <h2 class="subtitle _title">botflow</h2>
 		    </a>
+		    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" (click)="isMenu = !isMenu" [class.is-active] = "isMenu">
+		      <span></span>
+		      <span></span>
+		      <span></span>
+		  </div>
 		  </div>
 
-		  <div class="nav-center">
-		    <!-- <a class="nav-item">
-		      <span class="icon">
-		        <i class="fa fa-github"></i>
-		      </span>
-		    </a> -->
-		    <a class="nav-item" href="https://twitter.com/Vinayvnvv" target="_blank">
-		      <span class="icon" >
-		        <i class="fa fa-twitter"></i>
-		      </span>
-		    </a>
-		  </div>
-
-		  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-		  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-		  <span class="nav-toggle" (click)="isMenu = !isMenu" [class.is-active] = "isMenu">
-		    <span></span>
-		    <span></span>
-		    <span></span>
-		  </span>
-
-		  <!-- This "nav-menu" is hidden on mobile -->
-		  <!-- Add the modifier "is-active" to display it on mobile -->
-		  <div class="nav-right nav-menu" [class.is-active] = "isMenu">
-		    <a class="nav-item" [routerLink]="['/dashboard']">
+		  <div id="navbarExampleTransparentExample" class="navbar-menu" [class.is-active] = "isMenu">
+   			<div class="navbar-start">
+   				<a class="navbar-item" [routerLink]="['/dashboard']">
 		      Home
 		    </a>
+		    <a class="navbar-item" href="https://twitter.com/Vinayvnvv" target="_blank">
+			      <span class="icon" >
+			        <i class="fa fa-twitter"></i>
+			      </span>
+			</a>
 		    <!-- <a class="nav-item button is-light">
 		      Documentation
 		    </a> -->
-		    <a class="nav-item">
-		      <span class="icon iss-small">
-		              <!-- <i class="fa fa-google"></i> -->
-		              <img src="{{rootScope._auth_user.pic}}" style="border-radius: 50em" />
-		      </span>&nbsp;
-		      {{rootScope._auth_user.name}}
-		      <!-- <span class="icon">
-		              <i class="fa fa-angle-down"></i>
-		      </span> -->
-		    </a>
+		    
+   			</div>
+   			<div class="navbar-end">
+   				<a class="navbar-item">
+			      <span class="icon iss-small">
+			              <!-- <i class="fa fa-google"></i> -->
+			              <img src="{{rootScope._auth_user.pic}}" style="border-radius: 50em" />
+			      </span>&nbsp;
+			      {{rootScope._auth_user.name}}
+			      <!-- <span class="icon">
+			              <i class="fa fa-angle-down"></i>
+			      </span> -->
+			    </a>
+   				
+   				<div class="navbar-item">
+			      <div class="field is-grouped">
+			        <p class="control">
+			          <a class="button is-primary" (click)="isGetBotModal = true">
+			            <span class="icon is-small">
+			              <i class="fa fa-code"></i>
+			            </span>
+			            <span>Get Bot</span>
+			          </a> &nbsp;
+			          <a class="button iss-primary iss-inverted iss-outlined" (click)="logout()" >
+			            <span class="icon is-small">
+			              <i class="fa fa-power-off"></i>
+			            </span>
+			            <span>Logout</span>
+			          </a>
+			        </p>
+			        <!-- <p class="control">
+			          <a class="button is-primary">
+			            <span class="icon">
+			              <i class="fa fa-download"></i>
+			            </span>
+			            <span>Download</span>
+			          </a>
+			        </p> -->
+			      </div>
+			    </div>
+   			</div>
+   		</div>
 
-		    <div class="nav-item">
-		      <div class="field is-grouped">
-		        <p class="control">
-		          <a class="button is-primary" (click)="isGetBotModal = true">
-		            <span class="icon is-small">
-		              <i class="fa fa-code"></i>
-		            </span>
-		            <span>Get Bot</span>
-		          </a> &nbsp;
-		          <a class="button iss-primary iss-inverted iss-outlined" (click)="logout()" >
-		            <span class="icon is-small">
-		              <i class="fa fa-power-off"></i>
-		            </span>
-		            <span>Logout</span>
-		          </a>
-		        </p>
-		        <!-- <p class="control">
-		          <a class="button is-primary">
-		            <span class="icon">
-		              <i class="fa fa-download"></i>
-		            </span>
-		            <span>Download</span>
-		          </a>
-		        </p> -->
-		      </div>
-		    </div>
-		  </div>
+		 
 	</div>	  
 </nav>
 

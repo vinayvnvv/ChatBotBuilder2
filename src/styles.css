@@ -323,3 +323,8 @@ hr.hr {
       height: 100%!important;
   }
 }
+
+._c_b_app_tglbtn>._ic>._icn{
+    position: relative!important;
+    top: 3px!important;
+}
